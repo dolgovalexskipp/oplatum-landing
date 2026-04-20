@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Интерактивный симулятор — Oplatum</title>
+<meta name="description" content="Попробуйте, как работает Oplatum: создайте платёжную ссылку и пройдите чекаут. Симулятор, без реальных транзакций.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%231F3A8A'/><text x='50%25' y='54%25' text-anchor='middle' dy='.1em' fill='white' font-size='18' font-weight='700' font-family='Inter'>O</text></svg>">
+<style>
+  .demo-banner { background: #fef3c7; border-bottom: 1px solid #fcd34d; padding: 10px 16px; text-align: center; font-size: 13px; color: #78350f; font-weight: 500; }
+  .demo-banner strong { color: #451a03; }
+  .demo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start; }
+  @media (max-width: 900px) { .demo-grid { grid-template-columns: 1fr; } }
+  .panel { border: 1px solid var(--c-line); border-radius: var(--r-lg); background: #fff; overflow: hidden; }
+  .panel-head { padding: 16px 20px; border-bottom: 1px solid var(--c-line); background: #f9fafb; font-size: 13px; font-weight: 600; color: var(--c-ink-40); text-transform: uppercase; letter-spacing: 0.08em; display: flex; justify-content: space-between; align-items: center; }
+  .panel-body { padding: 24px; }
+  .label { display: block; font-size: 13px; color: var(--c-ink-40); margin-bottom: 6px; font-weight: 500; }
+  .field { width: 100%; padding: 12px 16px; font-size: 15px; font-family: var(--font); border: 1.5px solid var(--c-line); border-radius: var(--r); outline: none; background: #fff; color: var(--c-ink); transition: border-color .15s; }
+  .field:focus { border-color: var(--c-brand); }
+  .field-amount { font-size: 26px; font-weight: 700; padding: 16px; letter-spacing: -0.02em; }
+  .field-stack > * + * { margin-top: 14px; }
+
+  /* Checkout panel */
+  .checkout-card { border-radius: var(--r-lg); overflow: hidden; background: #fff; border: 1px solid var(--c-line); }
+  .checkout-top { background: #0a0a0a; color: #fff; padding: 26px 24px; text-align: center; }
+  .checkout-brand { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 600; letter-spacing: 0.12em; color: rgba(255,255,255,.6); text-transform: uppercase; margin-bottom: 16px; }
+  .checkout-brand .dot { width: 6px; height: 6px; border-radius: 50%; background: #3b82f6; }
+  .checkout-amount { font-size: 40px; font-weight: 700; letter-spacing: -0.03em; }
+  .checkout-id { font-size: 10px; color: rgba(255,255,255,.35); font-family: var(--mono); margin-top: 8px; }
+  .checkout-body { padding: 26px 24px; }
+  .checkout-desc { text-align: center; margin-bottom: 20px; }
+  .checkout-desc h4 { font-size: 16px; font-weight: 600; color: var(--c-ink); margin-bottom: 4px; }
+  .checkout-desc p { font-size: 12px; color: var(--c-ink-20); }
+
+  .qr-wrap { display: flex; flex-direction: column; align-items: center; padding: 16px 0 8px; }
+  .qr-box { padding: 8px; border: 1px solid var(--c-line-soft); border-radius: 12px; background: #fff; }
+  .qr-code { width: 160px; height: 160px; display: block; }
+  .qr-label { font-size: 14px; font-weight: 600; margin-top: 16px; color: var(--c-ink); }
+  .qr-hint { font-size: 12px; color: var(--c-ink-40); margin-top: 6px; max-width: 240px; text-align: center; line-height: 1.5; }
+
+  .tabs-row { display: flex; gap: 6px; padding-top: 20px; border-top: 1px solid var(--c-line-soft); margin-top: 18px; }
+  .tab-btn { flex: 1; padding: 10px; background: #f9fafb; border: 1px solid var(--c-line); border-radius: 6px; font-size: 13px; font-weight: 500; color: var(--c-ink-60); cursor: pointer; transition: all .15s; }
+  .tab-btn.active { background: var(--c-brand); color: #fff; border-color: var(--c-brand); }
+
+  .method-view { display: none; }
+  .method-view.active { display: block; }
+
+  .card-form > * + * { margin-top: 14px; }
+  .card-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+  .pay-btn { width: 100%; padding: 14px; background: var(--c-brand); color: #fff; border: none; border-radius: var(--r); font-size: 15px; font-weight: 600; cursor: pointer; transition: background .15s; margin-top: 20px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; }
+  .pay-btn:hover { background: #172d6b; }
+  .pay-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+  .secure-line { margin-top: 16px; display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 10px; font-weight: 600; color: var(--c-ink-20); letter-spacing: 0.12em; text-transform: uppercase; }
+
+  .success-state { padding: 32px 20px; text-align: center; }
+  .success-icon { width: 56px; height: 56px; border-radius: 50%; background: #ecfdf5; color: var(--c-success); display: inline-flex; align-items: center; justify-content: center; margin-bottom: 18px; }
+  .success-state h3 { font-size: 22px; font-weight: 700; margin-bottom: 8px; color: var(--c-ink); }
+  .success-state p { font-size: 14px; color: var(--c-ink-40); }
+
+  .log { font-family: var(--mono); font-size: 12px; background: #0a0a0a; color: #a5f3fc; border-radius: var(--r); padding: 14px; max-height: 200px; overflow: auto; line-height: 1.7; }
+  .log .ts { color: #64748b; }
+  .log .k { color: #c792ea; }
+  .log .s { color: #c3e88d; }
+
+  .steps { display: flex; gap: 8px; margin-bottom: 24px; }
+  .step { flex: 1; height: 4px; background: var(--c-line); border-radius: 2px; transition: background .3s; }
+  .step.active { background: var(--c-brand); }
+
+  .link-output { display: flex; gap: 8px; align-items: center; padding: 12px; background: #f9fafb; border: 1px solid var(--c-line); border-radius: var(--r); font-family: var(--mono); font-size: 12px; color: var(--c-brand); word-break: break-all; }
+  .link-output button { margin-left: auto; padding: 4px 10px; font-size: 12px; font-weight: 500; background: #fff; border: 1px solid var(--c-line); border-radius: 4px; cursor: pointer; flex-shrink: 0; font-family: var(--font); }
+
+  .spinner { display: inline-block; width: 16px; height: 16px; border: 2px solid rgba(255,255,255,.4); border-top-color: #fff; border-radius: 50%; animation: spin 0.8s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .anim-in { animation: fadeInUp .4s ease; }
+  @keyframes fadeInUp { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+</style>
+</head>
+<body>
+
+<div class="demo-banner">
+  <strong>Интерактивный симулятор.</strong> Реальные транзакции не проводятся. Все данные — тестовые.
+</div>
+
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="index.html" class="logo"><span class="logo-mark">O</span><span>Oplatum</span></a>
+    <div class="nav-links">
+      <a href="pricing.html">Тарифы</a>
+      <a href="telegram.html">Для Telegram</a>
+      <a href="agents.html">Для агентов</a>
+      <a href="about.html">О нас</a>
+      <a href="index.html#connect" class="btn btn-primary btn-sm">Подключиться</a>
+    </div>
+  </div>
+</nav>
+
+<section style="padding-top: 130px; padding-bottom: 24px;">
+  <div class="container">
+    <div class="eyebrow" style="margin-bottom: 12px;">Интерактивное демо</div>
+    <h1 style="font-size: clamp(32px, 4vw, 48px); max-width: 720px;">Как работает Oplatum — за&nbsp;60&nbsp;секунд</h1>
+    <p class="subtitle" style="margin-top: 18px; max-width: 640px;">Слева — сторона мерчанта: создайте платёжную ссылку одним кликом. Справа — клиентский чекаут: выберите способ оплаты и пройдите до конца. Ничего настоящего не происходит, но UX — как в продакшне.</p>
+  </div>
+</section>
+
+<section style="padding-top: 24px;">
+  <div class="container">
+    <div class="demo-grid">
+      <!-- Merchant side -->
+      <div class="panel">
+        <div class="panel-head">
+          <span>Мерчант · Dashboard</span>
+          <span style="color: var(--c-success); font-size: 11px;">● Sandbox</span>
+        </div>
+        <div class="panel-body">
+          <div class="steps">
+            <div class="step active" id="step-1"></div>
+            <div class="step" id="step-2"></div>
+            <div class="step" id="step-3"></div>
+          </div>
+
+          <div id="merchant-form">
+            <div class="field-stack">
+              <div>
+                <label class="label">Описание заказа</label>
+                <input type="text" class="field" id="m-desc" value="Подписка на канал · 1 месяц">
+              </div>
+              <div>
+                <label class="label">Сумма, ₽</label>
+                <input type="number" class="field field-amount" id="m-amount" value="1490">
+              </div>
+              <div>
+                <label class="label">External ID (опционально)</label>
+                <input type="text" class="field" id="m-ext" value="order_9f2b1c">
+              </div>
+            </div>
+            <button class="pay-btn" id="create-link-btn" style="margin-top: 22px;">
+              Создать платёжную ссылку
+            </button>
+          </div>
+
+          <div id="merchant-result" style="display: none;">
+            <div class="label">Платёжная ссылка готова</div>
+            <div class="link-output" id="link-output">
+              <span id="link-url">—</span>
+              <button id="copy-link">Копировать</button>
+            </div>
+            <div style="margin-top: 20px;">
+              <div class="label">API-вызов</div>
+              <div class="log" id="api-log"></div>
+            </div>
+            <button class="pay-btn" id="reset-btn" style="margin-top: 20px; background: #fff; color: var(--c-ink); border: 1.5px solid var(--c-line);">Создать новую</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Checkout side -->
+      <div>
+        <div class="checkout-card" id="checkout-waiting" style="text-align: center; padding: 56px 24px; color: var(--c-ink-20);">
+          <svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 16px; opacity: 0.5;"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+          <div style="font-size: 15px; font-weight: 500; color: var(--c-ink-40); margin-bottom: 4px;">Чекаут откроется здесь</div>
+          <div style="font-size: 13px;">Создайте платёжную ссылку слева</div>
+        </div>
+
+        <div class="checkout-card" id="checkout-active" style="display: none;">
+          <div class="checkout-top">
+            <div class="checkout-brand"><span class="dot"></span>Oplatum · Secure Payment</div>
+            <div style="font-size: 11px; font-weight: 600; color: rgba(255,255,255,.5); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 6px;">Сумма к&nbsp;оплате</div>
+            <div class="checkout-amount"><span id="ck-amount">0</span> ₽</div>
+            <div class="checkout-id" id="ck-id">—</div>
+          </div>
+          <div class="checkout-body">
+            <div class="checkout-desc">
+              <h4 id="ck-desc">—</h4>
+              <p>Выберите способ оплаты</p>
+            </div>
+
+            <div style="display: flex; gap: 6px;" class="tabs-row" id="method-tabs">
+              <button class="tab-btn active" data-m="sbp">СБП</button>
+              <button class="tab-btn" data-m="card">Карта</button>
+              <button class="tab-btn" data-m="usdt">USDT</button>
+            </div>
+
+            <!-- SBP view -->
+            <div class="method-view active anim-in" data-view="sbp">
+              <div class="qr-wrap">
+                <div class="qr-box">
+                  <svg class="qr-code" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="100" height="100" fill="#fff"/>
+                    <g fill="#0a0a0a">
+                      <!-- fake QR pattern -->
+                      <rect x="4" y="4" width="22" height="22"/><rect x="8" y="8" width="14" height="14" fill="#fff"/><rect x="12" y="12" width="6" height="6"/>
+                      <rect x="74" y="4" width="22" height="22"/><rect x="78" y="8" width="14" height="14" fill="#fff"/><rect x="82" y="12" width="6" height="6"/>
+                      <rect x="4" y="74" width="22" height="22"/><rect x="8" y="78" width="14" height="14" fill="#fff"/><rect x="12" y="82" width="6" height="6"/>
+                      <!-- data pattern -->
+                      <rect x="32" y="4" width="4" height="4"/><rect x="40" y="4" width="8" height="4"/><rect x="52" y="4" width="4" height="4"/><rect x="60" y="4" width="4" height="4"/><rect x="68" y="4" width="4" height="4"/>
+                      <rect x="32" y="12" width="4" height="4"/><rect x="44" y="12" width="8" height="4"/><rect x="56" y="12" width="4" height="4"/><rect x="64" y="12" width="4" height="4"/>
+                      <rect x="36" y="20" width="4" height="4"/><rect x="48" y="20" width="4" height="4"/><rect x="56" y="20" width="8" height="4"/><rect x="68" y="20" width="4" height="4"/>
+                      <rect x="4" y="32" width="4" height="4"/><rect x="12" y="32" width="4" height="4"/><rect x="20" y="32" width="4" height="4"/><rect x="32" y="32" width="8" height="4"/><rect x="48" y="32" width="4" height="4"/><rect x="56" y="32" width="4" height="4"/><rect x="64" y="32" width="8" height="4"/><rect x="80" y="32" width="4" height="4"/><rect x="88" y="32" width="4" height="4"/>
+                      <rect x="8" y="40" width="4" height="4"/><rect x="16" y="40" width="4" height="4"/><rect x="28" y="40" width="8" height="4"/><rect x="40" y="40" width="4" height="4"/><rect x="52" y="40" width="8" height="4"/><rect x="68" y="40" width="4" height="4"/><rect x="76" y="40" width="4" height="4"/><rect x="88" y="40" width="4" height="4"/>
+                      <rect x="4" y="48" width="4" height="4"/><rect x="20" y="48" width="4" height="4"/><rect x="32" y="48" width="4" height="4"/><rect x="44" y="48" width="8" height="4"/><rect x="60" y="48" width="4" height="4"/><rect x="72" y="48" width="8" height="4"/><rect x="84" y="48" width="4" height="4"/>
+                      <rect x="12" y="56" width="4" height="4"/><rect x="24" y="56" width="8" height="4"/><rect x="36" y="56" width="4" height="4"/><rect x="48" y="56" width="4" height="4"/><rect x="56" y="56" width="4" height="4"/><rect x="68" y="56" width="4" height="4"/><rect x="80" y="56" width="4" height="4"/><rect x="88" y="56" width="4" height="4"/>
+                      <rect x="4" y="64" width="4" height="4"/><rect x="16" y="64" width="4" height="4"/><rect x="28" y="64" width="4" height="4"/><rect x="40" y="64" width="8" height="4"/><rect x="52" y="64" width="4" height="4"/><rect x="64" y="64" width="8" height="4"/><rect x="76" y="64" width="4" height="4"/>
+                      <rect x="32" y="72" width="4" height="4"/><rect x="44" y="72" width="8" height="4"/><rect x="56" y="72" width="4" height="4"/><rect x="68" y="72" width="4" height="4"/><rect x="80" y="72" width="8" height="4"/>
+                      <rect x="36" y="80" width="4" height="4"/><rect x="44" y="80" width="4" height="4"/><rect x="52" y="80" width="8" height="4"/><rect x="64" y="80" width="4" height="4"/><rect x="76" y="80" width="4" height="4"/><rect x="88" y="80" width="4" height="4"/>
+                      <rect x="32" y="88" width="8" height="4"/><rect x="48" y="88" width="4" height="4"/><rect x="56" y="88" width="4" height="4"/><rect x="68" y="88" width="8" height="4"/><rect x="84" y="88" width="4" height="4"/>
+                    </g>
+                  </svg>
+                </div>
+                <div class="qr-label">Отсканируйте QR через&nbsp;банк</div>
+                <div class="qr-hint">Оплата подтвердится автоматически после списания в вашем банковском приложении</div>
+              </div>
+              <button class="pay-btn" data-simulate="sbp">Симулировать оплату</button>
+              <div class="secure-line">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 15v2m0-6V9m-9 8.5h18a2 2 0 0 0 2-2v-5a2 2 0 0 0-2-2H3a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2z"/></svg>
+                Безопасно через СБП
+              </div>
+            </div>
+
+            <!-- Card view -->
+            <div class="method-view anim-in" data-view="card">
+              <div class="card-form" style="padding-top: 20px;">
+                <div>
+                  <label class="label">Номер карты</label>
+                  <input type="text" class="field" placeholder="0000 0000 0000 0000" value="5536 1400 0000 0000" style="font-family: var(--mono); letter-spacing: 1px;">
+                </div>
+                <div class="card-row">
+                  <div>
+                    <label class="label">Срок · ММ/ГГ</label>
+                    <input type="text" class="field" placeholder="01/28" value="09/27" style="font-family: var(--mono);">
+                  </div>
+                  <div>
+                    <label class="label">CVC / CVV</label>
+                    <input type="password" class="field" placeholder="•••" value="123" style="font-family: var(--mono);">
+                  </div>
+                </div>
+              </div>
+              <button class="pay-btn" data-simulate="card" style="margin-top: 22px;">Оплатить картой</button>
+              <div class="secure-line">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 15v2m0-6V9m-9 8.5h18a2 2 0 0 0 2-2v-5a2 2 0 0 0-2-2H3a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2z"/></svg>
+                PCI DSS · шифрование AES-256
+              </div>
+            </div>
+
+            <!-- USDT view -->
+            <div class="method-view anim-in" data-view="usdt">
+              <div style="padding-top: 20px;">
+                <div style="padding: 18px; background: #f9fafb; border: 1px solid var(--c-line); border-radius: var(--r); margin-bottom: 14px;">
+                  <div class="label" style="margin-bottom: 4px;">Адрес кошелька · TRC20</div>
+                  <div style="font-family: var(--mono); font-size: 13px; color: var(--c-brand); word-break: break-all;">TQrZ8fT9mP3...6kVbXc2jH1pN</div>
+                </div>
+                <div style="padding: 18px; background: #f9fafb; border: 1px solid var(--c-line); border-radius: var(--r);">
+                  <div class="label" style="margin-bottom: 4px;">К оплате</div>
+                  <div style="font-size: 22px; font-weight: 700; color: var(--c-ink);" id="usdt-amount">—</div>
+                  <div style="font-size: 12px; color: var(--c-ink-40); margin-top: 4px;">Курс фиксируется на 15 минут</div>
+                </div>
+              </div>
+              <button class="pay-btn" data-simulate="usdt" style="margin-top: 22px;">Я перевёл · проверить</button>
+              <div class="secure-line">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 15v2m0-6V9m-9 8.5h18a2 2 0 0 0 2-2v-5a2 2 0 0 0-2-2H3a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2z"/></svg>
+                On-chain verified
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="checkout-card" id="checkout-success" style="display: none;">
+          <div class="success-state">
+            <div class="success-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <h3>Оплата прошла</h3>
+            <p id="success-msg">Платёж подтверждён. Вебхук отправлен мерчанту.</p>
+            <button class="pay-btn" id="another-btn" style="max-width: 220px; margin: 24px auto 0;">Попробовать ещё раз</button>
+          </div>
+        </div>
+
+        <div style="margin-top: 16px; font-size: 12px; color: var(--c-ink-20); text-align: center;">
+          Это симуляция — реальные транзакции не проводятся.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top: 72px;">
+  <div class="container" style="max-width: 860px;">
+    <div class="panel fade-in">
+      <div class="panel-head"><span>Что происходит под капотом</span></div>
+      <div class="panel-body">
+        <p style="color: var(--c-ink-60); font-size: 15px; line-height: 1.7;">
+          В реальной интеграции мерчант вызывает <code style="font-family: var(--mono); background: #f3f4f6; padding: 2px 6px; border-radius: 3px; font-size: 13px;">POST /v1/invoices</code> с суммой, валютой и описанием. Oplatum возвращает платёжную ссылку. Клиент открывает её в Telegram, Mini App или браузере, выбирает способ оплаты и платит. Когда статус меняется, Oplatum отправляет вебхук на URL мерчанта. Деньги поступают на расчётный счёт или USDT-кошелёк на&nbsp;следующий рабочий день.
+        </p>
+        <div style="margin-top: 24px; display: flex; gap: 12px; flex-wrap: wrap;">
+          <a href="telegram.html" class="btn btn-primary btn-sm">Посмотреть код интеграции →</a>
+          <a href="index.html#connect" class="btn btn-ghost btn-sm">Подключиться</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer" style="margin-top: 64px;">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="logo" style="margin-bottom: 10px;"><span class="logo-mark">O</span><span>Oplatum</span></div>
+        <p style="font-size: 15px; color: var(--c-ink-40); max-width: 280px;">Платёжная инфраструктура для цифровых бизнесов.</p>
+        <p style="font-size: 14px; color: var(--c-ink-20); margin-top: 12px;">Москва · Алматы · Гонконг</p>
+      </div>
+      <div class="footer-col"><h5>Продукт</h5><a href="pricing.html">Тарифы</a><a href="telegram.html">Для Telegram</a><a href="agents.html">Для AI-агентов</a><a href="demo.html">Демо</a></div>
+      <div class="footer-col"><h5>Компания</h5><a href="about.html">О нас</a><a href="index.html#connect">Связаться</a><a href="#">Карьера</a></div>
+      <div class="footer-col"><h5>Связь</h5><a href="mailto:hello@oplatum.com">hello@oplatum.com</a><a href="https://t.me/oplatum_support">@oplatum_support</a></div>
+    </div>
+    <div class="footer-bottom">© 2026 Oplatum. Все права защищены.</div>
+  </div>
+</footer>
+
+<a class="fab" href="https://t.me/oplatum_support" aria-label="Поддержка в Telegram">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+</a>
+
+<script src="assets/app.js"></script>
+<script>
+(function(){
+  const $ = id => document.getElementById(id);
+  const steps = [$('step-1'), $('step-2'), $('step-3')];
+  const setStep = n => steps.forEach((el, i) => el.classList.toggle('active', i < n));
+
+  const randId = () => Array.from(crypto.getRandomValues(new Uint8Array(6))).map(b => b.toString(16).padStart(2, '0')).join('');
+
+  let currentInvoice = null;
+
+  $('create-link-btn').addEventListener('click', () => {
+    const desc = $('m-desc').value.trim() || 'Оплата заказа';
+    const amount = parseInt($('m-amount').value, 10) || 0;
+    const ext = $('m-ext').value.trim();
+    if (amount <= 0) { alert('Укажите сумму больше 0'); return; }
+
+    const id = 'inv_' + randId();
+    const url = `https://pay.oplatum.com/${id}`;
+    currentInvoice = { id, amount, desc, ext, ts: new Date().toISOString() };
+
+    $('merchant-form').style.display = 'none';
+    $('merchant-result').style.display = 'block';
+    $('link-url').textContent = url;
+    setStep(2);
+
+    const pretty = JSON.stringify({
+      method: 'POST',
+      endpoint: '/v1/invoices',
+      request: { amount, currency: 'RUB', description: desc, external_id: ext || null },
+      response: { id, payment_url: url, status: 'pending', created_at: currentInvoice.ts }
+    }, null, 2);
+    const log = $('api-log');
+    log.innerHTML = pretty
+      .replace(/"(method|endpoint|request|response)"/g, '<span class="k">"$1"</span>')
+      .replace(/"([^"]+)":/g, '<span class="s">"$1"</span>:')
+      .replace(/: "([^"]+)"/g, ': <span class="s">"$1"</span>');
+
+    // Show checkout
+    $('checkout-waiting').style.display = 'none';
+    $('checkout-active').style.display = 'block';
+    $('checkout-success').style.display = 'none';
+    $('ck-amount').textContent = amount.toLocaleString('ru-RU');
+    $('ck-id').textContent = 'ID: ' + id;
+    $('ck-desc').textContent = desc;
+    $('usdt-amount').textContent = (amount / 92).toFixed(2) + ' USDT';
+  });
+
+  $('copy-link').addEventListener('click', () => {
+    navigator.clipboard.writeText($('link-url').textContent).then(() => {
+      $('copy-link').textContent = '✓ Готово';
+      setTimeout(() => $('copy-link').textContent = 'Копировать', 1500);
+    });
+  });
+
+  $('reset-btn').addEventListener('click', resetAll);
+  $('another-btn').addEventListener('click', resetAll);
+
+  function resetAll() {
+    currentInvoice = null;
+    $('merchant-form').style.display = 'block';
+    $('merchant-result').style.display = 'none';
+    $('checkout-waiting').style.display = 'block';
+    $('checkout-active').style.display = 'none';
+    $('checkout-success').style.display = 'none';
+    setStep(1);
+    document.querySelectorAll('.method-view').forEach(v => v.classList.toggle('active', v.dataset.view === 'sbp'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.dataset.m === 'sbp'));
+  }
+
+  // Tabs
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.method-view').forEach(v => v.classList.toggle('active', v.dataset.view === btn.dataset.m));
+    });
+  });
+
+  // Simulate payment
+  document.querySelectorAll('[data-simulate]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const method = btn.dataset.simulate;
+      const labelMap = { sbp: 'СБП', card: 'Банковская карта', usdt: 'USDT' };
+      const original = btn.innerHTML;
+      btn.disabled = true;
+      btn.innerHTML = '<span class="spinner"></span> Обработка…';
+      setTimeout(() => {
+        $('checkout-active').style.display = 'none';
+        $('checkout-success').style.display = 'block';
+        $('success-msg').textContent = `Метод: ${labelMap[method]}. Вебхук отправлен мерчанту.`;
+        setStep(3);
+        btn.disabled = false;
+        btn.innerHTML = original;
+      }, 1500);
+    });
+  });
+})();
+</script>
+</body>
+</html>

@@ -24,6 +24,7 @@
       <a href="pricing.html">Тарифы</a>
       <a href="telegram.html">Для Telegram</a>
       <a href="agents.html">Для агентов</a>
+      <a href="demo.html">Демо</a>
       <a href="about.html">О нас</a>
       <a href="#connect" class="btn btn-primary btn-sm">Подключиться</a>
     </div>
@@ -243,6 +244,38 @@
             </tbody>
           </table>
         </main>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEMO TEASER -->
+<section>
+  <div class="container">
+    <div class="fade-in demo-teaser" style="display: grid; grid-template-columns: 1.1fr 1fr; gap: 40px; align-items: center; padding: 48px; border: 1px solid var(--c-line); border-radius: var(--r-lg); background: linear-gradient(180deg, #f9fafb 0%, #fff 100%);">
+      <div>
+        <div class="eyebrow" style="margin-bottom: 16px;">Интерактивный симулятор</div>
+        <h2 style="margin-bottom: 20px;">Попробуйте, как это&nbsp;работает</h2>
+        <p class="subtitle" style="margin-bottom: 28px;">Создайте платёжную ссылку как мерчант, пройдите чекаут как клиент, получите вебхук — всё в браузере, без регистрации. Наглядно показываем, что получит ваша команда интеграции.</p>
+        <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+          <a href="demo.html" class="btn btn-primary">Открыть демо →</a>
+          <a href="telegram.html" class="btn btn-ghost">Интеграция в Telegram</a>
+        </div>
+      </div>
+      <div style="background: #0a0a0a; border-radius: var(--r); padding: 20px; color: #e5e7eb; font-family: var(--mono); font-size: 13px; line-height: 1.7;">
+        <div style="color: #6b7280; margin-bottom: 10px; font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em;">POST /v1/invoices</div>
+<pre style="margin: 0; color: #e5e7eb; font-family: var(--mono); font-size: 13px; white-space: pre-wrap;">{
+  "amount": 2500,
+  "currency": "RUB",
+  "description": "Boost Pack",
+  "external_id": "order_8421"
+}</pre>
+        <div style="color: #6b7280; margin: 16px 0 10px; font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em;">→ 201 Created</div>
+<pre style="margin: 0; color: #86efac; font-family: var(--mono); font-size: 13px; white-space: pre-wrap;">{
+  "id": "inv_9f2aee",
+  "url": "pay.oplatum.com/inv_9f2aee",
+  "status": "pending"
+}</pre>
       </div>
     </div>
   </div>

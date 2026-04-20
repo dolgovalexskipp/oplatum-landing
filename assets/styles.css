@@ -223,7 +223,7 @@ section { padding: 96px 0; }
 
 /* Responsive */
 @media (max-width: 900px) {
-  .form-grid, .about-grid { grid-template-columns: 1fr; gap: 40px; }
+  .form-grid, .about-grid, .demo-teaser { grid-template-columns: 1fr !important; gap: 32px !important; padding: 32px !important; }
   .dashboard-body { grid-template-columns: 1fr; }
   .dashboard-sidebar { display: none; }
   .stat-row { grid-template-columns: repeat(2, 1fr); }
