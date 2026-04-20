@@ -61,12 +61,12 @@ button { font-family: var(--font); cursor: pointer; }
 }
 
 /* Buttons */
-.btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 22px; border-radius: var(--r); font-size: 15px; font-weight: 500; border: 1.5px solid transparent; transition: background-color .15s ease, color .15s ease, border-color .15s ease; text-decoration: none; }
-.btn-primary { background: var(--c-brand); color: #fff; }
-.btn-primary:hover { background: #172d6b; }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; border-radius: 999px; font-size: 15px; font-weight: 500; border: 1.5px solid transparent; transition: background-color .15s ease, color .15s ease, border-color .15s ease; text-decoration: none; }
+.btn-primary, .nav-links a.btn-primary { background: var(--c-brand); color: #fff; }
+.btn-primary:hover, .nav-links a.btn-primary:hover { background: #172d6b; color: #fff; }
 .btn-ghost { background: transparent; color: var(--c-ink); border-color: var(--c-ink); }
 .btn-ghost:hover { background: var(--c-ink); color: #fff; }
-.btn-sm { padding: 9px 16px; font-size: 14px; }
+.btn-sm { padding: 9px 18px; font-size: 14px; }
 
 /* Typography */
 h1, h2, h3, h4 { margin: 0; letter-spacing: -0.02em; line-height: 1.2; }

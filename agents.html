@@ -47,16 +47,16 @@
     <div class="hero-content">
       <div class="eyebrow" style="margin-bottom: 16px;">R&amp;D · Закрытая бета</div>
       <h1>Платежи для&nbsp;AI-агентов</h1>
-      <p class="subtitle" style="margin-top: 28px; max-width: 620px;">Агентская платежная инфраструктура: intent-based API, токены с ограничениями, делегированные кошельки и MCP-сервер для Claude, OpenAI, Codex.</p>
+      <p class="subtitle" style="margin-top: 28px; max-width: 620px;">Платёжная инфраструктура для AI-агентов: API намерений, токены с ограничениями, делегированные кошельки и MCP-сервер для Claude, OpenAI, Codex.</p>
       <div class="hero-cta">
         <a href="#waitlist" class="btn btn-primary">
-          Встать в waitlist
+          Подать заявку на&nbsp;ранний доступ
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </a>
         <a href="#what" class="btn btn-ghost">Что мы строим</a>
       </div>
       <div class="hero-badges">
-        <span class="badge">Intent-based API</span>
+        <span class="badge">API намерений</span>
         <span class="badge">Делегированные токены</span>
         <span class="badge">MCP-сервер</span>
         <span class="badge">Claude, OpenAI, Codex CLI</span>
@@ -74,28 +74,28 @@
     </div>
     <div class="grid-3 fade-in">
       <div>
-        <h3 class="card-title">Intent-based API</h3>
-        <p class="card-body">Агент объявляет намерение (купить X за сумму Y у продавца Z), пользователь подтверждает одним действием, Oplatum исполняет. Никаких модальных окон и "введите CVV заново".</p>
+        <h3 class="card-title">API намерений</h3>
+        <p class="card-body">Агент объявляет намерение — купить такой-то товар на такую-то сумму у такого-то продавца. Пользователь подтверждает одним действием, Oplatum исполняет. Без повторного ввода карты и модальных окон.</p>
       </div>
       <div>
-        <h3 class="card-title">Токены с ограничениями</h3>
+        <h3 class="card-title">Токены с&nbsp;ограничениями</h3>
         <p class="card-body">Пользователь выдаёт агенту кошелёк с лимитами — по сумме, продавцам, категориям, частоте. Токен отзывается одной кнопкой.</p>
       </div>
       <div>
         <h3 class="card-title">MCP-сервер</h3>
-        <p class="card-body">Готовый integration для Claude, OpenAI Agents SDK, Codex CLI и других LLM-платформ. Агент видит возможность оплатить как обычный инструмент.</p>
+        <p class="card-body">Готовая интеграция для Claude, OpenAI Agents SDK, Codex CLI и других агентских платформ. Агент видит оплату как обычный инструмент.</p>
       </div>
       <div>
         <h3 class="card-title">Машинная атрибуция</h3>
-        <p class="card-body">Каждая транзакция привязана к агенту, пользователю, сессии и intent-цепочке. Прозрачная отчётность — кто, когда, за что заплатил.</p>
+        <p class="card-body">Каждая транзакция привязана к агенту, пользователю, сессии и цепочке намерений. Прозрачная отчётность — кто, когда и за что заплатил.</p>
       </div>
       <div>
         <h3 class="card-title">Идемпотентность</h3>
-        <p class="card-body">Безопасные повторы, защита от дублей, машиночитаемые ошибки. Рассчитано на работу с LLM, которые могут «забыть» и повторить запрос.</p>
+        <p class="card-body">Безопасные повторы, защита от дублей, машиночитаемые ошибки. Рассчитано на работу с моделями, которые могут «забыть» и повторить запрос.</p>
       </div>
       <div>
-        <h3 class="card-title">Аудит и compliance</h3>
-        <p class="card-body">Полный аудит-лог действий агента, интеграция с KYC/AML-флоу, готовность к агентским регуляторным требованиям.</p>
+        <h3 class="card-title">Аудит и&nbsp;регуляторика</h3>
+        <p class="card-body">Полный журнал действий агента, интеграция с проверкой клиентов и AML-процедурами, готовность к требованиям регуляторов по агентским платежам.</p>
       </div>
     </div>
   </div>
@@ -104,7 +104,7 @@
 <section>
   <div class="container">
     <div class="fade-in" style="max-width: 680px; margin-bottom: 32px;">
-      <div class="eyebrow" style="margin-bottom: 16px;">MCP-сервер · превью</div>
+      <div class="eyebrow" style="margin-bottom: 16px;">MCP-сервер · предпросмотр</div>
       <h2>Подключается одной строкой</h2>
     </div>
     <div class="fade-in" style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start;">
@@ -123,7 +123,7 @@
 }</pre>
       </div>
       <div>
-        <div style="font-size: 13px; font-weight: 600; color: var(--c-ink-40); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.08em;">Agent tool call</div>
+        <div style="font-size: 13px; font-weight: 600; color: var(--c-ink-40); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.08em;">Вызов инструмента агентом</div>
         <pre class="code-block"><span class="k">await</span> tools.oplatum.<span class="f">pay</span>({
   amount: <span class="s">1500</span>,
   currency: <span class="s">"RUB"</span>,
@@ -140,29 +140,29 @@
 <section class="section-soft">
   <div class="container">
     <div class="fade-in" style="max-width: 680px; margin-bottom: 40px;">
-      <div class="eyebrow" style="margin-bottom: 16px;">Roadmap</div>
+      <div class="eyebrow" style="margin-bottom: 16px;">Дорожная карта</div>
       <h2>Где мы сейчас и&nbsp;что впереди</h2>
     </div>
     <div class="roadmap fade-in">
       <div class="roadmap-step done">
         <div class="q">Q1 · 2026</div>
-        <div class="t">Core API</div>
-        <div class="s">Базовые платежи, выплаты, rev-share для digital-бизнесов — в production.</div>
+        <div class="t">Основной API</div>
+        <div class="s">Базовые платежи, выплаты, партнёрские выплаты для цифровых бизнесов — в боевом контуре.</div>
       </div>
       <div class="roadmap-step">
         <div class="q">Q2 · 2026</div>
-        <div class="t">SDK + агентский tier</div>
-        <div class="s">SDK для aiogram/grammy, первая версия токенов с ограничениями, sandbox для агентов.</div>
+        <div class="t">SDK и&nbsp;агентский уровень</div>
+        <div class="s">SDK для aiogram и grammy, первая версия токенов с ограничениями, песочница для агентов.</div>
       </div>
       <div class="roadmap-step">
         <div class="q">Q3 · 2026</div>
-        <div class="t">MCP-сервер alpha</div>
-        <div class="s">Open-source MCP-сервер, интеграция с Claude и OpenAI Agents SDK, partnership waitlist.</div>
+        <div class="t">MCP-сервер, альфа</div>
+        <div class="s">Открытый MCP-сервер, интеграция с Claude и OpenAI Agents SDK, отбор первых партнёров.</div>
       </div>
       <div class="roadmap-step">
         <div class="q">Q4 · 2026</div>
-        <div class="t">Production release</div>
-        <div class="s">Intent-based API в проде, полный аудит/compliance, публичные case studies.</div>
+        <div class="t">Публичный релиз</div>
+        <div class="s">API намерений в боевом контуре, полный аудит и соответствие регуляторным требованиям, публичные кейсы клиентов.</div>
       </div>
     </div>
   </div>
@@ -171,14 +171,14 @@
 <section id="waitlist">
   <div class="container">
     <div class="fade-in" style="max-width: 640px; margin: 0 auto; text-align: center; padding: 56px 40px; border: 1px solid var(--c-line); border-radius: var(--r-lg); background: #fff;">
-      <div class="eyebrow" style="margin-bottom: 12px;">Waitlist</div>
-      <h2 style="margin-bottom: 20px;">Встаньте в&nbsp;раннюю волну</h2>
-      <p class="subtitle" style="margin-bottom: 32px;">Ограниченная бета-группа — 20 команд, которые получат доступ к API и MCP-серверу до публичного релиза.</p>
+      <div class="eyebrow" style="margin-bottom: 12px;">Ранний доступ</div>
+      <h2 style="margin-bottom: 20px;">Войти в&nbsp;первую волну</h2>
+      <p class="subtitle" style="margin-bottom: 32px;">Ограниченный круг — 20 команд, которые получат доступ к API и MCP-серверу до публичного релиза.</p>
       <form data-demo style="display: flex; flex-direction: column; gap: 12px; max-width: 480px; margin: 0 auto;">
         <input type="email" placeholder="you@example.com" required style="padding: 12px 16px; font-size: 16px; font-family: var(--font); border: 1.5px solid var(--c-line); border-radius: var(--r); outline: none;">
-        <input type="text" placeholder="Название проекта / компания" required style="padding: 12px 16px; font-size: 16px; font-family: var(--font); border: 1.5px solid var(--c-line); border-radius: var(--r); outline: none;">
-        <input type="text" placeholder="Use case: что вы строите?" style="padding: 12px 16px; font-size: 16px; font-family: var(--font); border: 1.5px solid var(--c-line); border-radius: var(--r); outline: none;">
-        <button type="submit" class="btn btn-primary form-submit">Встать в waitlist</button>
+        <input type="text" placeholder="Название проекта или компания" required style="padding: 12px 16px; font-size: 16px; font-family: var(--font); border: 1.5px solid var(--c-line); border-radius: var(--r); outline: none;">
+        <input type="text" placeholder="Какой сценарий вы строите?" style="padding: 12px 16px; font-size: 16px; font-family: var(--font); border: 1.5px solid var(--c-line); border-radius: var(--r); outline: none;">
+        <button type="submit" class="btn btn-primary form-submit">Оставить заявку</button>
       </form>
     </div>
   </div>

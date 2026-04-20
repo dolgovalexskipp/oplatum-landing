@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Для Telegram-ботов и Mini Apps — Oplatum</title>
-<meta name="description" content="SDK, платёжные ссылки, рекурренты и Mini App checkout одним API. Подключите оплату к Telegram-боту за вечер.">
+<meta name="description" content="SDK, платёжные ссылки, регулярные списания и оплата внутри Mini App — одним API. Подключите оплату к Telegram-боту за вечер.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -39,7 +39,7 @@
     <div class="hero-content">
       <div class="eyebrow" style="margin-bottom: 16px;">Для разработчиков</div>
       <h1>Платежи в&nbsp;Telegram-ботах и&nbsp;Mini&nbsp;Apps</h1>
-      <p class="subtitle" style="margin-top: 28px; max-width: 620px;">SDK, платёжные ссылки, рекурренты и Mini App checkout — одним API. Подключите оплату к&nbsp;боту за&nbsp;вечер.</p>
+      <p class="subtitle" style="margin-top: 28px; max-width: 620px;">SDK, платёжные ссылки, регулярные списания и оплата внутри Mini&nbsp;App — одним API. Подключите оплату к&nbsp;боту за&nbsp;вечер.</p>
       <div class="hero-cta">
         <a href="#waitlist" class="btn btn-primary">
           Получить ранний доступ
@@ -52,7 +52,7 @@
         <span class="badge">python-telegram-bot</span>
         <span class="badge">grammy</span>
         <span class="badge">node.js</span>
-        <span class="badge">Mini App checkout</span>
+        <span class="badge">Mini App · встроенная оплата</span>
       </div>
     </div>
   </div>
@@ -113,24 +113,24 @@ bot.<span class="f">command</span>(<span class="s">"buy"</span>, <span class="k"
         <p class="card-body">Сгенерируйте ссылку одним API-вызовом. Клиент открывает в Telegram, платит привычным способом — СБП, карта или USDT.</p>
       </div>
       <div>
-        <h3 class="card-title">Рекурренты</h3>
-        <p class="card-body">Подписочные модели, автоматические списания, управление рекурренцией из SDK. Без костылей и саморучных таймеров.</p>
+        <h3 class="card-title">Регулярные списания</h3>
+        <p class="card-body">Подписки и рекурренты, автоматические продления, управление графиком списаний через SDK. Без таймеров на вашей стороне.</p>
       </div>
       <div>
-        <h3 class="card-title">Mini App checkout</h3>
-        <p class="card-body">Встраиваемый чекаут внутри Mini App. Один компонент, один API-ключ — клиент платит не выходя из вашего приложения.</p>
+        <h3 class="card-title">Оплата в&nbsp;Mini&nbsp;App</h3>
+        <p class="card-body">Встраиваемая форма оплаты внутри Mini&nbsp;App. Один компонент, один API-ключ — клиент платит, не выходя из приложения.</p>
       </div>
       <div>
-        <h3 class="card-title">Вебхуки и идемпотентность</h3>
+        <h3 class="card-title">Вебхуки и&nbsp;идемпотентность</h3>
         <p class="card-body">Надёжные уведомления о статусах платежей, защита от дублей, безопасные повторы при сбоях сети.</p>
       </div>
       <div>
-        <h3 class="card-title">Возвраты и споры</h3>
-        <p class="card-body">Refund и chargeback обрабатываются через API. Бесплатно, с полной отчётностью.</p>
+        <h3 class="card-title">Возвраты и&nbsp;споры</h3>
+        <p class="card-body">Возвраты и оспаривания обрабатываются через API. Без доплаты, с полной отчётностью.</p>
       </div>
       <div>
-        <h3 class="card-title">Song-sandbox и&nbsp;тест</h3>
-        <p class="card-body">Тестовая среда в день регистрации. Эмулятор всех методов оплаты, fake-клиенты, webhook replay.</p>
+        <h3 class="card-title">Тестовая среда</h3>
+        <p class="card-body">Полноценная песочница в день регистрации: эмулятор всех способов оплаты, тестовые клиенты, повторная отправка вебхуков.</p>
       </div>
     </div>
   </div>
@@ -139,8 +139,8 @@ bot.<span class="f">command</span>(<span class="s">"buy"</span>, <span class="k"
 <section class="section-soft">
   <div class="container">
     <div class="fade-in" style="max-width: 680px; margin-bottom: 48px;">
-      <div class="eyebrow" style="margin-bottom: 16px;">Use cases</div>
-      <h2>Сценарии, для которых мы строили</h2>
+      <div class="eyebrow" style="margin-bottom: 16px;">Сценарии</div>
+      <h2>Для чего мы это построили</h2>
     </div>
     <div class="solution-list fade-in">
       <div>
@@ -148,21 +148,21 @@ bot.<span class="f">command</span>(<span class="s">"buy"</span>, <span class="k"
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
         </div>
         <h3 class="card-title">Закрытые каналы и&nbsp;чаты</h3>
-        <p class="card-body">Подписки на контент, платный доступ, автоматическая выдача/отзыв invite-линков после оплаты.</p>
+        <p class="card-body">Подписки на контент, платный доступ, автоматическая выдача и отзыв приглашений после оплаты.</p>
       </div>
       <div>
         <div class="solution-icon">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
         </div>
         <h3 class="card-title">Telegram Mini Apps</h3>
-        <p class="card-body">Игры, маркетплейсы, сервисы — оплата встроенным чекаутом, без перехода в внешний браузер.</p>
+        <p class="card-body">Игры, маркетплейсы, сервисы — оплата встроенной формой, без перехода в браузер.</p>
       </div>
       <div>
         <div class="solution-icon">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7h-7M14 17H4M17 4l3 3-3 3M7 14l-3 3 3 3"/></svg>
         </div>
-        <h3 class="card-title">Bot-as-a-Service агентства</h3>
-        <p class="card-body">Делаете ботов под клиентов? Подключите Oplatum как платёжный слой — мультитенантность, white-label, rev share.</p>
+        <h3 class="card-title">Агентства, которые делают ботов на&nbsp;заказ</h3>
+        <p class="card-body">Делаете ботов под клиентов? Подключите Oplatum как платёжный слой — мультиаккаунты, собственный бренд на чекауте, доля от оборота ваших клиентов.</p>
       </div>
     </div>
   </div>

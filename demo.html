@@ -84,10 +84,6 @@
 </head>
 <body>
 
-<div class="demo-banner">
-  <strong>Интерактивный симулятор.</strong> Реальные транзакции не проводятся. Все данные — тестовые.
-</div>
-
 <nav class="nav">
   <div class="container nav-inner">
     <a href="index.html" class="logo"><span class="logo-mark">O</span><span>Oplatum</span></a>
@@ -103,9 +99,12 @@
 
 <section style="padding-top: 130px; padding-bottom: 24px;">
   <div class="container">
-    <div class="eyebrow" style="margin-bottom: 12px;">Интерактивное демо</div>
+    <div style="display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; background: #fef3c7; border: 1px solid #fcd34d; border-radius: 999px; font-size: 12px; color: #78350f; font-weight: 500; margin-bottom: 20px;">
+      <span style="width: 6px; height: 6px; border-radius: 50%; background: #d97706;"></span>
+      Тестовая среда · реальные транзакции не&nbsp;проводятся
+    </div>
     <h1 style="font-size: clamp(32px, 4vw, 48px); max-width: 720px;">Как работает Oplatum — за&nbsp;60&nbsp;секунд</h1>
-    <p class="subtitle" style="margin-top: 18px; max-width: 640px;">Слева — сторона мерчанта: создайте платёжную ссылку одним кликом. Справа — клиентский чекаут: выберите способ оплаты и пройдите до конца. Ничего настоящего не происходит, но UX — как в продакшне.</p>
+    <p class="subtitle" style="margin-top: 18px; max-width: 640px;">Слева — сторона мерчанта: создайте платёжную ссылку одним кликом. Справа — клиентский чекаут: выберите способ оплаты и пройдите до конца. Ничего настоящего не происходит, интерфейс — как на боевом контуре.</p>
   </div>
 </section>
 
@@ -115,8 +114,8 @@
       <!-- Merchant side -->
       <div class="panel">
         <div class="panel-head">
-          <span>Мерчант · Dashboard</span>
-          <span style="color: var(--c-success); font-size: 11px;">● Sandbox</span>
+          <span>Панель мерчанта</span>
+          <span style="color: var(--c-success); font-size: 11px;">● Тест-режим</span>
         </div>
         <div class="panel-body">
           <div class="steps">
@@ -170,7 +169,7 @@
 
         <div class="checkout-card" id="checkout-active" style="display: none;">
           <div class="checkout-top">
-            <div class="checkout-brand"><span class="dot"></span>Oplatum · Secure Payment</div>
+            <div class="checkout-brand"><span class="dot"></span>Oplatum · Безопасная оплата</div>
             <div style="font-size: 11px; font-weight: 600; color: rgba(255,255,255,.5); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 6px;">Сумма к&nbsp;оплате</div>
             <div class="checkout-amount"><span id="ck-amount">0</span> ₽</div>
             <div class="checkout-id" id="ck-id">—</div>
