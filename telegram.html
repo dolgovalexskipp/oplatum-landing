@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Для Telegram-ботов и Mini Apps — Oplatum</title>
+<meta name="description" content="SDK, платёжные ссылки, рекурренты и Mini App checkout одним API. Подключите оплату к Telegram-боту за вечер.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%231F3A8A'/><text x='50%25' y='54%25' text-anchor='middle' dy='.1em' fill='white' font-size='18' font-weight='700' font-family='Inter'>O</text></svg>">
+<style>
+  .code-block { background: #0a0a0a; color: #e5e7eb; font-family: var(--mono); font-size: 13px; line-height: 1.7; padding: 28px 32px; border-radius: var(--r-lg); overflow: auto; }
+  .code-block .k { color: #c792ea; }
+  .code-block .s { color: #c3e88d; }
+  .code-block .f { color: #82aaff; }
+  .code-block .c { color: #676e95; }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="index.html" class="logo"><span class="logo-mark">O</span><span>Oplatum</span></a>
+    <div class="nav-links">
+      <a href="pricing.html">Тарифы</a>
+      <a href="telegram.html">Для Telegram</a>
+      <a href="agents.html">Для агентов</a>
+      <a href="about.html">О нас</a>
+      <a href="index.html#connect" class="btn btn-primary btn-sm">Подключиться</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero" style="padding-bottom: 80px;">
+  <div class="container">
+    <div class="hero-content">
+      <div class="eyebrow" style="margin-bottom: 16px;">Для разработчиков</div>
+      <h1>Платежи в&nbsp;Telegram-ботах и&nbsp;Mini&nbsp;Apps</h1>
+      <p class="subtitle" style="margin-top: 28px; max-width: 620px;">SDK, платёжные ссылки, рекурренты и Mini App checkout — одним API. Подключите оплату к&nbsp;боту за&nbsp;вечер.</p>
+      <div class="hero-cta">
+        <a href="#waitlist" class="btn btn-primary">
+          Получить ранний доступ
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <a href="#examples" class="btn btn-ghost">Посмотреть код</a>
+      </div>
+      <div class="hero-badges">
+        <span class="badge">aiogram</span>
+        <span class="badge">python-telegram-bot</span>
+        <span class="badge">grammy</span>
+        <span class="badge">node.js</span>
+        <span class="badge">Mini App checkout</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-soft" id="examples">
+  <div class="container">
+    <div class="fade-in" style="max-width: 680px; margin-bottom: 48px;">
+      <div class="eyebrow" style="margin-bottom: 16px;">Пример интеграции</div>
+      <h2>Платёжная ссылка за пять строк кода</h2>
+    </div>
+    <div class="fade-in" style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start;">
+      <div>
+        <div style="font-size: 13px; font-weight: 600; color: var(--c-ink-40); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.08em;">Python · aiogram</div>
+        <pre class="code-block"><span class="k">from</span> oplatum <span class="k">import</span> Oplatum
+
+client = <span class="f">Oplatum</span>(api_key=<span class="s">"sk_live_..."</span>)
+
+link = client.payment_links.<span class="f">create</span>(
+    amount=<span class="s">1500</span>,
+    currency=<span class="s">"RUB"</span>,
+    description=<span class="s">"Подписка на канал"</span>,
+    customer_id=<span class="s">"tg_"</span> + <span class="f">str</span>(message.from_user.id)
+)
+
+<span class="c"># отправьте клиенту в Telegram</span>
+<span class="k">await</span> message.<span class="f">answer</span>(<span class="s">f"Оплата: {link.url}"</span>)</pre>
+      </div>
+      <div>
+        <div style="font-size: 13px; font-weight: 600; color: var(--c-ink-40); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.08em;">Node.js · grammy</div>
+        <pre class="code-block"><span class="k">import</span> { Oplatum } <span class="k">from</span> <span class="s">"@oplatum/sdk"</span>;
+
+<span class="k">const</span> client = <span class="k">new</span> <span class="f">Oplatum</span>({ apiKey: <span class="s">"sk_live_..."</span> });
+
+bot.<span class="f">command</span>(<span class="s">"buy"</span>, <span class="k">async</span> (ctx) => {
+  <span class="k">const</span> link = <span class="k">await</span> client.paymentLinks.<span class="f">create</span>({
+    amount: <span class="s">1500</span>,
+    currency: <span class="s">"RUB"</span>,
+    description: <span class="s">"Подписка"</span>,
+    customerId: <span class="s">`tg_</span>${ctx.from.id}<span class="s">`</span>
+  });
+  <span class="k">await</span> ctx.<span class="f">reply</span>(<span class="s">`Оплата: </span>${link.url}<span class="s">`</span>);
+});</pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="fade-in" style="max-width: 680px; margin-bottom: 48px;">
+      <div class="eyebrow" style="margin-bottom: 16px;">Возможности</div>
+      <h2>Всё, что нужно боту с платежами</h2>
+    </div>
+    <div class="grid-3 fade-in">
+      <div>
+        <h3 class="card-title">Платёжные ссылки</h3>
+        <p class="card-body">Сгенерируйте ссылку одним API-вызовом. Клиент открывает в Telegram, платит привычным способом — СБП, карта или USDT.</p>
+      </div>
+      <div>
+        <h3 class="card-title">Рекурренты</h3>
+        <p class="card-body">Подписочные модели, автоматические списания, управление рекурренцией из SDK. Без костылей и саморучных таймеров.</p>
+      </div>
+      <div>
+        <h3 class="card-title">Mini App checkout</h3>
+        <p class="card-body">Встраиваемый чекаут внутри Mini App. Один компонент, один API-ключ — клиент платит не выходя из вашего приложения.</p>
+      </div>
+      <div>
+        <h3 class="card-title">Вебхуки и идемпотентность</h3>
+        <p class="card-body">Надёжные уведомления о статусах платежей, защита от дублей, безопасные повторы при сбоях сети.</p>
+      </div>
+      <div>
+        <h3 class="card-title">Возвраты и споры</h3>
+        <p class="card-body">Refund и chargeback обрабатываются через API. Бесплатно, с полной отчётностью.</p>
+      </div>
+      <div>
+        <h3 class="card-title">Song-sandbox и&nbsp;тест</h3>
+        <p class="card-body">Тестовая среда в день регистрации. Эмулятор всех методов оплаты, fake-клиенты, webhook replay.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-soft">
+  <div class="container">
+    <div class="fade-in" style="max-width: 680px; margin-bottom: 48px;">
+      <div class="eyebrow" style="margin-bottom: 16px;">Use cases</div>
+      <h2>Сценарии, для которых мы строили</h2>
+    </div>
+    <div class="solution-list fade-in">
+      <div>
+        <div class="solution-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <h3 class="card-title">Закрытые каналы и&nbsp;чаты</h3>
+        <p class="card-body">Подписки на контент, платный доступ, автоматическая выдача/отзыв invite-линков после оплаты.</p>
+      </div>
+      <div>
+        <div class="solution-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <h3 class="card-title">Telegram Mini Apps</h3>
+        <p class="card-body">Игры, маркетплейсы, сервисы — оплата встроенным чекаутом, без перехода в внешний браузер.</p>
+      </div>
+      <div>
+        <div class="solution-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7h-7M14 17H4M17 4l3 3-3 3M7 14l-3 3 3 3"/></svg>
+        </div>
+        <h3 class="card-title">Bot-as-a-Service агентства</h3>
+        <p class="card-body">Делаете ботов под клиентов? Подключите Oplatum как платёжный слой — мультитенантность, white-label, rev share.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="waitlist">
+  <div class="container">
+    <div class="fade-in" style="max-width: 640px; margin: 0 auto; text-align: center; padding: 56px 40px; border: 1px solid var(--c-line); border-radius: var(--r-lg); background: #fff;">
+      <div class="eyebrow" style="margin-bottom: 12px;">Ранний доступ</div>
+      <h2 style="margin-bottom: 20px;">SDK сейчас в&nbsp;закрытой&nbsp;бете</h2>
+      <p class="subtitle" style="margin-bottom: 32px;">Оставьте заявку — подключим за 24 часа и проведём через интеграцию шаг за шагом.</p>
+      <form data-demo style="display: flex; gap: 12px; max-width: 480px; margin: 0 auto; flex-wrap: wrap;">
+        <input type="email" placeholder="you@example.com" required style="flex: 1; min-width: 240px; padding: 12px 16px; font-size: 16px; font-family: var(--font); border: 1.5px solid var(--c-line); border-radius: var(--r); outline: none;">
+        <button type="submit" class="btn btn-primary">Получить доступ</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="logo" style="margin-bottom: 10px;"><span class="logo-mark">O</span><span>Oplatum</span></div>
+        <p style="font-size: 15px; color: var(--c-ink-40); max-width: 280px;">Платёжная инфраструктура для цифровых бизнесов.</p>
+        <p style="font-size: 14px; color: var(--c-ink-20); margin-top: 12px;">Москва · Алматы · Гонконг</p>
+      </div>
+      <div class="footer-col"><h5>Продукт</h5><a href="pricing.html">Тарифы</a><a href="telegram.html">Для Telegram</a><a href="agents.html">Для AI-агентов</a><a href="#">Документация</a></div>
+      <div class="footer-col"><h5>Компания</h5><a href="about.html">О нас</a><a href="index.html#connect">Связаться</a><a href="#">Карьера</a></div>
+      <div class="footer-col"><h5>Связь</h5><a href="mailto:hello@oplatum.com">hello@oplatum.com</a><a href="https://t.me/oplatum_support">@oplatum_support</a></div>
+    </div>
+    <div class="footer-bottom">© 2026 Oplatum. Все права защищены.</div>
+  </div>
+</footer>
+
+<a class="fab" href="https://t.me/oplatum_support" aria-label="Поддержка в Telegram">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+</a>
+
+<script src="assets/app.js"></script>
+</body>
+</html>

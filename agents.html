@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Для AI-агентов — Oplatum</title>
+<meta name="description" content="Платёжный слой для AI-агентов: intent-based API, токены с ограничениями, MCP-сервер для Claude и OpenAI.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%231F3A8A'/><text x='50%25' y='54%25' text-anchor='middle' dy='.1em' fill='white' font-size='18' font-weight='700' font-family='Inter'>O</text></svg>">
+<style>
+  .code-block { background: #0a0a0a; color: #e5e7eb; font-family: var(--mono); font-size: 13px; line-height: 1.7; padding: 24px 28px; border-radius: var(--r-lg); overflow: auto; }
+  .code-block .k { color: #c792ea; }
+  .code-block .s { color: #c3e88d; }
+  .code-block .f { color: #82aaff; }
+  .code-block .c { color: #676e95; }
+  .roadmap { display: flex; gap: 0; border: 1px solid var(--c-line); border-radius: var(--r-lg); overflow: hidden; }
+  .roadmap-step { flex: 1; padding: 24px; border-right: 1px solid var(--c-line); background: #fff; }
+  .roadmap-step:last-child { border-right: none; }
+  .roadmap-step.done { background: var(--c-brand-soft); }
+  .roadmap-step .q { font-size: 12px; font-weight: 600; color: var(--c-ink-20); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+  .roadmap-step .t { font-size: 15px; font-weight: 600; color: var(--c-ink); margin-bottom: 6px; }
+  .roadmap-step .s { font-size: 13px; color: var(--c-ink-40); line-height: 1.5; }
+  @media (max-width: 900px) { .roadmap { flex-direction: column; } .roadmap-step { border-right: none; border-bottom: 1px solid var(--c-line); } .roadmap-step:last-child { border-bottom: none; } }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="index.html" class="logo"><span class="logo-mark">O</span><span>Oplatum</span></a>
+    <div class="nav-links">
+      <a href="pricing.html">Тарифы</a>
+      <a href="telegram.html">Для Telegram</a>
+      <a href="agents.html">Для агентов</a>
+      <a href="about.html">О нас</a>
+      <a href="index.html#connect" class="btn btn-primary btn-sm">Подключиться</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero" style="padding-bottom: 80px;">
+  <div class="container">
+    <div class="hero-content">
+      <div class="eyebrow" style="margin-bottom: 16px;">R&amp;D · Закрытая бета</div>
+      <h1>Платежи для&nbsp;AI-агентов</h1>
+      <p class="subtitle" style="margin-top: 28px; max-width: 620px;">Агентская платежная инфраструктура: intent-based API, токены с ограничениями, делегированные кошельки и MCP-сервер для Claude, OpenAI, Codex.</p>
+      <div class="hero-cta">
+        <a href="#waitlist" class="btn btn-primary">
+          Встать в waitlist
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <a href="#what" class="btn btn-ghost">Что мы строим</a>
+      </div>
+      <div class="hero-badges">
+        <span class="badge">Intent-based API</span>
+        <span class="badge">Делегированные токены</span>
+        <span class="badge">MCP-сервер</span>
+        <span class="badge">Claude, OpenAI, Codex CLI</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-soft" id="what">
+  <div class="container">
+    <div class="fade-in" style="max-width: 680px; margin-bottom: 56px;">
+      <div class="eyebrow" style="margin-bottom: 16px;">Что мы строим</div>
+      <h2>Платёжная инфраструктура для&nbsp;агентов, а&nbsp;не&nbsp;для&nbsp;людей</h2>
+      <p class="subtitle" style="margin-top: 20px;">Классические эквайринги предполагают: форма, клик, ввод CVV. Для агентов нужна другая модель — агент действует от имени пользователя, в рамках заданных ограничений, с машинной атрибуцией каждого шага.</p>
+    </div>
+    <div class="grid-3 fade-in">
+      <div>
+        <h3 class="card-title">Intent-based API</h3>
+        <p class="card-body">Агент объявляет намерение (купить X за сумму Y у продавца Z), пользователь подтверждает одним действием, Oplatum исполняет. Никаких модальных окон и "введите CVV заново".</p>
+      </div>
+      <div>
+        <h3 class="card-title">Токены с ограничениями</h3>
+        <p class="card-body">Пользователь выдаёт агенту кошелёк с лимитами — по сумме, продавцам, категориям, частоте. Токен отзывается одной кнопкой.</p>
+      </div>
+      <div>
+        <h3 class="card-title">MCP-сервер</h3>
+        <p class="card-body">Готовый integration для Claude, OpenAI Agents SDK, Codex CLI и других LLM-платформ. Агент видит возможность оплатить как обычный инструмент.</p>
+      </div>
+      <div>
+        <h3 class="card-title">Машинная атрибуция</h3>
+        <p class="card-body">Каждая транзакция привязана к агенту, пользователю, сессии и intent-цепочке. Прозрачная отчётность — кто, когда, за что заплатил.</p>
+      </div>
+      <div>
+        <h3 class="card-title">Идемпотентность</h3>
+        <p class="card-body">Безопасные повторы, защита от дублей, машиночитаемые ошибки. Рассчитано на работу с LLM, которые могут «забыть» и повторить запрос.</p>
+      </div>
+      <div>
+        <h3 class="card-title">Аудит и compliance</h3>
+        <p class="card-body">Полный аудит-лог действий агента, интеграция с KYC/AML-флоу, готовность к агентским регуляторным требованиям.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="fade-in" style="max-width: 680px; margin-bottom: 32px;">
+      <div class="eyebrow" style="margin-bottom: 16px;">MCP-сервер · превью</div>
+      <h2>Подключается одной строкой</h2>
+    </div>
+    <div class="fade-in" style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start;">
+      <div>
+        <div style="font-size: 13px; font-weight: 600; color: var(--c-ink-40); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.08em;">Конфигурация Claude</div>
+        <pre class="code-block">{
+  <span class="s">"mcpServers"</span>: {
+    <span class="s">"oplatum"</span>: {
+      <span class="s">"command"</span>: <span class="s">"npx"</span>,
+      <span class="s">"args"</span>: [<span class="s">"-y"</span>, <span class="s">"@oplatum/mcp-server"</span>],
+      <span class="s">"env"</span>: {
+        <span class="s">"OPLATUM_KEY"</span>: <span class="s">"sk_agent_..."</span>
+      }
+    }
+  }
+}</pre>
+      </div>
+      <div>
+        <div style="font-size: 13px; font-weight: 600; color: var(--c-ink-40); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.08em;">Agent tool call</div>
+        <pre class="code-block"><span class="k">await</span> tools.oplatum.<span class="f">pay</span>({
+  amount: <span class="s">1500</span>,
+  currency: <span class="s">"RUB"</span>,
+  merchant: <span class="s">"acme_shop"</span>,
+  purpose: <span class="s">"Подписка на месяц"</span>,
+  delegated_token: user.token
+});
+<span class="c">// → intent → user confirm → settle</span></pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-soft">
+  <div class="container">
+    <div class="fade-in" style="max-width: 680px; margin-bottom: 40px;">
+      <div class="eyebrow" style="margin-bottom: 16px;">Roadmap</div>
+      <h2>Где мы сейчас и&nbsp;что впереди</h2>
+    </div>
+    <div class="roadmap fade-in">
+      <div class="roadmap-step done">
+        <div class="q">Q1 · 2026</div>
+        <div class="t">Core API</div>
+        <div class="s">Базовые платежи, выплаты, rev-share для digital-бизнесов — в production.</div>
+      </div>
+      <div class="roadmap-step">
+        <div class="q">Q2 · 2026</div>
+        <div class="t">SDK + агентский tier</div>
+        <div class="s">SDK для aiogram/grammy, первая версия токенов с ограничениями, sandbox для агентов.</div>
+      </div>
+      <div class="roadmap-step">
+        <div class="q">Q3 · 2026</div>
+        <div class="t">MCP-сервер alpha</div>
+        <div class="s">Open-source MCP-сервер, интеграция с Claude и OpenAI Agents SDK, partnership waitlist.</div>
+      </div>
+      <div class="roadmap-step">
+        <div class="q">Q4 · 2026</div>
+        <div class="t">Production release</div>
+        <div class="s">Intent-based API в проде, полный аудит/compliance, публичные case studies.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="waitlist">
+  <div class="container">
+    <div class="fade-in" style="max-width: 640px; margin: 0 auto; text-align: center; padding: 56px 40px; border: 1px solid var(--c-line); border-radius: var(--r-lg); background: #fff;">
+      <div class="eyebrow" style="margin-bottom: 12px;">Waitlist</div>
+      <h2 style="margin-bottom: 20px;">Встаньте в&nbsp;раннюю волну</h2>
+      <p class="subtitle" style="margin-bottom: 32px;">Ограниченная бета-группа — 20 команд, которые получат доступ к API и MCP-серверу до публичного релиза.</p>
+      <form data-demo style="display: flex; flex-direction: column; gap: 12px; max-width: 480px; margin: 0 auto;">
+        <input type="email" placeholder="you@example.com" required style="padding: 12px 16px; font-size: 16px; font-family: var(--font); border: 1.5px solid var(--c-line); border-radius: var(--r); outline: none;">
+        <input type="text" placeholder="Название проекта / компания" required style="padding: 12px 16px; font-size: 16px; font-family: var(--font); border: 1.5px solid var(--c-line); border-radius: var(--r); outline: none;">
+        <input type="text" placeholder="Use case: что вы строите?" style="padding: 12px 16px; font-size: 16px; font-family: var(--font); border: 1.5px solid var(--c-line); border-radius: var(--r); outline: none;">
+        <button type="submit" class="btn btn-primary form-submit">Встать в waitlist</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="logo" style="margin-bottom: 10px;"><span class="logo-mark">O</span><span>Oplatum</span></div>
+        <p style="font-size: 15px; color: var(--c-ink-40); max-width: 280px;">Платёжная инфраструктура для цифровых бизнесов.</p>
+        <p style="font-size: 14px; color: var(--c-ink-20); margin-top: 12px;">Москва · Алматы · Гонконг</p>
+      </div>
+      <div class="footer-col"><h5>Продукт</h5><a href="pricing.html">Тарифы</a><a href="telegram.html">Для Telegram</a><a href="agents.html">Для AI-агентов</a><a href="#">Документация</a></div>
+      <div class="footer-col"><h5>Компания</h5><a href="about.html">О нас</a><a href="index.html#connect">Связаться</a><a href="#">Карьера</a></div>
+      <div class="footer-col"><h5>Связь</h5><a href="mailto:hello@oplatum.com">hello@oplatum.com</a><a href="https://t.me/oplatum_support">@oplatum_support</a></div>
+    </div>
+    <div class="footer-bottom">© 2026 Oplatum. Все права защищены.</div>
+  </div>
+</footer>
+
+<a class="fab" href="https://t.me/oplatum_support" aria-label="Поддержка в Telegram">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+</a>
+
+<script src="assets/app.js"></script>
+</body>
+</html>
