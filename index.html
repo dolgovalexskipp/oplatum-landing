@@ -77,13 +77,13 @@
       <div>
         <div class="inline-flex items-center gap-2 text-xs text-ink-500 mb-6">
           <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
-          Pilot programme · апрель 2026 · набираем первых мерчантов
+          Pilot programme · апрель 2026
         </div>
         <h1 class="text-4xl md:text-5xl font-semibold tracking-tight leading-tight">
-          Платёжная инфраструктура для российской и Telegram-экономики
+          Платёжная инфраструктура для растущего бизнеса
         </h1>
         <p class="mt-6 text-lg text-ink-500 leading-relaxed">
-          Принимайте СБП и подписки от российских клиентов на любое юрлицо — российское или иностранное. Получайте выплаты в USDT, USD или рублях. Без серых схем, без отказов в подключении, без долгого онбординга.
+          Принимайте платежи через СБП, запускайте подписочные модели, выводите средства в USDT, USD или рублях. Подключаем компании в России и за её пределами — от стартапа на первой транзакции до бизнеса со стабильным оборотом.
         </p>
         <div class="mt-8 flex flex-col sm:flex-row gap-3">
           <a href="#apply" class="inline-flex items-center justify-center bg-ink-900 text-white px-5 py-3 rounded-md text-sm font-medium hover:bg-ink-700 transition">
@@ -130,46 +130,55 @@ console.log(payment.url);</pre>
     </div>
   </section>
 
-  <!-- LOGOS / SOCIAL PROOF (placeholder until permission) -->
+  <!-- TRUST BAR (4 metrics, Stripe-style) -->
   <section class="border-b border-ink-100 bg-ink-50">
-    <div class="max-w-6xl mx-auto px-6 py-10 text-center">
-      <div class="text-xs uppercase tracking-widest text-ink-500">Используется в продакшене</div>
-      <div class="mt-5 flex flex-wrap items-center justify-center gap-x-12 gap-y-4 text-ink-300">
-        <div class="text-base font-medium">Купикод</div>
-        <div class="text-sm">+ ещё несколько мерчантов в pilot programme</div>
+    <div class="max-w-6xl mx-auto px-6 py-12">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div>
+          <div class="text-3xl font-semibold tracking-tight">v1.8.0</div>
+          <div class="mt-2 text-xs text-ink-500">8 релизов API за первые 3 месяца — продукт развивается под кейсы клиентов</div>
+        </div>
+        <div>
+          <div class="text-3xl font-semibold tracking-tight">№3523-К</div>
+          <div class="mt-2 text-xs text-ink-500">Лицензия ЦБ РФ у российского процессора НКО «МОБИ.Деньги»</div>
+        </div>
+        <div>
+          <div class="text-3xl font-semibold tracking-tight">2 страны</div>
+          <div class="mt-2 text-xs text-ink-500">Юр. контур ТОО «Clarion» в Казахстане + российский лицензированный процессор</div>
+        </div>
+        <div>
+          <div class="text-3xl font-semibold tracking-tight">Купикод</div>
+          <div class="mt-2 text-xs text-ink-500">Использует СБП-подписки в продакшене — рекуррентная модель работает в боевом режиме</div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ЗАЧЕМ НУЖЕН OPLATUM -->
+  <!-- ВОЗМОЖНОСТИ -->
   <section id="why" class="border-b border-ink-100">
     <div class="max-w-6xl mx-auto px-6 py-20">
       <div class="max-w-2xl">
-        <div class="text-xs uppercase tracking-widest text-ink-500">Зачем</div>
-        <h2 class="mt-3 text-3xl font-semibold tracking-tight">Платёжный сервис, который реально подключает</h2>
-        <p class="mt-3 text-ink-500">Большие банки отказывают в эквайринге, серые шлюзы блокируют без объяснений. Мы открываем приём платежей бизнесам, которым в России обычно говорят «нет».</p>
+        <div class="text-xs uppercase tracking-widest text-ink-500">Возможности платформы</div>
+        <h2 class="mt-3 text-3xl font-semibold tracking-tight">Один сервис — всё для приёма и роста</h2>
+        <p class="mt-3 text-ink-500">Принимайте платежи, запускайте подписки, выводите выручку и настраивайте отчётность — на одной платформе с прозрачной цепочкой и поддержкой команды.</p>
       </div>
 
       <div class="mt-12 grid md:grid-cols-2 gap-6">
         <div class="border border-ink-100 rounded-xl p-7">
-          <div class="text-2xl">📈</div>
-          <h3 class="mt-3 text-lg font-medium">Принимайте без отказов</h3>
-          <p class="mt-2 text-sm text-ink-500 leading-relaxed">Tinkoff и большие банки могут отказать в эквайринге. Мы открываем приём платежей в проектах, которые им неудобны: TG-боты, иностранные юрлица с российской аудиторией, digital-сервисы. KYB проводит живой человек.</p>
+          <h3 class="text-lg font-medium">Открытое подключение</h3>
+          <p class="mt-3 text-sm text-ink-500 leading-relaxed">Работаем с цифровыми проектами в России и за её пределами: TG-боты, SaaS, образовательные продукты, маркетплейсы, иностранные юрлица с российской аудиторией. KYB проводит юрист команды лично — с пониманием контекста вашего бизнеса.</p>
         </div>
         <div class="border border-ink-100 rounded-xl p-7">
-          <div class="text-2xl">💸</div>
-          <h3 class="mt-3 text-lg font-medium">Растите выручку через подписки</h3>
-          <p class="mt-2 text-sm text-ink-500 leading-relaxed">СБП-подписки реально продлеваются: клиент один раз подтверждает — сервис списывает по расписанию. У сервисов уровня Купикода в продакшене. Подписочная экономика для TG-ботов, курсов, SaaS — без своего биллинга.</p>
+          <h3 class="text-lg font-medium">Подписочный рост</h3>
+          <p class="mt-3 text-sm text-ink-500 leading-relaxed">СБП-подписки в продакшене у Купикода: клиент один раз подтверждает привязку, сервис списывает по расписанию. Запускайте подписочную монетизацию для TG-ботов, курсов и SaaS — без отдельной системы биллинга.</p>
         </div>
         <div class="border border-ink-100 rounded-xl p-7">
-          <div class="text-2xl">🌐</div>
-          <h3 class="mt-3 text-lg font-medium">Получайте деньги в любой валюте</h3>
-          <p class="mt-2 text-sm text-ink-500 leading-relaxed">Settlement в USDT, USD или рублях — выбираете на старте. Иностранное юрлицо может принимать рубли от российских клиентов и выводить в USDT, без открытия РФ-ООО.</p>
+          <h3 class="text-lg font-medium">Выплаты в нужной валюте</h3>
+          <p class="mt-3 text-sm text-ink-500 leading-relaxed">Settlement в USDT, USD или рублях — выбираете на старте под бизнес-модель. Иностранное юрлицо принимает рубли от российских клиентов и выводит в USDT прямо на корпоративный кошелёк.</p>
         </div>
         <div class="border border-ink-100 rounded-xl p-7">
-          <div class="text-2xl">🛡️</div>
-          <h3 class="mt-3 text-lg font-medium">Не теряйте деньги на серости</h3>
-          <p class="mt-2 text-sm text-ink-500 leading-relaxed">Лицензированный российский процессор — НКО «МОБИ.Деньги», лицензия ЦБ РФ №3523-К. Не SPV без лицензии, как у Wata/Rukassa, не схема без объяснений как у Lava. Прозрачная цепочка от платежа до выплаты.</p>
+          <h3 class="text-lg font-medium">Прозрачная инфраструктура</h3>
+          <p class="mt-3 text-sm text-ink-500 leading-relaxed">Российский процессор — НКО «МОБИ.Деньги» с лицензией ЦБ РФ №3523-К, юр. контур — ТОО «Clarion» в Казахстане. Все юрлица в цепочке публичны, реквизиты — в подвале сайта. Регулирование ЦБ означает прозрачные правила работы.</p>
         </div>
       </div>
     </div>
@@ -301,7 +310,7 @@ r = requests.post(<span class="str">"https://oplatum.com/merchant-api/v1/payment
         </div>
         <div class="bg-white border border-ink-100 rounded-xl p-6">
           <h3 class="font-medium">Восстановление после простоя</h3>
-          <p class="mt-2 text-sm text-ink-500">Если ваш сервер упал и пропустил уведомление — догоните его одним запросом. Не теряете данные о платежах.</p>
+          <p class="mt-2 text-sm text-ink-500">Если ваш сервер пропустил уведомление — догоняете его одним запросом. История событий доступна для recovery.</p>
           <div class="mt-3 text-xs text-ink-300">Events API</div>
         </div>
         <div class="bg-white border border-ink-100 rounded-xl p-6">
@@ -383,7 +392,7 @@ Use case: {one-shot покупка / подписка / channel paywall}
       <div class="max-w-2xl">
         <div class="text-xs uppercase tracking-widest text-ink-500">Как подключиться</div>
         <h2 class="mt-3 text-3xl font-semibold tracking-tight">От заявки до первых клиентов — 7–14 дней</h2>
-        <p class="mt-3 text-ink-500">Без долгих согласований и звонков «менеджер свяжется в течение трёх рабочих дней». Каждым мерчантом занимаемся лично.</p>
+        <p class="mt-3 text-ink-500">Каждым мерчантом занимаемся лично — от первого звонка до live-транзакции. Параллельно с проверкой документов ваша команда работает в тестовой среде.</p>
       </div>
 
       <div class="mt-12 grid md:grid-cols-4 gap-4 relative">
@@ -420,19 +429,19 @@ Use case: {one-shot покупка / подписка / channel paywall}
     <div class="max-w-6xl mx-auto px-6 py-20">
       <div class="grid md:grid-cols-2 gap-12 items-center">
         <div>
-          <div class="text-xs uppercase tracking-widest text-ink-500 mono">Infrastructure</div>
-          <h2 class="mt-3 text-3xl font-semibold tracking-tight">Белая инфраструктура, не серый workaround</h2>
+          <div class="text-xs uppercase tracking-widest text-ink-500">Инфраструктура</div>
+          <h2 class="mt-3 text-3xl font-semibold tracking-tight">Полная цепочка от платежа до выплаты</h2>
           <p class="mt-4 text-ink-500 leading-relaxed">
-            Российский платёж принимает <strong>НКО «МОБИ.Деньги»</strong> — оператор электронных денежных средств с лицензией ЦБ РФ <span class="mono">№3523-К</span> (тот же процессор у Unitpay).
-            Юр. контур — <strong>ТОО «Clarion»</strong>, Казахстан. Указано в подвале oplatum.com.
+            Российский платёж принимает <strong>НКО «МОБИ.Деньги»</strong> — оператор электронных денежных средств с лицензией ЦБ РФ <span class="font-medium">№3523-К</span> (тот же процессор работает с Unitpay).
+            Юр. контур — <strong>ТОО «Clarion»</strong>, Казахстан. Реквизиты — в подвале oplatum.com.
           </p>
           <p class="mt-4 text-ink-500 leading-relaxed">
             Settlement — в USDT, USD или рублях, на ваш выбор. Зафиксирован в контракте, выводы по запросу.
           </p>
           <ul class="mt-6 space-y-3 text-sm">
-            <li class="flex gap-3"><span class="mt-1 w-1.5 h-1.5 rounded-full bg-ink-900 flex-shrink-0"></span><span>Никаких OnlyPay / RZV / SPV — всё юрлица в открытом доступе</span></li>
-            <li class="flex gap-3"><span class="mt-1 w-1.5 h-1.5 rounded-full bg-ink-900 flex-shrink-0"></span><span>Лицензированный процессор означает регулирование ЦБ — не «закроют завтра без объяснений»</span></li>
-            <li class="flex gap-3"><span class="mt-1 w-1.5 h-1.5 rounded-full bg-ink-900 flex-shrink-0"></span><span>Для нерезидентов (HK, KZ, Cyprus, AM, UAE) — KYB на английском</span></li>
+            <li class="flex gap-3"><span class="mt-1 w-1.5 h-1.5 rounded-full bg-ink-900 flex-shrink-0"></span><span>Все юрлица в цепочке — публичные, реквизиты в открытом доступе</span></li>
+            <li class="flex gap-3"><span class="mt-1 w-1.5 h-1.5 rounded-full bg-ink-900 flex-shrink-0"></span><span>Регулирование ЦБ РФ означает прозрачные правила работы и публичную отчётность</span></li>
+            <li class="flex gap-3"><span class="mt-1 w-1.5 h-1.5 rounded-full bg-ink-900 flex-shrink-0"></span><span>Для нерезидентов — KYB и договор на английском, settlement на корпоративный USDT-кошелёк</span></li>
           </ul>
         </div>
 
@@ -472,9 +481,9 @@ Use case: {one-shot покупка / подписка / channel paywall}
   <section id="compare" class="border-b border-ink-100 bg-ink-50">
     <div class="max-w-6xl mx-auto px-6 py-20">
       <div class="max-w-2xl">
-        <div class="text-xs uppercase tracking-widest text-ink-500 mono">Why Oplatum</div>
-        <h2 class="mt-3 text-3xl font-semibold tracking-tight">Stripe-grade DX в сегменте, где Stripe не работает</h2>
-        <p class="mt-3 text-ink-500">Прямое сравнение по фактам. Без оценок и эпитетов.</p>
+        <div class="text-xs uppercase tracking-widest text-ink-500">Сравнение возможностей</div>
+        <h2 class="mt-3 text-3xl font-semibold tracking-tight">Где Oplatum закрывает уникальный набор</h2>
+        <p class="mt-3 text-ink-500">Покрытие функций по основным провайдерам — какие сценарии каждый поддерживает.</p>
       </div>
 
       <div class="mt-10 overflow-x-auto">
@@ -518,12 +527,12 @@ Use case: {one-shot покупка / подписка / channel paywall}
               <td class="py-3 px-4 text-ink-500">Settlement в USDT/USD</td>
               <td class="py-3 px-4">✓</td>
               <td class="py-3 px-4">частично</td>
-              <td class="py-3 px-4">серо</td>
+              <td class="py-3 px-4">—</td>
               <td class="py-3 px-4">—</td>
               <td class="py-3 px-4 font-medium text-ink-900">✓</td>
             </tr>
             <tr class="border-t border-ink-100">
-              <td class="py-3 px-4 text-ink-500">DX: HMAC + idempotency + webhooks + sandbox + SDK</td>
+              <td class="py-3 px-4 text-ink-500">API уровня Stripe (HMAC, idempotency, webhooks, sandbox, SDK)</td>
               <td class="py-3 px-4">✓</td>
               <td class="py-3 px-4">частично</td>
               <td class="py-3 px-4">—</td>
@@ -531,81 +540,145 @@ Use case: {one-shot покупка / подписка / channel paywall}
               <td class="py-3 px-4 font-medium text-ink-900">✓</td>
             </tr>
             <tr class="border-t border-ink-100">
-              <td class="py-3 px-4 text-ink-500">СБП-рекурренты</td>
+              <td class="py-3 px-4 text-ink-500">СБП-рекурренты в продакшене</td>
               <td class="py-3 px-4">—</td>
               <td class="py-3 px-4">✓</td>
-              <td class="py-3 px-4">серо</td>
+              <td class="py-3 px-4">—</td>
               <td class="py-3 px-4">частично</td>
-              <td class="py-3 px-4 font-medium text-ink-900">✓ (Купикод prod)</td>
+              <td class="py-3 px-4 font-medium text-ink-900">✓ (Купикод)</td>
             </tr>
           </tbody>
         </table>
       </div>
-      <p class="mt-4 text-xs text-ink-300">Сравнение по публично доступной информации на 23.04.2026. «Серо» = работает через KZ-TOO без лицензии. «Частично» = есть базовая поддержка, но не на уровне лидеров категории.</p>
+      <p class="mt-4 text-xs text-ink-300">Сравнение по публично доступной информации на 23.04.2026. «Частично» — есть базовая поддержка, но не на уровне категории.</p>
     </div>
   </section>
 
-  <!-- USE CASES -->
-  <section class="border-b border-ink-100">
+  <!-- INDUSTRIES (Stripe-style) -->
+  <section id="industries" class="border-b border-ink-100">
     <div class="max-w-6xl mx-auto px-6 py-20">
       <div class="max-w-2xl">
-        <div class="text-xs uppercase tracking-widest text-ink-500">Кто с нами работает</div>
-        <h2 class="mt-3 text-3xl font-semibold tracking-tight">Профили бизнеса</h2>
-        <p class="mt-3 text-ink-500">Три сегмента — в работе сейчас, остальные — в pilot или ранний доступ.</p>
+        <div class="text-xs uppercase tracking-widest text-ink-500">Решения по индустриям</div>
+        <h2 class="mt-3 text-3xl font-semibold tracking-tight">Под ваш сценарий монетизации</h2>
+        <p class="mt-3 text-ink-500">Каждая индустрия — со своей логикой подписок, выплат, KYB и compliance. Адаптируем платёжный flow под особенности вашего бизнеса.</p>
       </div>
 
-      <div class="mt-12 grid md:grid-cols-3 gap-6">
-        <!-- ACTIVE: 3 main -->
-        <article class="border border-ink-100 rounded-xl p-7 hover:border-ink-300 transition">
-          <div class="flex items-center justify-between">
-            <div class="text-xs text-ink-300">01</div>
-            <span class="text-[10px] uppercase tracking-wider px-2 py-1 bg-green-50 text-green-700 rounded">в работе</span>
+      <div class="mt-14 space-y-3">
+
+        <!-- Industry 1: TG -->
+        <article class="border border-ink-100 rounded-xl p-7 md:p-9 hover:border-ink-300 transition grid md:grid-cols-3 gap-6 md:gap-10">
+          <div class="md:col-span-2">
+            <div class="text-xs uppercase tracking-widest text-ink-500">Telegram-боты, каналы, Mini Apps</div>
+            <h3 class="mt-2 text-2xl font-semibold tracking-tight">Подписочная монетизация в Telegram</h3>
+            <p class="mt-3 text-sm text-ink-500 leading-relaxed">Запускайте платежи в Telegram-боте, доступ к закрытому каналу или Mini App без 30 % доли Telegram Stars. Подписочная модель работает через СБП: клиент один раз подтверждает привязку, бот списывает по расписанию.</p>
+            <ul class="mt-5 grid sm:grid-cols-2 gap-x-6 gap-y-2 text-sm text-ink-700">
+              <li class="flex gap-2"><span class="text-ink-300">›</span>Hosted Checkout по ссылке из бота</li>
+              <li class="flex gap-2"><span class="text-ink-300">›</span>СБП-подписки (walletType: 2)</li>
+              <li class="flex gap-2"><span class="text-ink-300">›</span>Webhook → автовыдача доступа</li>
+              <li class="flex gap-2"><span class="text-ink-300">›</span>Customers API — база подписчиков</li>
+            </ul>
           </div>
-          <h3 class="mt-3 text-lg font-medium">TG-боты и SaaS на подписках</h3>
-          <p class="mt-3 text-sm text-ink-500">Запустите подписку без своего биллинга и без доли Telegram Stars в 30 %. Клиент платит СБП один раз, бот списывает по расписанию. Customers API ведёт базу автоматически.</p>
-        </article>
-        <article class="border border-ink-100 rounded-xl p-7 hover:border-ink-300 transition">
-          <div class="flex items-center justify-between">
-            <div class="text-xs text-ink-300">02</div>
-            <span class="text-[10px] uppercase tracking-wider px-2 py-1 bg-green-50 text-green-700 rounded">в работе</span>
+          <div class="md:border-l md:border-ink-100 md:pl-10 flex flex-col justify-center">
+            <div class="text-xs uppercase tracking-widest text-ink-300">Типичный кейс</div>
+            <p class="mt-2 text-sm text-ink-700 leading-relaxed">AI-ассистент в TG-боте с подпиской 990 ₽/мес. Apply → подключение за 7 дней → автопродление через СБП.</p>
           </div>
-          <h3 class="mt-3 text-lg font-medium">Иностранные юрлица с РФ-аудиторией</h3>
-          <p class="mt-3 text-sm text-ink-500">Принимайте рубли от российских клиентов на компанию в Гонконге, Казахстане, Кипре или ОАЭ. Settlement в USDT — без открытия российского ООО, без серых KZ-схем.</p>
-        </article>
-        <article class="border border-ink-100 rounded-xl p-7 hover:border-ink-300 transition">
-          <div class="flex items-center justify-between">
-            <div class="text-xs text-ink-300">03</div>
-            <span class="text-[10px] uppercase tracking-wider px-2 py-1 bg-green-50 text-green-700 rounded">в работе</span>
-          </div>
-          <h3 class="mt-3 text-lg font-medium">Переезд с серого шлюза</h3>
-          <p class="mt-3 text-sm text-ink-500">Уходите с Freekassa, PaySelection, Payeer или Lava без потери трафика — работайте параллельно неделю, потом переключайте полностью. Помогаем с миграцией пошагово.</p>
         </article>
 
-        <!-- BETA / R&D: 3 secondary -->
-        <article class="border border-ink-100 rounded-xl p-7 hover:border-ink-300 transition">
-          <div class="flex items-center justify-between">
-            <div class="text-xs text-ink-300">04</div>
-            <span class="text-[10px] uppercase tracking-wider px-2 py-1 bg-blue-50 text-blue-700 rounded">бета</span>
+        <!-- Industry 2: SaaS -->
+        <article class="border border-ink-100 rounded-xl p-7 md:p-9 hover:border-ink-300 transition grid md:grid-cols-3 gap-6 md:gap-10">
+          <div class="md:col-span-2">
+            <div class="text-xs uppercase tracking-widest text-ink-500">SaaS и подписочный бизнес</div>
+            <h3 class="mt-2 text-2xl font-semibold tracking-tight">Recurring revenue без своего биллинга</h3>
+            <p class="mt-3 text-sm text-ink-500 leading-relaxed">Подписки, тарифные планы, апгрейды, возвраты — на одной платформе. Customer lifecycle и события подписок по webhook. Идемпотентность защищает от дублей при сетевых сбоях.</p>
+            <ul class="mt-5 grid sm:grid-cols-2 gap-x-6 gap-y-2 text-sm text-ink-700">
+              <li class="flex gap-2"><span class="text-ink-300">›</span>Подписочный lifecycle с событиями</li>
+              <li class="flex gap-2"><span class="text-ink-300">›</span>Полные и частичные возвраты</li>
+              <li class="flex gap-2"><span class="text-ink-300">›</span>Идемпотентность на каждом запросе</li>
+              <li class="flex gap-2"><span class="text-ink-300">›</span>Settlement по запросу в любой валюте</li>
+            </ul>
           </div>
-          <h3 class="mt-3 text-lg font-medium">Свой сайт вместо маркетплейса</h3>
-          <p class="mt-3 text-sm text-ink-500">Топ-продавцы FunPay / GGSel / Plati открывают собственный сайт и оставляют себе 5–10 % комиссии, которые сейчас забирает площадка. Получают свою клиентскую базу.</p>
-        </article>
-        <article class="border border-ink-100 rounded-xl p-7 hover:border-ink-300 transition">
-          <div class="flex items-center justify-between">
-            <div class="text-xs text-ink-300">05</div>
-            <span class="text-[10px] uppercase tracking-wider px-2 py-1 bg-blue-50 text-blue-700 rounded">бета</span>
+          <div class="md:border-l md:border-ink-100 md:pl-10 flex flex-col justify-center">
+            <div class="text-xs uppercase tracking-widest text-ink-300">Типичный кейс</div>
+            <p class="mt-2 text-sm text-ink-700 leading-relaxed">SaaS-сервис с тарифами Free/Pro/Business, годовой и месячной подпиской. ARR растёт через automatic renewal.</p>
           </div>
-          <h3 class="mt-3 text-lg font-medium">Онлайн-образование и клубы</h3>
-          <p class="mt-3 text-sm text-ink-500">Подписочная монетизация курсов, мастермайндов, закрытых каналов и сообществ. Без отдельной системы биллинга — СБП-подписки, отчёты, возвраты в одном кабинете.</p>
         </article>
-        <article class="border border-ink-100 rounded-xl p-7 hover:border-ink-300 transition">
-          <div class="flex items-center justify-between">
-            <div class="text-xs text-ink-300">06</div>
-            <span class="text-[10px] uppercase tracking-wider px-2 py-1 bg-purple-50 text-purple-700 rounded">R&D · ранний доступ</span>
+
+        <!-- Industry 3: EdTech -->
+        <article class="border border-ink-100 rounded-xl p-7 md:p-9 hover:border-ink-300 transition grid md:grid-cols-3 gap-6 md:gap-10">
+          <div class="md:col-span-2">
+            <div class="text-xs uppercase tracking-widest text-ink-500">EdTech и онлайн-образование</div>
+            <h3 class="mt-2 text-2xl font-semibold tracking-tight">Курсы, клубы, мастермайнды</h3>
+            <p class="mt-3 text-sm text-ink-500 leading-relaxed">Подписочная монетизация образовательных продуктов и закрытых сообществ. Платежи в одном кабинете с отчётностью для бухгалтерии. Без интеграции с тяжёлыми LMS-платформами — Oplatum закрывает только биллинг.</p>
+            <ul class="mt-5 grid sm:grid-cols-2 gap-x-6 gap-y-2 text-sm text-ink-700">
+              <li class="flex gap-2"><span class="text-ink-300">›</span>Месячная и годовая подписка</li>
+              <li class="flex gap-2"><span class="text-ink-300">›</span>Платёжные ссылки без кода</li>
+              <li class="flex gap-2"><span class="text-ink-300">›</span>Webhook → доступ к каналу</li>
+              <li class="flex gap-2"><span class="text-ink-300">›</span>Возвраты при отписке</li>
+            </ul>
           </div>
-          <h3 class="mt-3 text-lg font-medium">Платежи для AI-агентов</h3>
-          <p class="mt-3 text-sm text-ink-500">Агентские сценарии — когда платёж инициирует AI-ассистент от имени пользователя. Токены с лимитами, MCP-сервер, attribution. Открываем ранний доступ для 2–3 строящих команд.</p>
+          <div class="md:border-l md:border-ink-100 md:pl-10 flex flex-col justify-center">
+            <div class="text-xs uppercase tracking-widest text-ink-300">Типичный кейс</div>
+            <p class="mt-2 text-sm text-ink-700 leading-relaxed">Авторский курс с доступом к закрытому Telegram-каналу за 2 990 ₽/мес. Автопродление держит retention.</p>
+          </div>
         </article>
+
+        <!-- Industry 4: E-commerce / digital -->
+        <article class="border border-ink-100 rounded-xl p-7 md:p-9 hover:border-ink-300 transition grid md:grid-cols-3 gap-6 md:gap-10">
+          <div class="md:col-span-2">
+            <div class="text-xs uppercase tracking-widest text-ink-500">E-commerce и цифровые товары</div>
+            <h3 class="mt-2 text-2xl font-semibold tracking-tight">Приём за ключи, аккаунты, контент</h3>
+            <p class="mt-3 text-sm text-ink-500 leading-relaxed">Высокомаржинальные digital-продукты — лицензии, цифровой контент, подписки на сервисы, in-game покупки. СБП покрывает 85 % российской аудитории. Webhook автоматизирует выдачу товара.</p>
+            <ul class="mt-5 grid sm:grid-cols-2 gap-x-6 gap-y-2 text-sm text-ink-700">
+              <li class="flex gap-2"><span class="text-ink-300">›</span>СБП QR одноразовый</li>
+              <li class="flex gap-2"><span class="text-ink-300">›</span>Hosted Checkout Sessions</li>
+              <li class="flex gap-2"><span class="text-ink-300">›</span>Idempotency для масс-операций</li>
+              <li class="flex gap-2"><span class="text-ink-300">›</span>Settlement в USDT/USD/RUB</li>
+            </ul>
+          </div>
+          <div class="md:border-l md:border-ink-100 md:pl-10 flex flex-col justify-center">
+            <div class="text-xs uppercase tracking-widest text-ink-300">Типичный кейс</div>
+            <p class="mt-2 text-sm text-ink-700 leading-relaxed">Магазин ключей и аккаунтов, продавцы цифрового контента, in-game покупки на собственном сайте.</p>
+          </div>
+        </article>
+
+        <!-- Industry 5: Foreign merchants -->
+        <article class="border border-ink-100 rounded-xl p-7 md:p-9 hover:border-ink-300 transition grid md:grid-cols-3 gap-6 md:gap-10">
+          <div class="md:col-span-2">
+            <div class="text-xs uppercase tracking-widest text-ink-500">Иностранные компании с российской аудиторией</div>
+            <h3 class="mt-2 text-2xl font-semibold tracking-tight">Принимайте рубли на любую юрисдикцию</h3>
+            <p class="mt-3 text-sm text-ink-500 leading-relaxed">Юрлицо в Гонконге, Казахстане, Армении, на Кипре или в ОАЭ принимает рубли от российских клиентов через СБП и выводит в USDT прямо на корпоративный кошелёк. Договор и KYB — на английском.</p>
+            <ul class="mt-5 grid sm:grid-cols-2 gap-x-6 gap-y-2 text-sm text-ink-700">
+              <li class="flex gap-2"><span class="text-ink-300">›</span>Контракт через ТОО «Clarion» (KZ)</li>
+              <li class="flex gap-2"><span class="text-ink-300">›</span>Settlement в USDT на TRC20/ERC20</li>
+              <li class="flex gap-2"><span class="text-ink-300">›</span>KYB и договор на EN</li>
+              <li class="flex gap-2"><span class="text-ink-300">›</span>Без российского ООО</li>
+            </ul>
+          </div>
+          <div class="md:border-l md:border-ink-100 md:pl-10 flex flex-col justify-center">
+            <div class="text-xs uppercase tracking-widest text-ink-300">Типичный кейс</div>
+            <p class="mt-2 text-sm text-ink-700 leading-relaxed">SaaS-сервис на компании в Гонконге продаёт подписку российской аудитории и выводит USDT.</p>
+          </div>
+        </article>
+
+        <!-- Industry 6: AI agents -->
+        <article class="border border-ink-100 rounded-xl p-7 md:p-9 hover:border-ink-300 transition grid md:grid-cols-3 gap-6 md:gap-10">
+          <div class="md:col-span-2">
+            <div class="text-xs uppercase tracking-widest text-ink-500">AI-агенты и agentic commerce</div>
+            <h3 class="mt-2 text-2xl font-semibold tracking-tight">Платежи, инициированные AI-ассистентом</h3>
+            <p class="mt-3 text-sm text-ink-500 leading-relaxed">Агентские сценарии — когда платёж совершает AI от имени пользователя. Токены с лимитами по сумме и сценарию, attribution «инициатор — agent», MCP-сервер для подключения к Claude и другим LLM. Открыт ранний доступ для 2–3 партнёрских команд.</p>
+            <ul class="mt-5 grid sm:grid-cols-2 gap-x-6 gap-y-2 text-sm text-ink-700">
+              <li class="flex gap-2"><span class="text-ink-300">›</span>Scoped-токены с лимитами</li>
+              <li class="flex gap-2"><span class="text-ink-300">›</span>Attribution trail в webhook</li>
+              <li class="flex gap-2"><span class="text-ink-300">›</span>MCP-сервер (в работе)</li>
+              <li class="flex gap-2"><span class="text-ink-300">›</span>Partnership на co-build</li>
+            </ul>
+          </div>
+          <div class="md:border-l md:border-ink-100 md:pl-10 flex flex-col justify-center">
+            <div class="text-xs uppercase tracking-widest text-ink-300">Ранний доступ</div>
+            <p class="mt-2 text-sm text-ink-700 leading-relaxed">Открываем 2–3 partnership-слотов для команд, строящих коммерческих AI-агентов в РФ-сегменте.</p>
+          </div>
+        </article>
+
       </div>
     </div>
   </section>
@@ -815,10 +888,10 @@ Use case: {one-shot покупка / подписка / channel paywall}
             Берём 2–3 мерчанта на индивидуальные условия в апреле–мае. Каждым занимаемся лично — от первого звонка до первой транзакции в продакшене.
           </p>
           <p class="mt-4 text-ink-500 leading-relaxed">
-            После завершения pilot тарифы и процесс будут стандартизированы. Условия первых клиентов — лучше, чем будут потом.
+            После завершения pilot тарифы и процесс стандартизируются. Условия первых клиентов — лучшие в истории продукта.
           </p>
           <ul class="mt-6 space-y-2 text-sm">
-            <li class="flex gap-3"><span class="text-ink-300">→</span> Прямой контакт с CEO и командой, без менеджеров</li>
+            <li class="flex gap-3"><span class="text-ink-300">→</span> Прямой контакт с CEO Oplatum и командой</li>
             <li class="flex gap-3"><span class="text-ink-300">→</span> Settlement в USDT, USD или рублях по вашему запросу</li>
             <li class="flex gap-3"><span class="text-ink-300">→</span> Помощь с интеграцией: парная работа с вашим разработчиком</li>
             <li class="flex gap-3"><span class="text-ink-300">→</span> SLA 4 часа, индивидуальные тарифы</li>
@@ -904,27 +977,27 @@ Use case: {one-shot покупка / подписка / channel paywall}
         <div class="bg-white border border-ink-100 rounded-xl p-5">
           <div class="text-2xl">①</div>
           <div class="mt-3 text-sm font-medium">Звонок в течение рабочего дня</div>
-          <p class="mt-2 text-xs text-ink-500">30 минут с CEO или с Сашей Долговым. Не менеджер по продажам — решающее лицо.</p>
+          <p class="mt-2 text-xs text-ink-500">30 минут с CEO Oplatum или с Сашей Долговым. Решения принимаются на месте.</p>
         </div>
         <div class="bg-white border border-ink-100 rounded-xl p-5">
           <div class="text-2xl">②</div>
           <div class="mt-3 text-sm font-medium">Тестовая среда сразу</div>
-          <p class="mt-2 text-xs text-ink-500">Доступ для вашей команды разработки в день обращения — до прохождения проверки документов.</p>
+          <p class="mt-2 text-xs text-ink-500">Доступ для вашей команды разработки в день обращения, параллельно с прохождением KYB.</p>
         </div>
         <div class="bg-white border border-ink-100 rounded-xl p-5">
           <div class="text-2xl">③</div>
           <div class="mt-3 text-sm font-medium">KYB живым человеком</div>
-          <p class="mt-2 text-xs text-ink-500">3–5 рабочих дней — не алгоритмический скоринг с отказом без объяснений.</p>
+          <p class="mt-2 text-xs text-ink-500">3–5 рабочих дней. Юристы ТОО «Clarion» и комплаенс МОБИ.Деньги рассматривают ваш кейс лично.</p>
         </div>
         <div class="bg-white border border-ink-100 rounded-xl p-5">
           <div class="text-2xl">④</div>
-          <div class="mt-3 text-sm font-medium">Чат с командой 4 часа SLA</div>
-          <p class="mt-2 text-xs text-ink-500">Прямой Telegram, без тикет-системы и отписок «передали в нужный отдел».</p>
+          <div class="mt-3 text-sm font-medium">SLA 4 часа в Telegram</div>
+          <p class="mt-2 text-xs text-ink-500">Прямой контакт с командой Oplatum в Telegram, ответы в течение 4 часов в рабочее время.</p>
         </div>
         <div class="bg-white border border-ink-100 rounded-xl p-5">
           <div class="text-2xl">⑤</div>
           <div class="mt-3 text-sm font-medium">Условия pilot programme</div>
-          <p class="mt-2 text-xs text-ink-500">Лучшие тарифы и индивидуальный settlement — после стандартизации будут хуже.</p>
+          <p class="mt-2 text-xs text-ink-500">Индивидуальные тарифы и settlement — лучшие условия за всю историю продукта.</p>
         </div>
       </div>
     </div>
