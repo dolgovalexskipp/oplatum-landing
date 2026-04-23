@@ -57,10 +57,10 @@
     <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
       <a href="#" class="text-xl font-semibold tracking-tight">oplatum</a>
       <nav class="hidden md:flex items-center gap-6 text-sm text-ink-700">
-        <a href="#quickstart" class="hover:text-ink-900">Quick start</a>
-        <a href="#agent" class="hover:text-ink-900">Agent-first</a>
-        <a href="#flow" class="hover:text-ink-900">Как работает</a>
+        <a href="#why" class="hover:text-ink-900">Зачем</a>
+        <a href="#flow" class="hover:text-ink-900">Как подключить</a>
         <a href="#pricing" class="hover:text-ink-900">Тарифы</a>
+        <a href="#agent" class="hover:text-ink-900">Для AI-агентов</a>
         <a href="#partners" class="hover:text-ink-900">Партнёрам</a>
         <a href="https://oplatum.com/merchant-api/v1" class="hover:text-ink-900">Docs ↗</a>
       </nav>
@@ -75,32 +75,32 @@
   <section class="border-b border-ink-100">
     <div class="max-w-6xl mx-auto px-6 py-20 md:py-28 grid md:grid-cols-2 gap-12 items-center">
       <div>
-        <div class="inline-flex items-center gap-2 text-xs text-ink-500 mono mb-6">
+        <div class="inline-flex items-center gap-2 text-xs text-ink-500 mb-6">
           <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
-          API v1.8.0 · 8 релизов за 3 месяца · agent-ready
+          Pilot programme · апрель 2026 · набираем первых мерчантов
         </div>
         <h1 class="text-4xl md:text-5xl font-semibold tracking-tight leading-tight">
-          Платёжный API, который интегрирует ваш AI-агент
+          Платёжная инфраструктура для российской и Telegram-экономики
         </h1>
         <p class="mt-6 text-lg text-ink-500 leading-relaxed">
-          СБП, подписки, settlement в USDT — для российской и Telegram-аудитории. Документация и endpoints спроектированы так, что Claude или Cursor выполнят интеграцию за один промпт.
+          Принимайте СБП и подписки от российских клиентов на любое юрлицо — российское или иностранное. Получайте выплаты в USDT, USD или рублях. Без серых схем, без отказов в подключении, без долгого онбординга.
         </p>
         <div class="mt-8 flex flex-col sm:flex-row gap-3">
           <a href="#apply" class="inline-flex items-center justify-center bg-ink-900 text-white px-5 py-3 rounded-md text-sm font-medium hover:bg-ink-700 transition">
-            Получить sandbox-ключи →
+            Подключиться →
           </a>
-          <a href="#agent" class="inline-flex items-center justify-center border border-ink-100 text-ink-900 px-5 py-3 rounded-md text-sm font-medium hover:border-ink-300 transition">
-            Hand to your agent →
+          <a href="#pricing" class="inline-flex items-center justify-center border border-ink-100 text-ink-900 px-5 py-3 rounded-md text-sm font-medium hover:border-ink-300 transition">
+            Узнать тарифы
           </a>
         </div>
         <div class="mt-8 grid grid-cols-2 gap-4 text-xs text-ink-500">
           <div>
             <div class="text-ink-900 font-medium">НКО «МОБИ.Деньги»</div>
-            <div class="mono mt-1">лицензия ЦБ РФ №3523-К</div>
+            <div class="mt-1">лицензия ЦБ РФ №3523-К</div>
           </div>
           <div>
             <div class="text-ink-900 font-medium">ТОО «Clarion»</div>
-            <div class="mono mt-1">юр. контур, Казахстан</div>
+            <div class="mt-1">юр. контур, Казахстан</div>
           </div>
         </div>
       </div>
@@ -141,13 +141,47 @@ console.log(payment.url);</pre>
     </div>
   </section>
 
-  <!-- QUICK START -->
+  <!-- ЗАЧЕМ НУЖЕН OPLATUM -->
+  <section id="why" class="border-b border-ink-100">
+    <div class="max-w-6xl mx-auto px-6 py-20">
+      <div class="max-w-2xl">
+        <div class="text-xs uppercase tracking-widest text-ink-500">Зачем</div>
+        <h2 class="mt-3 text-3xl font-semibold tracking-tight">Платёжный сервис, который реально подключает</h2>
+        <p class="mt-3 text-ink-500">Большие банки отказывают в эквайринге, серые шлюзы блокируют без объяснений. Мы открываем приём платежей бизнесам, которым в России обычно говорят «нет».</p>
+      </div>
+
+      <div class="mt-12 grid md:grid-cols-2 gap-6">
+        <div class="border border-ink-100 rounded-xl p-7">
+          <div class="text-2xl">📈</div>
+          <h3 class="mt-3 text-lg font-medium">Принимайте без отказов</h3>
+          <p class="mt-2 text-sm text-ink-500 leading-relaxed">Tinkoff и большие банки могут отказать в эквайринге. Мы открываем приём платежей в проектах, которые им неудобны: TG-боты, иностранные юрлица с российской аудиторией, digital-сервисы. KYB проводит живой человек.</p>
+        </div>
+        <div class="border border-ink-100 rounded-xl p-7">
+          <div class="text-2xl">💸</div>
+          <h3 class="mt-3 text-lg font-medium">Растите выручку через подписки</h3>
+          <p class="mt-2 text-sm text-ink-500 leading-relaxed">СБП-подписки реально продлеваются: клиент один раз подтверждает — сервис списывает по расписанию. У сервисов уровня Купикода в продакшене. Подписочная экономика для TG-ботов, курсов, SaaS — без своего биллинга.</p>
+        </div>
+        <div class="border border-ink-100 rounded-xl p-7">
+          <div class="text-2xl">🌐</div>
+          <h3 class="mt-3 text-lg font-medium">Получайте деньги в любой валюте</h3>
+          <p class="mt-2 text-sm text-ink-500 leading-relaxed">Settlement в USDT, USD или рублях — выбираете на старте. Иностранное юрлицо может принимать рубли от российских клиентов и выводить в USDT, без открытия РФ-ООО.</p>
+        </div>
+        <div class="border border-ink-100 rounded-xl p-7">
+          <div class="text-2xl">🛡️</div>
+          <h3 class="mt-3 text-lg font-medium">Не теряйте деньги на серости</h3>
+          <p class="mt-2 text-sm text-ink-500 leading-relaxed">Лицензированный российский процессор — НКО «МОБИ.Деньги», лицензия ЦБ РФ №3523-К. Не SPV без лицензии, как у Wata/Rukassa, не схема без объяснений как у Lava. Прозрачная цепочка от платежа до выплаты.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DESIGNED FOR DEVELOPERS (technical quickstart, secondary) -->
   <section id="quickstart" class="border-b border-ink-100">
     <div class="max-w-6xl mx-auto px-6 py-20">
       <div class="max-w-2xl">
-        <div class="text-xs uppercase tracking-widest text-ink-500 mono">Quick start</div>
-        <h2 class="mt-3 text-3xl font-semibold tracking-tight">Три шага до первой транзакции</h2>
-        <p class="mt-3 text-ink-500">Stripe-style flow: получите ключ, создайте платёж, проверьте статус. Sandbox с тем же endpoint что и продакшн — переключаетесь сменой ключа.</p>
+        <div class="text-xs uppercase tracking-widest text-ink-500">Для вашей команды разработки</div>
+        <h2 class="mt-3 text-3xl font-semibold tracking-tight">Подключение — задача на день, не на неделю</h2>
+        <p class="mt-3 text-ink-500">API уровня Stripe: HMAC-подпись, идемпотентность, тестовая среда, вебхуки, готовый Node.js SDK. Сэкономит вашему разработчику 2–3 дня по сравнению с типовым российским эквайрингом.</p>
       </div>
 
       <div class="mt-12 grid md:grid-cols-3 gap-6">
@@ -239,57 +273,56 @@ r = requests.post(<span class="str">"https://oplatum.com/merchant-api/v1/payment
   <section id="features" class="border-b border-ink-100 bg-ink-50">
     <div class="max-w-6xl mx-auto px-6 py-20">
       <div class="max-w-2xl">
-        <div class="text-xs uppercase tracking-widest text-ink-500 mono">API features</div>
-        <h2 class="mt-3 text-3xl font-semibold tracking-tight">API, спроектированный для прода</h2>
-        <p class="mt-3 text-ink-500">Все обязательные стандарты payment-API из коробки. Sandbox идентичен продакшну. SDK не обязателен — чистый REST.</p>
+        <div class="text-xs uppercase tracking-widest text-ink-500">Что внутри платформы</div>
+        <h2 class="mt-3 text-3xl font-semibold tracking-tight">Полный набор возможностей для роста</h2>
+        <p class="mt-3 text-ink-500">Всё что нужно бизнесу для приёма, обработки, выплаты и отчётности — из коробки. Без необходимости докупать интеграции и писать обвязки.</p>
       </div>
 
       <div class="mt-12 grid md:grid-cols-3 gap-4">
-        <!-- Feature -->
         <div class="bg-white border border-ink-100 rounded-xl p-6">
-          <div class="mono text-xs text-ink-300">/auth</div>
-          <h3 class="mt-2 font-medium">HMAC-SHA256 на каждом запросе</h3>
-          <p class="mt-2 text-sm text-ink-500">timestamp + nonce + method + path + body → подпись в заголовке. Replay защищён.</p>
+          <h3 class="font-medium">Безопасность каждого платежа</h3>
+          <p class="mt-2 text-sm text-ink-500">Защита от подмены запросов и повторных списаний. Соответствует требованиям ЦБ РФ для лицензированных операторов.</p>
+          <div class="mt-3 text-xs text-ink-300">HMAC-SHA256 · TLS</div>
         </div>
         <div class="bg-white border border-ink-100 rounded-xl p-6">
-          <div class="mono text-xs text-ink-300">/idempotency</div>
-          <h3 class="mt-2 font-medium">Idempotency-Key обязателен</h3>
-          <p class="mt-2 text-sm text-ink-500">Сетевой ретрай не создаст дубликат. Ваши агенты и cron-задачи живут спокойно.</p>
+          <h3 class="font-medium">Без дубликатов и потерь</h3>
+          <p class="mt-2 text-sm text-ink-500">Сбой сети или ретрай агента не создаст лишних списаний. Бухгалтерия не разбирается с двойными платежами.</p>
+          <div class="mt-3 text-xs text-ink-300">Idempotency-Key</div>
         </div>
         <div class="bg-white border border-ink-100 rounded-xl p-6">
-          <div class="mono text-xs text-ink-300">/webhooks</div>
-          <h3 class="mt-2 font-medium">Webhooks с подписью</h3>
-          <p class="mt-2 text-sm text-ink-500">payment.completed / failed / refunded, subscription.activated / cancelled. HMAC-подпись тела.</p>
+          <h3 class="font-medium">Уведомления в реальном времени</h3>
+          <p class="mt-2 text-sm text-ink-500">Ваш сервис узнаёт о каждом успешном платеже, возврате и подписке. Автовыдача товара или доступа без задержек.</p>
+          <div class="mt-3 text-xs text-ink-300">Webhooks с подписью</div>
         </div>
         <div class="bg-white border border-ink-100 rounded-xl p-6">
-          <div class="mono text-xs text-ink-300">/sandbox</div>
-          <h3 class="mt-2 font-medium">Sandbox = same endpoint</h3>
-          <p class="mt-2 text-sm text-ink-500">Префикс ключа решает: <span class="mono">ak_test_</span> или <span class="mono">ak_live_</span>. Тест-транзакции в общем списке с тегом ТЕСТ.</p>
+          <h3 class="font-medium">Тестовая среда сразу</h3>
+          <p class="mt-2 text-sm text-ink-500">Команда разработки начинает работу до прохождения проверки документов. Тестовые транзакции — в том же кабинете с тегом ТЕСТ.</p>
+          <div class="mt-3 text-xs text-ink-300">Sandbox</div>
         </div>
         <div class="bg-white border border-ink-100 rounded-xl p-6">
-          <div class="mono text-xs text-ink-300">/events</div>
-          <h3 class="mt-2 font-medium">Events API</h3>
-          <p class="mt-2 text-sm text-ink-500">Cursor-пагинация для recovery после downtime — пропустили webhook, забрали через GET /events.</p>
+          <h3 class="font-medium">Восстановление после простоя</h3>
+          <p class="mt-2 text-sm text-ink-500">Если ваш сервер упал и пропустил уведомление — догоните его одним запросом. Не теряете данные о платежах.</p>
+          <div class="mt-3 text-xs text-ink-300">Events API</div>
         </div>
         <div class="bg-white border border-ink-100 rounded-xl p-6">
-          <div class="mono text-xs text-ink-300">/customers</div>
-          <h3 class="mt-2 font-medium">Customers CRUD</h3>
-          <p class="mt-2 text-sm text-ink-500">Клиенты создаются автоматически при первой оплате. Используйте для подписок и retention.</p>
+          <h3 class="font-medium">База клиентов из коробки</h3>
+          <p class="mt-2 text-sm text-ink-500">Покупатели сохраняются автоматически при первой оплате. Готовая основа для подписок, ретеншена и аналитики.</p>
+          <div class="mt-3 text-xs text-ink-300">Customers</div>
         </div>
         <div class="bg-white border border-ink-100 rounded-xl p-6">
-          <div class="mono text-xs text-ink-300">/subscriptions</div>
-          <h3 class="mt-2 font-medium">СБП-подписки в проде</h3>
-          <p class="mt-2 text-sm text-ink-500"><span class="mono">walletType: 2</span> — клиент один раз привязал, бот списывает по расписанию. У Купикода в проде.</p>
+          <h3 class="font-medium">Подписки СБП в продакшене</h3>
+          <p class="mt-2 text-sm text-ink-500">Клиент один раз подтверждает привязку — сервис списывает по расписанию. У сервисов уровня Купикода в проде.</p>
+          <div class="mt-3 text-xs text-ink-300">Recurring</div>
         </div>
         <div class="bg-white border border-ink-100 rounded-xl p-6">
-          <div class="mono text-xs text-ink-300">/sdk</div>
-          <h3 class="mt-2 font-medium">Node.js SDK</h3>
-          <p class="mt-2 text-sm text-ink-500">Официальный SDK на fetch. Для Python и других языков — чистый REST с готовыми примерами.</p>
+          <h3 class="font-medium">Готовый SDK + чистый REST</h3>
+          <p class="mt-2 text-sm text-ink-500">Node.js — официальный SDK. Python и другие языки — стандартный REST с готовыми примерами. Подключение за день.</p>
+          <div class="mt-3 text-xs text-ink-300">Node.js SDK</div>
         </div>
         <div class="bg-white border border-ink-100 rounded-xl p-6">
-          <div class="mono text-xs text-ink-300">/limits</div>
-          <h3 class="mt-2 font-medium">60 RPS на ключ</h3>
-          <p class="mt-2 text-sm text-ink-500">Достаточно для большинства SaaS. Для высоких нагрузок — обсудим повышенный лимит индивидуально.</p>
+          <h3 class="font-medium">Запас по нагрузке</h3>
+          <p class="mt-2 text-sm text-ink-500">Достаточно для большинства SaaS и e-com. Для высоких нагрузок — обсудим повышенный лимит индивидуально.</p>
+          <div class="mt-3 text-xs text-ink-300">60 RPS</div>
         </div>
       </div>
     </div>
@@ -299,13 +332,13 @@ r = requests.post(<span class="str">"https://oplatum.com/merchant-api/v1/payment
   <section id="agent" class="border-b border-ink-100 bg-ink-900 text-white">
     <div class="max-w-6xl mx-auto px-6 py-20 grid md:grid-cols-2 gap-12 items-center">
       <div>
-        <div class="text-xs uppercase tracking-widest text-ink-300 mono">Agent-first DX</div>
-        <h2 class="mt-3 text-3xl font-semibold tracking-tight">Передайте интеграцию Claude</h2>
+        <div class="text-xs uppercase tracking-widest text-ink-300">Для AI-агентов и команд с AI-разработкой</div>
+        <h2 class="mt-3 text-3xl font-semibold tracking-tight">Платежи, которые подключает AI</h2>
         <p class="mt-4 text-ink-100 leading-relaxed">
-          API спроектирован под агентов: идемпотентность обязательна, HMAC-подпись детерминирована, sandbox идентичен продакшну, документация в OpenAPI 3 и Markdown.
+          Если ваша команда работает с Claude, Cursor или другими AI-помощниками — интеграция Oplatum занимает один промпт. API специально спроектирован под агентов: предсказуемые ответы, безопасные ретраи, машиночитаемый OpenAPI-контракт.
         </p>
         <p class="mt-4 text-ink-100 leading-relaxed">
-          Скопируйте промпт справа, отдайте AI-агенту вместе со ссылкой на docs — агент выполнит интеграцию без вас.
+          Скопируйте промпт справа, отдайте AI-агенту со ссылкой на docs — агент выполнит интеграцию без вашего участия. Это экономит вам день-два разработки.
         </p>
         <ul class="mt-6 space-y-2 text-sm text-ink-100">
           <li class="flex gap-3"><span class="mono text-green-400">✓</span> Idempotency-Key обязателен — агенты ретраят без дубликатов</li>
@@ -348,39 +381,35 @@ Use case: {one-shot покупка / подписка / channel paywall}
   <section id="flow" class="border-b border-ink-100">
     <div class="max-w-6xl mx-auto px-6 py-20">
       <div class="max-w-2xl">
-        <div class="text-xs uppercase tracking-widest text-ink-500 mono">Как работает</div>
-        <h2 class="mt-3 text-3xl font-semibold tracking-tight">Один поток платежа — четыре шага</h2>
-        <p class="mt-3 text-ink-500">Покупатель платит, вы получаете деньги в выбранной валюте, ваш сервис получает webhook. Без чёрных ящиков.</p>
+        <div class="text-xs uppercase tracking-widest text-ink-500">Как подключиться</div>
+        <h2 class="mt-3 text-3xl font-semibold tracking-tight">От заявки до первых клиентов — 7–14 дней</h2>
+        <p class="mt-3 text-ink-500">Без долгих согласований и звонков «менеджер свяжется в течение трёх рабочих дней». Каждым мерчантом занимаемся лично.</p>
       </div>
 
       <div class="mt-12 grid md:grid-cols-4 gap-4 relative">
         <!-- Step 1 -->
         <div class="bg-white border border-ink-100 rounded-xl p-5 relative">
-          <div class="text-xs mono text-ink-300">01</div>
-          <div class="mt-3 text-sm font-medium">Клиент инициирует платёж</div>
-          <div class="mt-2 text-xs text-ink-500 leading-relaxed">СБП QR в боте, hosted Checkout-страница или платёжная ссылка из админки.</div>
-          <div class="mt-3 mono text-xs text-ink-700">walletType: 1 | 2</div>
+          <div class="text-xs text-ink-300">01 · день 1</div>
+          <div class="mt-3 text-sm font-medium">Заявка и звонок</div>
+          <div class="mt-2 text-xs text-ink-500 leading-relaxed">Заполняете форму — в течение рабочего дня созваниваемся на 30 минут. Разбираем ваш кейс, договариваемся об условиях pilot.</div>
         </div>
         <!-- Step 2 -->
         <div class="bg-white border border-ink-100 rounded-xl p-5">
-          <div class="text-xs mono text-ink-300">02</div>
-          <div class="mt-3 text-sm font-medium">Oplatum API + НКО МОБИ</div>
-          <div class="mt-2 text-xs text-ink-500 leading-relaxed">Лицензированный российский процессор обрабатывает СБП-транзакцию. Подпись HMAC, идемпотентность.</div>
-          <div class="mt-3 mono text-xs text-ink-700">POST /payments/create-code</div>
+          <div class="text-xs text-ink-300">02 · дни 1–5</div>
+          <div class="mt-3 text-sm font-medium">KYB через живого человека</div>
+          <div class="mt-2 text-xs text-ink-500 leading-relaxed">Присылаете стандартный пакет документов. Юристы ТОО «Clarion» и комплаенс НКО «МОБИ.Деньги» проверяют 3–5 рабочих дней.</div>
         </div>
         <!-- Step 3 -->
         <div class="bg-white border border-ink-100 rounded-xl p-5">
-          <div class="text-xs mono text-ink-300">03</div>
-          <div class="mt-3 text-sm font-medium">Webhook + Events API</div>
-          <div class="mt-2 text-xs text-ink-500 leading-relaxed">Подписанный webhook прилетает на ваш endpoint. Если упустили — догоняете через GET /events.</div>
-          <div class="mt-3 mono text-xs text-ink-700">payment.completed</div>
+          <div class="text-xs text-ink-300">03 · параллельно</div>
+          <div class="mt-3 text-sm font-medium">Подключение API</div>
+          <div class="mt-2 text-xs text-ink-500 leading-relaxed">Sandbox-доступ — в день заявки, не ждём KYB. Ваша команда подключает API, тестирует приём и подписки. Помогаем лично, если нужно.</div>
         </div>
         <!-- Step 4 -->
         <div class="bg-white border border-ink-100 rounded-xl p-5">
-          <div class="text-xs mono text-ink-300">04</div>
-          <div class="mt-3 text-sm font-medium">Settlement через ТОО Clarion</div>
-          <div class="mt-2 text-xs text-ink-500 leading-relaxed">По вашему запросу — выплата в USDT, USD или RUB на указанные реквизиты. В pilot — индивидуально.</div>
-          <div class="mt-3 mono text-xs text-ink-700">USDT · USD · RUB</div>
+          <div class="text-xs text-ink-300">04 · после KYB</div>
+          <div class="mt-3 text-sm font-medium">Live и первые выплаты</div>
+          <div class="mt-2 text-xs text-ink-500 leading-relaxed">Включаем приём боевых платежей. Settlement — по вашему запросу в USDT, USD или рублях. Первая выплата — на следующий рабочий день.</div>
         </div>
       </div>
     </div>
@@ -520,68 +549,62 @@ Use case: {one-shot покупка / подписка / channel paywall}
   <section class="border-b border-ink-100">
     <div class="max-w-6xl mx-auto px-6 py-20">
       <div class="max-w-2xl">
-        <div class="text-xs uppercase tracking-widest text-ink-500 mono">Use cases</div>
-        <h2 class="mt-3 text-3xl font-semibold tracking-tight">Кто работает с Oplatum</h2>
-        <p class="mt-3 text-ink-500">Три основных сегмента — в pilot, остальные — в работе.</p>
+        <div class="text-xs uppercase tracking-widest text-ink-500">Кто с нами работает</div>
+        <h2 class="mt-3 text-3xl font-semibold tracking-tight">Профили бизнеса</h2>
+        <p class="mt-3 text-ink-500">Три сегмента — в работе сейчас, остальные — в pilot или ранний доступ.</p>
       </div>
 
       <div class="mt-12 grid md:grid-cols-3 gap-6">
         <!-- ACTIVE: 3 main -->
-        <article class="border border-ink-100 rounded-xl p-6 hover:border-ink-300 transition">
+        <article class="border border-ink-100 rounded-xl p-7 hover:border-ink-300 transition">
           <div class="flex items-center justify-between">
-            <div class="text-xs mono text-ink-300">case 01</div>
-            <span class="text-[10px] uppercase tracking-wider mono px-2 py-1 bg-green-50 text-green-700 rounded">в работе</span>
+            <div class="text-xs text-ink-300">01</div>
+            <span class="text-[10px] uppercase tracking-wider px-2 py-1 bg-green-50 text-green-700 rounded">в работе</span>
           </div>
-          <h3 class="mt-3 text-lg font-medium">TG-бот / SaaS на подписках</h3>
-          <p class="mt-3 text-sm text-ink-500">Subscription bot за час: hosted checkout + СБП-подписка + webhook → выдача доступа. Customers API хранит базу клиентов за вас.</p>
-          <div class="mt-4 mono text-xs text-ink-700">walletType: 2 · subscriptionPurpose: "Pro plan"</div>
+          <h3 class="mt-3 text-lg font-medium">TG-боты и SaaS на подписках</h3>
+          <p class="mt-3 text-sm text-ink-500">Запустите подписку без своего биллинга и без доли Telegram Stars в 30 %. Клиент платит СБП один раз, бот списывает по расписанию. Customers API ведёт базу автоматически.</p>
         </article>
-        <article class="border border-ink-100 rounded-xl p-6 hover:border-ink-300 transition">
+        <article class="border border-ink-100 rounded-xl p-7 hover:border-ink-300 transition">
           <div class="flex items-center justify-between">
-            <div class="text-xs mono text-ink-300">case 02</div>
-            <span class="text-[10px] uppercase tracking-wider mono px-2 py-1 bg-green-50 text-green-700 rounded">в работе</span>
+            <div class="text-xs text-ink-300">02</div>
+            <span class="text-[10px] uppercase tracking-wider px-2 py-1 bg-green-50 text-green-700 rounded">в работе</span>
           </div>
-          <h3 class="mt-3 text-lg font-medium">Foreign merchant с RU-аудиторией</h3>
-          <p class="mt-3 text-sm text-ink-500">HK/KZ/Cyprus/AM/UAE юрлицо принимает рубли через СБП, выводит в USDT. Без российского ООО, без серых KZ-TOO.</p>
-          <div class="mt-4 mono text-xs text-ink-700">settlement: USDT · KYB на EN</div>
+          <h3 class="mt-3 text-lg font-medium">Иностранные юрлица с РФ-аудиторией</h3>
+          <p class="mt-3 text-sm text-ink-500">Принимайте рубли от российских клиентов на компанию в Гонконге, Казахстане, Кипре или ОАЭ. Settlement в USDT — без открытия российского ООО, без серых KZ-схем.</p>
         </article>
-        <article class="border border-ink-100 rounded-xl p-6 hover:border-ink-300 transition">
+        <article class="border border-ink-100 rounded-xl p-7 hover:border-ink-300 transition">
           <div class="flex items-center justify-between">
-            <div class="text-xs mono text-ink-300">case 03</div>
-            <span class="text-[10px] uppercase tracking-wider mono px-2 py-1 bg-green-50 text-green-700 rounded">в работе</span>
+            <div class="text-xs text-ink-300">03</div>
+            <span class="text-[10px] uppercase tracking-wider px-2 py-1 bg-green-50 text-green-700 rounded">в работе</span>
           </div>
-          <h3 class="mt-3 text-lg font-medium">Миграция с серого шлюза</h3>
-          <p class="mt-3 text-sm text-ink-500">Уход с Freekassa / PaySelection / Payeer / Lava — параллельная интеграция, тестируете в sandbox, переключаете traffic постепенно.</p>
-          <div class="mt-4 mono text-xs text-ink-700">migration in days, not weeks</div>
+          <h3 class="mt-3 text-lg font-medium">Переезд с серого шлюза</h3>
+          <p class="mt-3 text-sm text-ink-500">Уходите с Freekassa, PaySelection, Payeer или Lava без потери трафика — работайте параллельно неделю, потом переключайте полностью. Помогаем с миграцией пошагово.</p>
         </article>
 
         <!-- BETA / R&D: 3 secondary -->
-        <article class="border border-ink-100 rounded-xl p-6 hover:border-ink-300 transition">
+        <article class="border border-ink-100 rounded-xl p-7 hover:border-ink-300 transition">
           <div class="flex items-center justify-between">
-            <div class="text-xs mono text-ink-300">case 04</div>
-            <span class="text-[10px] uppercase tracking-wider mono px-2 py-1 bg-blue-50 text-blue-700 rounded">бета</span>
+            <div class="text-xs text-ink-300">04</div>
+            <span class="text-[10px] uppercase tracking-wider px-2 py-1 bg-blue-50 text-blue-700 rounded">бета</span>
           </div>
-          <h3 class="mt-3 text-lg font-medium">Marketplace seller exit</h3>
-          <p class="mt-3 text-sm text-ink-500">Топ-продавцы FunPay / GGSel / Plati уходят на свой сайт + Oplatum — экономят 5–10 % комиссии и забирают клиентскую базу.</p>
-          <div class="mt-4 mono text-xs text-ink-700">no-code: payment links</div>
+          <h3 class="mt-3 text-lg font-medium">Свой сайт вместо маркетплейса</h3>
+          <p class="mt-3 text-sm text-ink-500">Топ-продавцы FunPay / GGSel / Plati открывают собственный сайт и оставляют себе 5–10 % комиссии, которые сейчас забирает площадка. Получают свою клиентскую базу.</p>
         </article>
-        <article class="border border-ink-100 rounded-xl p-6 hover:border-ink-300 transition">
+        <article class="border border-ink-100 rounded-xl p-7 hover:border-ink-300 transition">
           <div class="flex items-center justify-between">
-            <div class="text-xs mono text-ink-300">case 05</div>
-            <span class="text-[10px] uppercase tracking-wider mono px-2 py-1 bg-blue-50 text-blue-700 rounded">бета</span>
+            <div class="text-xs text-ink-300">05</div>
+            <span class="text-[10px] uppercase tracking-wider px-2 py-1 bg-blue-50 text-blue-700 rounded">бета</span>
           </div>
-          <h3 class="mt-3 text-lg font-medium">Онлайн-образование, курсы, клубы</h3>
-          <p class="mt-3 text-sm text-ink-500">Подписочные образовательные продукты, мастермайнды, доступ к закрытым каналам. СБП + рекурренты + Customers API из коробки.</p>
-          <div class="mt-4 mono text-xs text-ink-700">subscription lifecycle</div>
+          <h3 class="mt-3 text-lg font-medium">Онлайн-образование и клубы</h3>
+          <p class="mt-3 text-sm text-ink-500">Подписочная монетизация курсов, мастермайндов, закрытых каналов и сообществ. Без отдельной системы биллинга — СБП-подписки, отчёты, возвраты в одном кабинете.</p>
         </article>
-        <article class="border border-ink-100 rounded-xl p-6 hover:border-ink-300 transition">
+        <article class="border border-ink-100 rounded-xl p-7 hover:border-ink-300 transition">
           <div class="flex items-center justify-between">
-            <div class="text-xs mono text-ink-300">case 06</div>
-            <span class="text-[10px] uppercase tracking-wider mono px-2 py-1 bg-purple-50 text-purple-700 rounded">R&D · early access</span>
+            <div class="text-xs text-ink-300">06</div>
+            <span class="text-[10px] uppercase tracking-wider px-2 py-1 bg-purple-50 text-purple-700 rounded">R&D · ранний доступ</span>
           </div>
           <h3 class="mt-3 text-lg font-medium">Платежи для AI-агентов</h3>
-          <p class="mt-3 text-sm text-ink-500">Агентские сценарии: токены с лимитами, attribution trail, MCP-сервер. Открыт ранний доступ для 2–3 строящих команд.</p>
-          <div class="mt-4 mono text-xs text-ink-700">scoped tokens · MCP soon</div>
+          <p class="mt-3 text-sm text-ink-500">Агентские сценарии — когда платёж инициирует AI-ассистент от имени пользователя. Токены с лимитами, MCP-сервер, attribution. Открываем ранний доступ для 2–3 строящих команд.</p>
         </article>
       </div>
     </div>
@@ -786,26 +809,26 @@ Use case: {one-shot покупка / подписка / channel paywall}
     <div class="max-w-6xl mx-auto px-6 py-20">
       <div class="grid md:grid-cols-2 gap-12 items-start">
         <div>
-          <div class="text-xs uppercase tracking-widest text-ink-500 mono">Pilot programme</div>
-          <h2 class="mt-3 text-3xl font-semibold tracking-tight">Берём 2–3 пилотных мерчанта в апреле</h2>
+          <div class="text-xs uppercase tracking-widest text-ink-500">Pilot programme</div>
+          <h2 class="mt-3 text-3xl font-semibold tracking-tight">Персональное сопровождение для первых клиентов</h2>
           <p class="mt-4 text-ink-500 leading-relaxed">
-            Сейчас работаем в режиме первых клиентов. KYC проводим вручную: живые юристы ТОО Clarion + комплаенс МОБИ.Деньги. Settlement — по запросу, не по расписанию. Прямой контакт с CEO Oplatum и Сашей Долговым.
+            Берём 2–3 мерчанта на индивидуальные условия в апреле–мае. Каждым занимаемся лично — от первого звонка до первой транзакции в продакшене.
           </p>
           <p class="mt-4 text-ink-500 leading-relaxed">
-            После пилота процесс стандартизируется. Условия пилотных клиентов — лучше, чем будут после.
+            После завершения pilot тарифы и процесс будут стандартизированы. Условия первых клиентов — лучше, чем будут потом.
           </p>
           <ul class="mt-6 space-y-2 text-sm">
-            <li class="flex gap-3"><span class="mono text-ink-300">→</span> KYC за 3–5 рабочих дней руками</li>
-            <li class="flex gap-3"><span class="mono text-ink-300">→</span> Settlement по запросу, USDT / USD / RUB</li>
-            <li class="flex gap-3"><span class="mono text-ink-300">→</span> Прямой Telegram-чат с командой</li>
-            <li class="flex gap-3"><span class="mono text-ink-300">→</span> Первая транзакция в sandbox в день получения ключей</li>
+            <li class="flex gap-3"><span class="text-ink-300">→</span> Прямой контакт с CEO и командой, без менеджеров</li>
+            <li class="flex gap-3"><span class="text-ink-300">→</span> Settlement в USDT, USD или рублях по вашему запросу</li>
+            <li class="flex gap-3"><span class="text-ink-300">→</span> Помощь с интеграцией: парная работа с вашим разработчиком</li>
+            <li class="flex gap-3"><span class="text-ink-300">→</span> SLA 4 часа, индивидуальные тарифы</li>
           </ul>
         </div>
 
         <!-- APPLY FORM -->
         <form id="partner-apply" class="border border-ink-100 rounded-xl p-7 bg-white">
-          <div class="text-sm font-medium">Apply for pilot</div>
-          <p class="mt-1 text-xs text-ink-500">Ответ — в течение 1 рабочего дня.</p>
+          <div class="text-sm font-medium">Подключиться к Oplatum</div>
+          <p class="mt-1 text-xs text-ink-500">Ответ — в течение 1 рабочего дня. Без рассылок и спама.</p>
 
           <div class="mt-5 space-y-4">
             <label class="block">
@@ -865,7 +888,7 @@ Use case: {one-shot покупка / подписка / channel paywall}
           </div>
 
           <button type="submit" class="mt-6 w-full bg-ink-900 text-white py-3 rounded-md text-sm font-medium hover:bg-ink-700 transition">
-            Apply →
+            Отправить заявку →
           </button>
           <p class="mt-3 text-xs text-ink-300">Отправка означает согласие на связь по указанным контактам. Без рассылок.</p>
         </form>
@@ -876,32 +899,32 @@ Use case: {one-shot покупка / подписка / channel paywall}
   <!-- WHAT YOU GET -->
   <section class="border-b border-ink-100 bg-ink-50">
     <div class="max-w-6xl mx-auto px-6 py-16">
-      <div class="text-xs uppercase tracking-widest text-ink-500 mono">Что вы получаете после Apply</div>
+      <div class="text-xs uppercase tracking-widest text-ink-500">Что вы получаете после заявки</div>
       <div class="mt-6 grid md:grid-cols-5 gap-4">
         <div class="bg-white border border-ink-100 rounded-xl p-5">
           <div class="text-2xl">①</div>
-          <div class="mt-3 text-sm font-medium">Sandbox-ключи в день apply</div>
-          <p class="mt-2 text-xs text-ink-500">Начинаете разработку до KYB — `ak_test_` ключи в первый рабочий день.</p>
+          <div class="mt-3 text-sm font-medium">Звонок в течение рабочего дня</div>
+          <p class="mt-2 text-xs text-ink-500">30 минут с CEO или с Сашей Долговым. Не менеджер по продажам — решающее лицо.</p>
         </div>
         <div class="bg-white border border-ink-100 rounded-xl p-5">
           <div class="text-2xl">②</div>
-          <div class="mt-3 text-sm font-medium">30-минутный discovery</div>
-          <p class="mt-2 text-xs text-ink-500">Лично с CEO Oplatum или Сашей Долговым. Не менеджер, а решающее лицо.</p>
+          <div class="mt-3 text-sm font-medium">Тестовая среда сразу</div>
+          <p class="mt-2 text-xs text-ink-500">Доступ для вашей команды разработки в день обращения — до прохождения проверки документов.</p>
         </div>
         <div class="bg-white border border-ink-100 rounded-xl p-5">
           <div class="text-2xl">③</div>
-          <div class="mt-3 text-sm font-medium">KYB через живого человека</div>
-          <p class="mt-2 text-xs text-ink-500">3–5 рабочих дней — не алгоритмический скоринг, не «вашу заявку рассмотрят в течение 2 недель».</p>
+          <div class="mt-3 text-sm font-medium">KYB живым человеком</div>
+          <p class="mt-2 text-xs text-ink-500">3–5 рабочих дней — не алгоритмический скоринг с отказом без объяснений.</p>
         </div>
         <div class="bg-white border border-ink-100 rounded-xl p-5">
           <div class="text-2xl">④</div>
-          <div class="mt-3 text-sm font-medium">Прямой Telegram-чат с командой</div>
-          <p class="mt-2 text-xs text-ink-500">SLA 4 часа в рабочее время. Без тикет-системы, без отписок «передали в нужный отдел».</p>
+          <div class="mt-3 text-sm font-medium">Чат с командой 4 часа SLA</div>
+          <p class="mt-2 text-xs text-ink-500">Прямой Telegram, без тикет-системы и отписок «передали в нужный отдел».</p>
         </div>
         <div class="bg-white border border-ink-100 rounded-xl p-5">
           <div class="text-2xl">⑤</div>
-          <div class="mt-3 text-sm font-medium">Условия pilot программы</div>
-          <p class="mt-2 text-xs text-ink-500">Лучшие условия по комиссии и settlement — после стандартизации они будут хуже.</p>
+          <div class="mt-3 text-sm font-medium">Условия pilot programme</div>
+          <p class="mt-2 text-xs text-ink-500">Лучшие тарифы и индивидуальный settlement — после стандартизации будут хуже.</p>
         </div>
       </div>
     </div>
@@ -1082,9 +1105,9 @@ Use case: {one-shot покупка / подписка / channel paywall}
   <!-- FINAL CTA -->
   <section class="border-b border-ink-100">
     <div class="max-w-4xl mx-auto px-6 py-20 text-center">
-      <h2 class="text-3xl md:text-4xl font-semibold tracking-tight">Get from zero to first transaction today</h2>
-      <p class="mt-4 text-ink-500">Apply → sandbox-ключи → первая test-tx за тот же день.</p>
-      <a href="#apply" class="mt-8 inline-flex items-center bg-ink-900 text-white px-6 py-3 rounded-md text-sm font-medium hover:bg-ink-700 transition">Get sandbox keys →</a>
+      <h2 class="text-3xl md:text-4xl font-semibold tracking-tight">Начните принимать платежи в pilot programme</h2>
+      <p class="mt-4 text-ink-500">Заявка → 30-минутный звонок → доступ для разработчика в тот же день. KYB и live — за 7–14 рабочих дней.</p>
+      <a href="#apply" class="mt-8 inline-flex items-center bg-ink-900 text-white px-6 py-3 rounded-md text-sm font-medium hover:bg-ink-700 transition">Подключиться →</a>
     </div>
   </section>
 
