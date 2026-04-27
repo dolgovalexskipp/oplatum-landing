@@ -160,21 +160,21 @@ function Hero() {
       <div className="hero-copy">
         <Overline>Платежи · Россия и за её пределами</Overline>
         <h1>
-          Платёжная инфраструктура с зачислением <span className="accent-blue">за 1 день</span>
+          Платёжная инфраструктура с интеграцией <span className="accent-blue">за 1 день</span>
         </h1>
         <p className="lead">
-          Принимайте оплату по СБП, оформляйте подписки и получайте расчёты в&nbsp;USDT. Лицензированный российский процессор НКО «МОБИ.Деньги», ЦБ РФ&nbsp;№3523-К.
+          СБП, СБП-подписки и USDT-расчёты для цифровых продуктов. Подключение без бумаг и долгого ожидания — отвечаем в день обращения.
         </p>
         <div className="cta-row">
           <CtaApply size="lg">Подключиться</CtaApply>
           <Btn variant="secondary" size="lg" onClick={scrollToApply}>Документация</Btn>
         </div>
         <div className="hero-meta">
-          <span className="hero-meta-num">от 4%</span>
-          <span className="hero-meta-lbl">комиссия<br/>при больших оборотах</span>
+          <span className="hero-meta-num">60k+</span>
+          <span className="hero-meta-lbl">транзакций<br/>в день</span>
           <span className="divider" />
-          <span className="hero-meta-num">1 день</span>
-          <span className="hero-meta-lbl">зачисление<br/>в RUB или USDT</span>
+          <span className="hero-meta-num">99.9%</span>
+          <span className="hero-meta-lbl">uptime<br/>платёжного шлюза</span>
         </div>
       </div>
       <AdminMockup />
@@ -187,24 +187,24 @@ function TrustStrip() {
   return (
     <section className="trust">
       <div className="metric-card">
-        <div className="ovl-m">Комиссия</div>
-        <div className="num blue">4–6%</div>
-        <div className="lbl">в зависимости<br/>от оборота</div>
+        <div className="ovl-m">Объём</div>
+        <div className="num blue">60k+</div>
+        <div className="lbl">транзакций<br/>в день</div>
       </div>
       <div className="metric-card bar">
-        <div className="ovl-m">Зачисление</div>
-        <div className="num">1 день</div>
-        <div className="lbl">в рублях<br/>или USDT</div>
+        <div className="ovl-m">Uptime</div>
+        <div className="num">99.9%</div>
+        <div className="lbl">доступность<br/>платёжного шлюза</div>
       </div>
       <div className="metric-card">
-        <div className="ovl-m">Лицензия ЦБ РФ</div>
-        <div className="num">3523-К</div>
-        <div className="lbl">НКО<br/>«МОБИ.Деньги»</div>
+        <div className="ovl-m">Скорость</div>
+        <div className="num">&lt;&nbsp;2&nbsp;сек</div>
+        <div className="lbl">от инициации<br/>до подтверждения</div>
       </div>
       <div className="metric-card bar">
-        <div className="ovl-m">Запуск</div>
-        <div className="num">3 дня</div>
-        <div className="lbl">от заявки<br/>до первого платежа</div>
+        <div className="ovl-m">Интеграция</div>
+        <div className="num">1 день</div>
+        <div className="lbl">от заявки<br/>до приёма платежей</div>
       </div>
     </section>
   );
@@ -212,12 +212,12 @@ function TrustStrip() {
 
 // ---------- Advantages ----------
 const ADVANTAGES = [
-  { h: 'Лицензированный процессор', body: 'Договор с НКО «МОБИ.Деньги», ЦБ РФ №3523-К. Платежи проходят по 161-ФЗ.' },
+  { h: 'Подключение за 1 день', body: 'Без бумажной волокиты и долгих согласований. Заявка утром — приём платежей вечером.' },
+  { h: 'Uptime 99.9%', body: 'Стабильная работа платёжного шлюза. Резервирование на стороне инфраструктуры.' },
+  { h: 'Скорость подтверждения', body: 'Менее 2 секунд от инициации платежа до подтверждения у клиента.' },
   { h: 'Зачисление за 1 день', body: 'Получайте деньги в рублях или USDT на следующий день после оплаты.' },
   { h: 'СБП-подписки', body: 'Рекуррентные списания через walletType:2 в боевом контуре.' },
   { h: 'USDT для нерезидентов', body: 'Иностранному юрлицу не нужен расчётный счёт в РФ — расчёты приходят на USDT-кошелёк.' },
-  { h: 'Прозрачные тарифы', body: '4 уровня ставок от 6% до 4% по обороту. Все ставки опубликованы и фиксируются в договоре.' },
-  { h: 'Персональный менеджер', body: 'От заявки до первого платежа и дальше — один менеджер на стороне Oplatum.' },
 ];
 
 function Advantages() {
@@ -274,22 +274,20 @@ function ProductFeatures() {
   );
 }
 
-// ---------- Process (5 steps, 3 days) ----------
+// ---------- Process (3 steps, 1 day) ----------
 const STEPS = [
-  { h: 'Оставить заявку', body: 'Короткая форма или Telegram-бот.' },
-  { h: 'KYB', body: 'Собираем документы юрлица для лицензированного процессора. Занимает до 3 дней.' },
-  { h: 'Песочница', body: 'Выдаём тестовые ключи и Postman-коллекцию для интеграции.' },
-  { h: 'Подключение', body: 'Помогаем с интеграцией, проверяем webhooks и сценарии.' },
-  { h: 'Приём платежей', body: 'Переводим в продакшн.' },
+  { h: 'Оставить заявку', body: 'Короткая форма или Telegram-бот. Отвечаем в течение часа в рабочее время.' },
+  { h: 'Получить ключи', body: 'Выдаём тестовые ключи песочницы. Команда разработки начинает интеграцию в тот же день.' },
+  { h: 'Принимать платежи', body: 'После короткой проверки переводим в боевой контур. Зачисление — на следующий день.' },
 ];
 
 function ProcessSteps() {
   return (
     <section className="section">
       <Overline>03 · Как мы работаем</Overline>
-      <h2>От заявки до первого платежа — обычно 3 дня</h2>
-      <p className="sub">На всём процессе с вами один менеджер на стороне Oplatum.</p>
-      <div className="steps-grid">
+      <h2>От заявки до первого платежа — один день</h2>
+      <p className="sub">Без бумаг и долгих согласований. На всём пути с вами один менеджер.</p>
+      <div className="steps-grid steps-grid-3">
         {STEPS.map((s, i) => (
           <div key={i} className="step-card">
             <div className="step-num">{String(i+1).padStart(2,'0')}</div>
@@ -302,46 +300,36 @@ function ProcessSteps() {
   );
 }
 
-// ---------- Cases ----------
-const CASES = [
-  {
-    brand: 'Купикод',
-    domain: 'kupikod.com',
-    body: 'Подключили СБП-подписки за день. Зачисление пришло на следующее утро. walletType:2 в боевом контуре.',
-    name: 'Команда Купикод',
-    role: 'kupikod.com',
-  },
-  {
-    brand: 'Press F',
-    domain: 'pressf.com',
-    body: 'Открытый договор по gaming-тематике, ставка зафиксирована в контракте.',
-    name: 'Команда Press F',
-    role: 'pressf.com',
-  },
-];
-
-function CasesStrip() {
-  const [idx, setIdx] = useState(0);
-  const cur = CASES[idx];
+// ---------- Proof of Concept (replaces named cases) ----------
+function ProofOfConcept() {
   return (
     <section className="section">
-      <Overline>04 · Кейсы</Overline>
-      <h2>Уже принимают платежи через Oplatum</h2>
-      <div className="quote-card">
-        <div className="quote-mark">«</div>
-        <p className="quote-body">{cur.body}</p>
-        <div className="quote-author">
-          <span className="quote-name">{cur.name}</span>
-          <span className="quote-role">{cur.role}</span>
+      <Overline>04 · В цифрах</Overline>
+      <h2>Платёжный шлюз в боевом контуре</h2>
+      <p className="sub">Платформа уже работает с реальным трафиком. Конкретные кейсы и логотипы клиентов раскрываем под NDA в KYB.</p>
+      <div className="proof-card">
+        <div className="proof-main">
+          <div className="proof-num">60 000<span className="proof-num-suffix">+</span></div>
+          <div className="proof-lbl">транзакций обрабатываем в день</div>
         </div>
-      </div>
-      <div className="logo-strip">
-        {CASES.map((c, i) => (
-          <button
-            key={i}
-            className={`logo-mark logo-mark-btn ${i === idx ? 'active' : ''}`}
-            onClick={() => setIdx(i)}>{c.brand}</button>
-        ))}
+        <div className="proof-stats">
+          <div className="proof-stat">
+            <div className="proof-stat-num">99.9%</div>
+            <div className="proof-stat-lbl">Uptime платёжного шлюза</div>
+          </div>
+          <div className="proof-stat">
+            <div className="proof-stat-num">&lt; 2 сек</div>
+            <div className="proof-stat-lbl">До подтверждения платежа</div>
+          </div>
+          <div className="proof-stat">
+            <div className="proof-stat-num">24/7</div>
+            <div className="proof-stat-lbl">Мониторинг и поддержка</div>
+          </div>
+          <div className="proof-stat">
+            <div className="proof-stat-num">8</div>
+            <div className="proof-stat-lbl">Релизов API за квартал</div>
+          </div>
+        </div>
       </div>
     </section>
   );
@@ -433,7 +421,7 @@ function PricingSection() {
         <p className="sub">Чем больше оборот — тем меньше комиссия. Все ставки публичны и фиксируются в договоре.</p>
         <ul className="bullets">
           <li>4 уровня ставок: от 6% до 4% по обороту</li>
-          <li>Договор — НКО «МОБИ.Деньги», ЦБ РФ</li>
+          <li>Договор с российским лицензированным эквайером</li>
           <li>Возвраты и рефанды через API</li>
         </ul>
       </div>
@@ -631,10 +619,11 @@ function LeadForm() {
 
 // ---------- FAQ ----------
 const FAQS = [
-  { q: 'Кто несёт лицензионную ответственность?', a: 'НКО «МОБИ.Деньги», ЦБ РФ №3523-К. Oplatum — продуктовый и технологический слой поверх процессора. Все платежи проходят по 161-ФЗ.' },
-  { q: 'Можно ли получать в USDT, если у нас иностранное юрлицо?', a: 'Да. Договор заключается с лицензированным процессором, расчёты приходят на ваш USDT-кошелёк.' },
-  { q: 'Сколько времени занимает подключение?', a: 'От заявки до первого платежа — обычно 3 дня. KYB занимает до 3 дней — собираем документы для лицензированного процессора. Интеграция занимает день при готовом стеке.' },
+  { q: 'Кто несёт лицензионную ответственность?', a: 'Российский лицензированный эквайер — наш партнёр по процессингу. Oplatum — продуктовый и технологический слой поверх. Все платежи проходят по 161-ФЗ.' },
+  { q: 'Можно ли получать в USDT, если у нас иностранное юрлицо?', a: 'Да. Расчёты приходят на ваш USDT-кошелёк, расчётный счёт в РФ не нужен.' },
+  { q: 'Сколько времени занимает подключение?', a: 'Один день. Утром — заявка и быстрая проверка, днём — выдаём ключи песочницы, к вечеру можно принимать платежи в боевом контуре.' },
   { q: 'Какая ставка комиссии?', a: 'Лесенка по обороту: до 10 млн ₽/мес — 6%, 10–20 млн — 5.5%, 20–50 млн — 4.5%, от 50 млн — 4% или индивидуально. Все ставки фиксируются в договоре.' },
+  { q: 'Какой объём вы обрабатываете?', a: 'Платформа обрабатывает 60 000+ транзакций в день в боевом контуре. Uptime платёжного шлюза — 99.9%, среднее время до подтверждения — менее 2 секунд.' },
   { q: 'Какую тематику принимаете?', a: 'Цифровые товары, Telegram-боты и Mini Apps, gaming (включая внутриигровые покупки и premium-паки), EdTech, SaaS. Уточняем в KYB по конкретному кейсу.' },
 ];
 
@@ -690,7 +679,7 @@ function Footer() {
         </div>
       </div>
       <div className="footer-legal">
-        <span>© 2026 Oplatum · НКО «МОБИ.Деньги», ЦБ РФ №3523-К</span>
+        <span>© 2026 Oplatum</span>
         <span>hello@oplatum.ru</span>
       </div>
     </footer>
@@ -707,7 +696,7 @@ function App() {
       <Advantages />
       <ProductFeatures />
       <ProcessSteps />
-      <CasesStrip />
+      <ProofOfConcept />
       <IndustryGrid />
       <PricingSection />
       <TelegramBlock />
