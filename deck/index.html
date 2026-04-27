@@ -7,7 +7,7 @@
 <meta name="description" content="Платёжная инфраструктура с интеграцией за 1 день. СБП, СБП-подписки, USDT-расчёты. 60 000+ транзакций в день, uptime 99.9%.">
 <style>
 /* ============================================================
-   Oplatum Deck — vertical A4 (210×297mm), 10 slides
+   Oplatum Deck — A4 LANDSCAPE (297×210mm), 10 slides
    ============================================================ */
 
 @font-face { font-family: 'ALS Hauss'; src: url('../fonts/ALSHauss-Light.ttf') format('truetype');   font-weight: 300; font-display: swap; }
@@ -53,23 +53,26 @@ html, body { margin: 0; padding: 0; background: #EEF0F4; color: var(--text); fon
   box-shadow: 0 4px 14px rgba(10,14,20,0.08);
 }
 .deck-toolbar .hint { font-size: 13px; color: var(--text-secondary); margin-right: 4px; }
-.btn-print {
+.btn-download {
   font-family: var(--font-body); font-weight: 500; font-size: 14px;
   background: var(--text); color: #FFF;
   border: 1px solid transparent; border-radius: 8px;
   padding: 10px 16px; cursor: pointer;
   display: inline-flex; align-items: center; gap: 8px;
   transition: all 200ms ease;
+  text-decoration: none;
 }
-.btn-print:hover { background: #1F262E; }
+.btn-download:hover { background: #1F262E; }
 
-/* Slide container — A4 portrait */
+/* Deck container */
 .deck { display: flex; flex-direction: column; align-items: center; gap: 16px; padding: 80px 16px 60px; }
+
+/* A4 landscape slide */
 .slide {
-  width: 210mm; height: 297mm;
+  width: 297mm; height: 210mm;
   background: var(--bg);
   position: relative; overflow: hidden;
-  padding: 18mm 16mm;
+  padding: 14mm 18mm;
   display: flex; flex-direction: column;
   box-shadow: 0 4px 30px rgba(10,14,20,0.10);
   break-inside: avoid;
@@ -77,15 +80,15 @@ html, body { margin: 0; padding: 0; background: #EEF0F4; color: var(--text); fon
 .slide.dark { background: var(--terminal-bg); color: #FFF; }
 
 /* Slide chrome */
-.slide-head { display: flex; flex-direction: column; gap: 10px; margin-bottom: 14mm; }
+.slide-head { display: flex; flex-direction: column; gap: 8px; margin-bottom: 8mm; }
 .slide-foot {
-  position: absolute; left: 16mm; right: 16mm; bottom: 12mm;
+  position: absolute; left: 18mm; right: 18mm; bottom: 8mm;
   display: flex; justify-content: space-between; align-items: center;
-  font-family: var(--font-mono); font-size: 10px; color: var(--text-muted);
+  font-family: var(--font-mono); font-size: 9.5px; color: var(--text-muted);
   text-transform: uppercase; letter-spacing: 0.08em;
 }
 .slide.dark .slide-foot { color: #6E7682; }
-.slide-foot .wm { font-family: var(--font-display); font-weight: 700; font-size: 14px; color: var(--text); text-transform: none; letter-spacing: -0.01em; }
+.slide-foot .wm { font-family: var(--font-display); font-weight: 700; font-size: 13px; color: var(--text); text-transform: none; letter-spacing: -0.01em; }
 .slide.dark .slide-foot .wm { color: #FFF; }
 .slide-foot .wm .dot { color: var(--highlight); }
 
@@ -93,143 +96,153 @@ html, body { margin: 0; padding: 0; background: #EEF0F4; color: var(--text); fon
 .ovl { font-family: var(--font-mono); font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-secondary); }
 .slide.dark .ovl { color: #A5ADB8; }
 h1, h2, h3 { font-family: var(--font-display); margin: 0; font-weight: 700; letter-spacing: -0.02em; line-height: 1.05; }
-h1 { font-size: 56px; }
-h2 { font-size: 40px; line-height: 1.1; letter-spacing: -0.015em; }
+h1 { font-size: 64px; }
+h2 { font-size: 42px; line-height: 1.1; letter-spacing: -0.015em; }
 h3 { font-size: 22px; line-height: 1.2; letter-spacing: -0.005em; }
 p { margin: 0; line-height: 1.55; }
-.lead { font-size: 18px; color: var(--text-secondary); line-height: 1.55; max-width: 600px; }
+.lead { font-size: 17px; color: var(--text-secondary); line-height: 1.55; max-width: 220mm; }
 .slide.dark .lead { color: #C2C8D2; }
 .accent { color: var(--highlight); }
 
-/* ===== Slide 1 — cover ===== */
+/* ===== Slide 1 — cover (landscape: title left, meta right) ===== */
 .s-cover { justify-content: space-between; }
 .s-cover .top { display: flex; justify-content: space-between; align-items: center; }
 .s-cover .wm-big { font-weight: 700; font-size: 26px; letter-spacing: -0.025em; }
 .s-cover .wm-big .dot { color: var(--highlight); }
 .s-cover .stamp { font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; }
-.s-cover .mid h1 { font-size: 64px; line-height: 1.05; max-width: 170mm; }
+.s-cover .mid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 30mm; align-items: center; flex: 1; padding: 12mm 0; }
+.s-cover .mid h1 { font-size: 72px; line-height: 1.02; }
 .s-cover .mid h1 .accent { color: var(--highlight); }
-.s-cover .mid .lead { margin-top: 18px; max-width: 150mm; }
-.s-cover .meta-row { display: flex; gap: 56px; padding-top: 24px; border-top: 1px solid var(--border); }
-.s-cover .meta-num { font-size: 36px; font-weight: 700; color: var(--highlight); letter-spacing: -0.015em; }
-.s-cover .meta-lbl { font-size: 12px; color: var(--text-secondary); margin-top: 4px; line-height: 1.4; }
+.s-cover .mid .lead { margin-top: 18px; max-width: 130mm; font-size: 18px; }
+.s-cover .meta-stack { display: flex; flex-direction: column; gap: 22px; }
+.s-cover .meta-num { font-size: 56px; font-weight: 700; color: var(--highlight); letter-spacing: -0.02em; line-height: 1; }
+.s-cover .meta-lbl { font-size: 14px; color: var(--text-secondary); margin-top: 6px; line-height: 1.4; }
+.s-cover .meta-row { display: flex; flex-direction: column; gap: 24px; padding-left: 24px; border-left: 2px solid var(--highlight); }
 
-/* ===== Slide 2 — TL;DR ===== */
-.tldr-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 8px; }
-.tldr-card { background: var(--surface); border-radius: 18px; padding: 22px; }
-.tldr-card .num { font-family: var(--font-mono); font-size: 11px; color: var(--highlight); margin-bottom: 12px; font-weight: 500; letter-spacing: 0.08em; }
-.tldr-card h3 { font-size: 17px; margin-bottom: 8px; }
-.tldr-card p { font-size: 13.5px; color: var(--text-secondary); }
+/* ===== Slide 2 — TL;DR (4 cards horizontal) ===== */
+.tldr-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; flex: 1; align-content: start; }
+.tldr-card { background: var(--surface); border-radius: 18px; padding: 24px 22px; }
+.tldr-card .num { font-family: var(--font-mono); font-size: 11px; color: var(--highlight); margin-bottom: 14px; font-weight: 500; letter-spacing: 0.08em; }
+.tldr-card h3 { font-size: 19px; margin-bottom: 10px; line-height: 1.2; }
+.tldr-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.55; }
 
-/* ===== Slide 3 — proof of concept ===== */
-.proof-box { background: var(--text); color: #FFF; border-radius: 24px; padding: 36px; flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 28px; }
-.proof-headline { font-family: var(--font-display); font-size: 110px; font-weight: 700; line-height: 1; letter-spacing: -0.04em; }
-.proof-headline .plus { color: var(--highlight); font-size: 56px; vertical-align: top; }
-.proof-cap { font-size: 16px; color: #C2C8D2; }
-.proof-stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; margin-top: 8px; }
-.proof-stat { padding-left: 14px; border-left: 2px solid var(--highlight); }
-.proof-stat .v { font-size: 26px; font-weight: 700; color: #FFF; }
-.proof-stat .l { font-size: 12px; color: #8B92A0; margin-top: 4px; line-height: 1.4; }
+/* ===== Slide 3 — proof of concept (left big number, right stats) ===== */
+.proof-box { background: var(--text); color: #FFF; border-radius: 28px; padding: 40px 48px; flex: 1; display: grid; grid-template-columns: 1.05fr 1fr; gap: 40px; align-items: center; position: relative; overflow: hidden; }
+.proof-box::before { content: ''; position: absolute; top: 0; right: 0; width: 50%; height: 100%; background: radial-gradient(circle at 80% 50%, rgba(31,111,235,0.20), transparent 65%); pointer-events: none; }
+.proof-main { position: relative; z-index: 1; }
+.proof-headline { font-family: var(--font-display); font-size: 132px; font-weight: 700; line-height: 1; letter-spacing: -0.04em; }
+.proof-headline .plus { color: var(--highlight); font-size: 72px; vertical-align: top; }
+.proof-cap { font-size: 17px; color: #C2C8D2; margin-top: 14px; max-width: 280px; line-height: 1.4; }
+.proof-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 22px 28px; position: relative; z-index: 1; }
+.proof-stat { padding-left: 16px; border-left: 2px solid var(--highlight); }
+.proof-stat .v { font-size: 32px; font-weight: 700; color: #FFF; letter-spacing: -0.01em; line-height: 1.1; }
+.proof-stat .l { font-size: 13px; color: #8B92A0; margin-top: 6px; line-height: 1.4; }
 
-/* ===== Slide 4 — features grid ===== */
-.feat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
-.feat { background: #FFF; border: 1px solid var(--border); border-radius: 14px; padding: 16px 14px; }
-.feat .tag { display: inline-block; font-family: var(--font-mono); font-size: 9px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--highlight); background: var(--highlight-soft); padding: 3px 6px; border-radius: 4px; margin-bottom: 10px; }
+/* ===== Slide 4 — features grid (4 cols × 3 rows) ===== */
+.feat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; flex: 1; align-content: start; }
+.feat { background: #FFF; border: 1px solid var(--border); border-radius: 14px; padding: 16px 16px; }
+.feat .tag { display: inline-block; font-family: var(--font-mono); font-size: 9.5px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--highlight); background: var(--highlight-soft); padding: 3px 7px; border-radius: 4px; margin-bottom: 10px; }
 .feat h3 { font-size: 14px; margin: 0 0 6px; line-height: 1.25; }
 .feat p { font-size: 11.5px; color: var(--text-secondary); line-height: 1.5; }
 
-/* ===== Slide 5 — process steps ===== */
-.steps { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
-.step { background: var(--surface); border-radius: 20px; padding: 26px 22px; }
-.step .n { font-family: var(--font-mono); font-weight: 700; font-size: 14px; color: var(--highlight); margin-bottom: 18px; }
-.step h3 { font-size: 19px; margin: 0 0 10px; }
-.step p { font-size: 14px; color: var(--text-secondary); }
-.steps-note { margin-top: 24px; padding: 18px 22px; background: var(--highlight-soft); border-radius: 12px; }
+/* ===== Slide 5 — process steps (3 cols, big) ===== */
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.step { background: var(--surface); border-radius: 22px; padding: 32px 28px; }
+.step .n { font-family: var(--font-mono); font-weight: 700; font-size: 16px; color: var(--highlight); margin-bottom: 22px; }
+.step h3 { font-size: 24px; margin: 0 0 12px; }
+.step p { font-size: 15px; color: var(--text-secondary); }
+.steps-note { margin-top: 20px; padding: 22px 28px; background: var(--highlight-soft); border-radius: 14px; }
 .steps-note b { color: var(--highlight); }
-.steps-note { font-size: 14px; color: var(--text); }
+.steps-note { font-size: 15px; color: var(--text); }
 
-/* ===== Slide 6 — pricing ladder ===== */
-.tariffs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 8px; }
-.tariff { background: var(--surface); border-radius: 18px; padding: 24px 20px; text-align: left; }
+/* ===== Slide 6 — pricing ladder (4 cols horizontal) ===== */
+.tariffs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.tariff { background: var(--surface); border-radius: 20px; padding: 28px 22px; text-align: left; }
 .tariff.featured { background: var(--text); color: #FFF; }
-.tariff .vol { font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 14px; }
+.tariff .vol { font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 18px; }
 .tariff.featured .vol { color: #8B92A0; }
-.tariff .rate { font-size: 36px; font-weight: 700; line-height: 1; letter-spacing: -0.02em; color: var(--highlight); margin-bottom: 12px; }
-.tariff.featured .rate { color: var(--highlight); }
-.tariff .desc { font-size: 13px; color: var(--text-secondary); line-height: 1.45; }
+.tariff .rate { font-size: 44px; font-weight: 700; line-height: 1; letter-spacing: -0.02em; color: var(--highlight); margin-bottom: 14px; }
+.tariff .desc { font-size: 13px; color: var(--text-secondary); line-height: 1.5; }
 .tariff.featured .desc { color: #C2C8D2; }
+.pricing-meta { margin-top: 18px; display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+.pricing-meta-block .ovl { margin-bottom: 8px; display: block; }
+.pricing-meta-block p { font-size: 14px; color: var(--text-secondary); line-height: 1.55; max-width: 110mm; }
 
-/* ===== Slide 7 — industries ===== */
-.ind-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-.ind { background: #FFF; border: 1px solid var(--border); border-radius: 18px; padding: 22px; }
-.ind .ovl-mini { font-family: var(--font-mono); font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
-.ind h3 { font-size: 17px; margin: 0 0 10px; }
-.ind p { font-size: 12.5px; color: var(--text-secondary); margin-bottom: 6px; }
-.ind .metric { font-size: 22px; font-weight: 700; color: var(--highlight); margin-top: 8px; }
-.ind .metric span { font-family: var(--font-body); font-size: 12px; color: var(--text-secondary); margin-left: 6px; font-weight: 400; }
+/* ===== Slide 7 — industries (5 cards in 3+2 layout) ===== */
+.ind-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; flex: 1; align-content: start; }
+.ind { background: #FFF; border: 1px solid var(--border); border-radius: 18px; padding: 22px 20px; display: flex; flex-direction: column; }
+.ind .ovl-mini { font-family: var(--font-mono); font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 10px; }
+.ind h3 { font-size: 17px; margin: 0 0 12px; line-height: 1.2; }
+.ind .pr { font-size: 12.5px; color: var(--text-secondary); margin-bottom: 6px; line-height: 1.5; }
+.ind .sl { font-size: 12.5px; color: var(--text); margin-bottom: 12px; line-height: 1.5; }
+.ind .metric { font-size: 24px; font-weight: 700; color: var(--highlight); margin-top: auto; padding-top: 12px; border-top: 1px solid var(--border); display: flex; align-items: baseline; gap: 8px; }
+.ind .metric span { font-family: var(--font-body); font-size: 12px; color: var(--text-secondary); font-weight: 400; }
 
-/* ===== Slide 8 — dev ===== */
-.dev-block { display: grid; grid-template-columns: 1fr 1.05fr; gap: 28px; align-items: stretch; flex: 1; }
-.dev-block ul { list-style: none; padding: 0; margin: 18px 0 0; display: flex; flex-direction: column; gap: 10px; }
-.dev-block li { font-size: 13.5px; color: #C2C8D2; padding-left: 22px; position: relative; }
+/* ===== Slide 8 — dev (dark, two-col, code right) ===== */
+.dev-block { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 32px; align-items: stretch; flex: 1; }
+.dev-block ul { list-style: none; padding: 0; margin: 14px 0 0; display: flex; flex-direction: column; gap: 9px; }
+.dev-block li { font-size: 14px; color: #C2C8D2; padding-left: 22px; position: relative; }
 .dev-block li::before { content: '→'; position: absolute; left: 0; color: var(--highlight); font-family: var(--font-mono); }
-.codeblock { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 14px; font-family: var(--font-mono); font-size: 11px; line-height: 1.6; color: var(--terminal-fg); white-space: pre-wrap; align-self: stretch; }
+.codeblock { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 20px 22px; font-family: var(--font-mono); font-size: 12px; line-height: 1.75; color: var(--terminal-fg); white-space: pre-wrap; align-self: stretch; overflow: hidden; }
 .codeblock .com { color: var(--terminal-muted); }
 .codeblock .key { color: var(--terminal-amber); }
 .codeblock .str { color: var(--terminal-green); }
 .codeblock .fn  { color: #59C2FF; }
 .codeblock .num { color: var(--terminal-amber); }
 
-/* ===== Slide 9 — roadmap ===== */
-.rm-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
-.rm-card { background: var(--surface); border-radius: 18px; padding: 22px; }
-.rm-card .stt { display: inline-block; font-family: var(--font-mono); font-size: 10px; color: var(--highlight); background: var(--highlight-soft); padding: 4px 8px; border-radius: 5px; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.08em; }
-.rm-card h3 { font-size: 17px; margin: 0 0 8px; }
-.rm-card p { font-size: 13px; color: var(--text-secondary); line-height: 1.5; }
+/* ===== Slide 9 — roadmap (3 cols + 2 cols span) ===== */
+.rm-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.rm-card { background: var(--surface); border-radius: 18px; padding: 24px 22px; }
+.rm-card .stt { display: inline-block; font-family: var(--font-mono); font-size: 10px; color: var(--highlight); background: var(--highlight-soft); padding: 4px 9px; border-radius: 5px; margin-bottom: 14px; text-transform: uppercase; letter-spacing: 0.08em; }
+.rm-card h3 { font-size: 18px; margin: 0 0 10px; }
+.rm-card p { font-size: 13px; color: var(--text-secondary); line-height: 1.55; }
 
 /* ===== Slide 10 — contacts ===== */
-.contacts { display: flex; flex-direction: column; gap: 36px; }
-.contacts-row { display: flex; gap: 24px; }
-.contact-block { flex: 1; background: var(--surface); border-radius: 22px; padding: 36px; }
+.contacts { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; flex: 1; }
+.contact-block { background: var(--surface); border-radius: 22px; padding: 36px 32px; display: flex; flex-direction: column; }
+.contact-block.cta-final { background: var(--text); color: #FFF; }
 .contact-block .ovl-mini { font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 14px; }
-.contact-block h3 { font-size: 28px; margin: 0 0 12px; }
-.contact-block p { font-size: 15px; color: var(--text-secondary); }
-.contact-block a { display: block; font-family: var(--font-mono); font-size: 16px; color: var(--highlight); margin-top: 14px; text-decoration: none; }
-.cta-final { background: var(--text); color: #FFF; border-radius: 24px; padding: 48px 40px; text-align: center; }
-.cta-final h2 { font-size: 36px; line-height: 1.1; margin-bottom: 16px; color: #FFF; }
-.cta-final p { font-size: 16px; color: #C2C8D2; margin-bottom: 28px; max-width: 480px; margin-left: auto; margin-right: auto; }
-.cta-final a { display: inline-block; background: var(--highlight); color: #FFF; font-weight: 500; padding: 14px 28px; border-radius: 10px; text-decoration: none; font-size: 15px; }
+.contact-block.cta-final .ovl-mini { color: #8B92A0; }
+.contact-block h3 { font-size: 30px; margin: 0 0 14px; line-height: 1.1; }
+.contact-block.cta-final h3 { color: #FFF; }
+.contact-block p { font-size: 15px; color: var(--text-secondary); margin-bottom: 16px; line-height: 1.55; }
+.contact-block.cta-final p { color: #C2C8D2; }
+.contact-block .contact-list { display: flex; flex-direction: column; gap: 10px; margin-top: auto; }
+.contact-block .contact-list a { font-family: var(--font-mono); font-size: 16px; color: var(--highlight); text-decoration: none; padding: 12px 16px; background: rgba(31,111,235,0.06); border-radius: 10px; }
+.contact-block.cta-final .contact-list a { background: var(--highlight); color: #FFF; text-align: center; padding: 14px 22px; font-family: var(--font-body); font-weight: 500; font-size: 15px; }
 
 /* ============================================================
-   PRINT — convert to A4 portrait, hide chrome
+   PRINT — A4 landscape, hide chrome
    ============================================================ */
-@page { size: A4 portrait; margin: 0; }
+@page { size: 297mm 210mm; margin: 0; }
 
 @media print {
-  html, body { background: #FFF; }
+  html, body { background: #FFF !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; color-adjust: exact; margin: 0 !important; padding: 0 !important; }
   .deck-toolbar { display: none !important; }
-  .deck { padding: 0; gap: 0; }
+  .deck { padding: 0 !important; gap: 0 !important; margin: 0 !important; display: block !important; }
   .slide {
-    box-shadow: none;
+    box-shadow: none !important;
+    transform: none !important;
     page-break-after: always;
     break-after: page;
-    margin: 0;
+    margin: 0 !important;
   }
   .slide:last-child { page-break-after: auto; break-after: auto; }
+  * { animation: none !important; transition: none !important; }
 }
 
 /* Screen-only narrow: scale slides on small viewports */
-@media (max-width: 800px) {
+@media screen and (max-width: 1100px) {
   .deck { padding: 60px 8px 40px; }
-  .slide { transform: scale(0.7); transform-origin: top center; margin-bottom: -90mm; }
+  .slide { transform: scale(0.6); transform-origin: top center; margin-bottom: -84mm; }
 }
 </style>
 </head>
 <body>
 
 <div class="deck-toolbar">
-  <span class="hint">10 слайдов · A4 portrait</span>
-  <button class="btn-print" onclick="window.print()">Скачать PDF →</button>
+  <span class="hint">10 слайдов · A4 landscape</span>
+  <a class="btn-download" href="./oplatum-deck.pdf" download="Oplatum-Deck.pdf">Скачать PDF →</a>
 </div>
 
 <div class="deck">
@@ -241,22 +254,24 @@ p { margin: 0; line-height: 1.55; }
     <span class="stamp">Apr 2026 · for clients</span>
   </div>
   <div class="mid">
-    <span class="ovl">Платежи · Россия и за её пределами</span>
-    <h1 style="margin-top: 14px;">Платёжная инфраструктура с интеграцией <span class="accent">за 1 день</span></h1>
-    <p class="lead">СБП, СБП-подписки и USDT-расчёты для цифровых продуктов. Подключение без бумаг и долгого ожидания.</p>
-  </div>
-  <div class="meta-row">
     <div>
-      <div class="meta-num">60k+</div>
-      <div class="meta-lbl">транзакций<br>в день</div>
+      <span class="ovl">Платежи · Россия и за её пределами</span>
+      <h1 style="margin-top: 14px;">Платёжная инфраструктура с интеграцией <span class="accent">за 1 день</span></h1>
+      <p class="lead">СБП, СБП-подписки и USDT-расчёты для цифровых продуктов. Подключение без бумаг и долгого ожидания.</p>
     </div>
-    <div>
-      <div class="meta-num">99.9%</div>
-      <div class="meta-lbl">uptime<br>платёжного шлюза</div>
-    </div>
-    <div>
-      <div class="meta-num">1 день</div>
-      <div class="meta-lbl">от заявки<br>до приёма платежей</div>
+    <div class="meta-row">
+      <div>
+        <div class="meta-num">60k+</div>
+        <div class="meta-lbl">транзакций в день</div>
+      </div>
+      <div>
+        <div class="meta-num">99.9%</div>
+        <div class="meta-lbl">uptime платёжного шлюза</div>
+      </div>
+      <div>
+        <div class="meta-num">1 день</div>
+        <div class="meta-lbl">от заявки до приёма платежей</div>
+      </div>
     </div>
   </div>
   <footer class="slide-foot"><span class="wm">oplatum<span class="dot">.</span></span><span>01 · 10</span></footer>
@@ -273,7 +288,7 @@ p { margin: 0; line-height: 1.55; }
     <div class="tldr-card">
       <div class="num">01</div>
       <h3>Принимаем СБП и подписки</h3>
-      <p>Одиночные платежи через QR и рекуррентные списания через walletType:2. Полный цикл — от создания платежа до webhook о статусе.</p>
+      <p>Одиночные платежи через QR и рекуррентные списания через walletType:2. Полный цикл от создания платежа до webhook о статусе.</p>
     </div>
     <div class="tldr-card">
       <div class="num">02</div>
@@ -283,7 +298,7 @@ p { margin: 0; line-height: 1.55; }
     <div class="tldr-card">
       <div class="num">03</div>
       <h3>API уровня Stripe</h3>
-      <p>HMAC-SHA256, идемпотентность, sandbox с тестовыми ключами, webhooks с подписью, SDK для Node, Python и PHP.</p>
+      <p>HMAC-SHA256, идемпотентность, sandbox с тестовыми ключами, webhooks с подписью, SDK Node, Python, PHP.</p>
     </div>
     <div class="tldr-card">
       <div class="num">04</div>
@@ -302,7 +317,7 @@ p { margin: 0; line-height: 1.55; }
     <p class="lead">Платформа уже работает с реальным трафиком. Логотипы клиентов раскрываем под NDA в KYB.</p>
   </div>
   <div class="proof-box">
-    <div>
+    <div class="proof-main">
       <div class="proof-headline">60 000<span class="plus">+</span></div>
       <div class="proof-cap">транзакций обрабатываем в день</div>
     </div>
@@ -397,14 +412,14 @@ p { margin: 0; line-height: 1.55; }
       <div class="desc">Индивидуальные условия для крупного оборота</div>
     </div>
   </div>
-  <div style="margin-top: 18mm; display: flex; gap: 56px;">
-    <div>
-      <div class="ovl">Что входит</div>
-      <p style="font-size: 14px; color: var(--text-secondary); margin-top: 12px; max-width: 70mm; line-height: 1.6;">Приём СБП и подписок, расчёты в RUB и USDT, API уровня Stripe, sandbox, личный кабинет, поддержка 24/7, персональный менеджер.</p>
+  <div class="pricing-meta">
+    <div class="pricing-meta-block">
+      <span class="ovl">Что входит в ставку</span>
+      <p>Приём СБП и подписок, расчёты в RUB и USDT, API уровня Stripe, sandbox, личный кабинет, поддержка 24/7, персональный менеджер.</p>
     </div>
-    <div>
-      <div class="ovl">Без скрытых строк</div>
-      <p style="font-size: 14px; color: var(--text-secondary); margin-top: 12px; max-width: 70mm; line-height: 1.6;">Setup-fee — 0 ₽. Изменения тарифа только по обновлённому договору. Возвраты и рефанды не считаются как двойная комиссия.</p>
+    <div class="pricing-meta-block">
+      <span class="ovl">Без скрытых строк</span>
+      <p>Setup-fee — 0 ₽. Изменения тарифа только по обновлённому договору. Возвраты и рефанды не считаются как двойная комиссия.</p>
     </div>
   </div>
   <footer class="slide-foot"><span class="wm">oplatum<span class="dot">.</span></span><span>06 · 10</span></footer>
@@ -421,43 +436,43 @@ p { margin: 0; line-height: 1.55; }
     <div class="ind">
       <div class="ovl-mini">01 · Telegram-экономика</div>
       <h3>Подписки и платежи в ботах</h3>
-      <p>Stripe и зарубежные шлюзы не работают с резидентами РФ.</p>
-      <p>СБП-подписки с зачислением в RUB на расчётный счёт.</p>
+      <p class="pr">Stripe и зарубежные шлюзы не работают с резидентами РФ.</p>
+      <p class="sl">СБП-подписки с зачислением в RUB на расчётный счёт.</p>
       <div class="metric">+38%<span>конверсия в оплату</span></div>
     </div>
     <div class="ind">
       <div class="ovl-mini">02 · Gaming</div>
       <h3>Микроплатежи и внутриигровые покупки</h3>
-      <p>Многие провайдеры блокируют игровую тематику.</p>
-      <p>Принимаем gaming, лутбоксы и premium-паки в открытом договоре.</p>
+      <p class="pr">Многие провайдеры блокируют игровую тематику.</p>
+      <p class="sl">Принимаем gaming, лутбоксы и premium-паки в открытом договоре.</p>
       <div class="metric">&lt; 2 сек<span>до подтверждения</span></div>
     </div>
     <div class="ind">
       <div class="ovl-mini">03 · EdTech</div>
       <h3>Курсы, подписки, рассрочка</h3>
-      <p>Длинные продукты с возвратами требуют гибкого билинга.</p>
-      <p>Подписки и рассрочка платежей через единый API.</p>
+      <p class="pr">Длинные продукты с возвратами требуют гибкого билинга.</p>
+      <p class="sl">Подписки и рассрочка платежей через единый API.</p>
       <div class="metric">0.4%<span>возвратов</span></div>
     </div>
     <div class="ind">
       <div class="ovl-mini">04 · SaaS</div>
       <h3>Recurring billing для B2B</h3>
-      <p>Карты не подходят для долгосрочных корпоративных подписок.</p>
-      <p>СБП-подписки для регулярных корпоративных платежей.</p>
+      <p class="pr">Карты не подходят для долгосрочных корпоративных подписок.</p>
+      <p class="sl">СБП-подписки для регулярных корпоративных платежей.</p>
       <div class="metric">24 ч<span>до интеграции</span></div>
     </div>
-    <div class="ind" style="grid-column: 1 / -1;">
+    <div class="ind" style="grid-column: span 2;">
       <div class="ovl-mini">05 · Иностранные юрлица</div>
       <h3>USDT для нерезидентов</h3>
-      <p>Иностранцу нельзя открыть расчётный счёт в России.</p>
-      <p>Расчёты приходят в USDT на ваш кошелёк. Договор с российским лицензированным эквайером.</p>
+      <p class="pr">Иностранцу нельзя открыть расчётный счёт в России.</p>
+      <p class="sl">Расчёты приходят в USDT на ваш кошелёк. Договор с российским лицензированным эквайером.</p>
       <div class="metric">USDT<span>валюта расчётов</span></div>
     </div>
   </div>
   <footer class="slide-foot"><span class="wm">oplatum<span class="dot">.</span></span><span>07 · 10</span></footer>
 </section>
 
-<!-- ===== Slide 8 — Dev ===== -->
+<!-- ===== Slide 8 — Dev (dark) ===== -->
 <section class="slide dark">
   <div class="slide-head">
     <span class="ovl">07 · Для разработчиков</span>
@@ -476,7 +491,7 @@ p { margin: 0; line-height: 1.55; }
         <li>Checkout Sessions (hosted)</li>
         <li>Возвраты через POST /refund</li>
         <li>SDK Node / Python / PHP</li>
-        <li>Postman-коллекция + консоль</li>
+        <li>Postman + интерактивная консоль</li>
       </ul>
     </div>
     <pre class="codeblock"><span class="com">// Платёж по СБП с подпиской</span>
@@ -508,7 +523,7 @@ p { margin: 0; line-height: 1.55; }
     <div class="rm-card"><div class="stt">План</div><h3>Mass payouts</h3><p>Массовые выплаты исполнителям, авторам и продавцам через единый API.</p></div>
     <div class="rm-card"><div class="stt">Прототип</div><h3>MCP-сервер для AI-агентов</h3><p>Агент сам интегрирует платежи в код через Model Context Protocol.</p></div>
     <div class="rm-card"><div class="stt">План</div><h3>Telegram Mini App native</h3><p>Нативная оплата внутри Mini App без редиректов на hosted checkout.</p></div>
-    <div class="rm-card" style="grid-column: 1 / -1;"><div class="stt">План</div><h3>Multi-currency расчёты</h3><p>Зачисления в EUR и других стейблах поверх существующих RUB и USDT.</p></div>
+    <div class="rm-card" style="grid-column: span 2;"><div class="stt">План</div><h3>Multi-currency расчёты</h3><p>Зачисления в EUR и других стейблах поверх существующих RUB и USDT для бизнесов с международной аудиторией.</p></div>
   </div>
   <footer class="slide-foot"><span class="wm">oplatum<span class="dot">.</span></span><span>09 · 10</span></footer>
 </section>
@@ -518,26 +533,25 @@ p { margin: 0; line-height: 1.55; }
   <div class="slide-head">
     <span class="ovl">09 · Контакты</span>
     <h2>Подключение за 1 день</h2>
+    <p class="lead">Заявка утром — приём платежей вечером. Расскажите о вашем продукте — пришлём расчёт условий и тестовые ключи.</p>
   </div>
   <div class="contacts">
-    <div class="contacts-row">
-      <div class="contact-block">
-        <div class="ovl-mini">Прямой контакт</div>
-        <h3>Telegram-бот</h3>
-        <p>Пишете @oplatum_bot — менеджер открывает условия в течение часа.</p>
+    <div class="contact-block">
+      <div class="ovl-mini">Прямой контакт</div>
+      <h3>Telegram-бот и почта</h3>
+      <p>Менеджер открывает условия в течение часа в рабочее время.</p>
+      <div class="contact-list">
         <a href="https://t.me/oplatum_bot">@oplatum_bot</a>
-      </div>
-      <div class="contact-block">
-        <div class="ovl-mini">Email</div>
-        <h3>Заявка на подключение</h3>
-        <p>Расскажите о вашем продукте — пришлём расчёт условий и тестовые ключи.</p>
         <a href="mailto:hello@oplatum.ru">hello@oplatum.ru</a>
       </div>
     </div>
-    <div class="cta-final">
-      <h2>Платёжная инфраструктура с интеграцией <span class="accent">за 1 день</span></h2>
-      <p>СБП, СБП-подписки и USDT-расчёты для цифровых продуктов. Заявка утром — приём платежей вечером.</p>
-      <a href="https://dolgovalexskipp.github.io/oplatum-landing/#apply">Оставить заявку →</a>
+    <div class="contact-block cta-final">
+      <div class="ovl-mini">Заявка на сайте</div>
+      <h3>Оставьте заявку — отвечаем в течение часа</h3>
+      <p>Короткая форма с ИНН и типом бизнеса. Без длинных опросов и звонков.</p>
+      <div class="contact-list">
+        <a href="https://dolgovalexskipp.github.io/oplatum-landing/#apply">Перейти к форме →</a>
+      </div>
     </div>
   </div>
   <footer class="slide-foot"><span class="wm">oplatum<span class="dot">.</span></span><span>10 · 10</span></footer>
