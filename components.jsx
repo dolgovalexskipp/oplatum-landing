@@ -39,6 +39,12 @@ const I = {
 };
 
 // ---------- Nav ----------
+const scrollToId = (id) => (e) => {
+  if (e) e.preventDefault();
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+};
+
 function Nav() {
   const [scrolled, setScrolled] = useState(false);
   useEffect(() => {
@@ -48,12 +54,12 @@ function Nav() {
   }, []);
   return (
     <nav className={`nav ${scrolled ? 'nav-scrolled' : ''}`}>
-      <span className="logo">oplatum<span className="dot">.</span></span>
+      <span className="logo" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} style={{cursor: 'pointer'}}>oplatum<span className="dot">.</span></span>
       <div className="nav-links">
-        <a className="link active">Продукт</a>
-        <a className="link">Индустрии</a>
-        <a className="link">Тарифы</a>
-        <a className="link">Документация</a>
+        <a className="link" onClick={scrollToId('product')}>Продукт</a>
+        <a className="link" onClick={scrollToId('industries')}>Индустрии</a>
+        <a className="link" onClick={scrollToId('pricing')}>Тарифы</a>
+        <a className="link" onClick={scrollToId('docs')}>Документация</a>
       </div>
       <div className="nav-spacer" />
       <span className="ghost-link" onClick={scrollToApply}>Войти</span>
@@ -206,20 +212,20 @@ function TrustStrip() {
 
 // ---------- Advantages ----------
 const ADVANTAGES = [
-  { h: 'Лицензированный процессор', body: 'Договор с НКО «МОБИ.Деньги», ЦБ РФ №3523-К. Платежи проходят по 161-ФЗ — это не серый шлюз.' },
-  { h: 'Зачисление за 1 день', body: 'Получайте деньги в рублях или USDT уже на следующий день после оплаты. Без удержаний.' },
-  { h: 'СБП-подписки', body: 'Рекуррентные списания через walletType:2. Работают в продакшне, не «в роадмапе».' },
+  { h: 'Лицензированный процессор', body: 'Договор с НКО «МОБИ.Деньги», ЦБ РФ №3523-К. Платежи проходят по 161-ФЗ.' },
+  { h: 'Зачисление за 1 день', body: 'Получайте деньги в рублях или USDT на следующий день после оплаты.' },
+  { h: 'СБП-подписки', body: 'Рекуррентные списания через walletType:2 в боевом контуре.' },
   { h: 'USDT для нерезидентов', body: 'Иностранному юрлицу не нужен расчётный счёт в РФ — расчёты приходят на USDT-кошелёк.' },
-  { h: 'SLA 4 часа в договоре', body: 'Не маркетинг — юридическое обязательство. Просрочили — компенсация по контракту.' },
-  { h: 'Персональный менеджер', body: 'От заявки до первого платежа и дальше — один человек, который знает ваш бизнес.' },
+  { h: 'Прозрачные тарифы', body: '4 уровня ставок от 6% до 4% по обороту. Все ставки опубликованы и фиксируются в договоре.' },
+  { h: 'Персональный менеджер', body: 'От заявки до первого платежа и дальше — один менеджер на стороне Oplatum.' },
 ];
 
 function Advantages() {
   return (
-    <section className="section">
+    <section className="section" id="product">
       <Overline>01 · Что вы получаете</Overline>
       <h2>Регулируемая инфраструктура с прозрачными правилами</h2>
-      <p className="sub">То, чего обычно не хватает у провайдеров для цифровых товаров и Telegram-экономики.</p>
+      <p className="sub">Для цифровых товаров, Telegram-экономики, gaming и EdTech.</p>
       <div className="adv-grid">
         {ADVANTAGES.map((it, i) => (
           <div key={i} className="adv-card">
@@ -235,11 +241,11 @@ function Advantages() {
 
 // ---------- Process (5 steps, 3 days) ----------
 const STEPS = [
-  { h: 'Оставить заявку', body: 'Короткая форма или Telegram-бот. Отвечаем в течение часа в рабочее время.' },
-  { h: 'KYB', body: 'Юристы собирают документы для лицензированного процессора. Занимает до 3 дней — без переписок «через бот».' },
-  { h: 'Песочница', body: 'Выдаём тестовые ключи и Postman-коллекцию. Команда разработки начинает интеграцию.' },
-  { h: 'Подключение', body: 'Помогаем с интеграцией, отвечаем на вопросы инженеров, проверяем webhooks и сценарии.' },
-  { h: 'Приём платежей', body: 'Переводим в продакшн. Зачисление по расписанию, мониторинг и поддержка остаются с вами.' },
+  { h: 'Оставить заявку', body: 'Короткая форма или Telegram-бот.' },
+  { h: 'KYB', body: 'Собираем документы юрлица для лицензированного процессора. Занимает до 3 дней.' },
+  { h: 'Песочница', body: 'Выдаём тестовые ключи и Postman-коллекцию для интеграции.' },
+  { h: 'Подключение', body: 'Помогаем с интеграцией, проверяем webhooks и сценарии.' },
+  { h: 'Приём платежей', body: 'Переводим в продакшн.' },
 ];
 
 function ProcessSteps() {
@@ -247,7 +253,7 @@ function ProcessSteps() {
     <section className="section">
       <Overline>02 · Как мы работаем</Overline>
       <h2>От заявки до первого платежа — обычно 3 дня</h2>
-      <p className="sub">На всём процессе с вами один персональный менеджер. Не общая поддержка через тикеты.</p>
+      <p className="sub">На всём процессе с вами один менеджер на стороне Oplatum.</p>
       <div className="steps-grid">
         {STEPS.map((s, i) => (
           <div key={i} className="step-card">
@@ -266,14 +272,14 @@ const CASES = [
   {
     brand: 'Купикод',
     domain: 'kupikod.com',
-    body: 'Подключили СБП-подписки за день. Зачисление пришло на следующее утро. walletType:2 работает в продакшне без оговорок.',
+    body: 'Подключили СБП-подписки за день. Зачисление пришло на следующее утро. walletType:2 в боевом контуре.',
     name: 'Команда Купикод',
     role: 'kupikod.com',
   },
   {
     brand: 'Press F',
     domain: 'pressf.com',
-    body: 'Открытый договор по gaming-тематике, ставка прозрачная и фиксируется в контракте. Поддержка 4 часа в договоре — реально работает.',
+    body: 'Открытый договор по gaming-тематике, ставка зафиксирована в контракте.',
     name: 'Команда Press F',
     role: 'pressf.com',
   },
@@ -286,25 +292,12 @@ function CasesStrip() {
     <section className="section">
       <Overline>03 · Кейсы</Overline>
       <h2>Уже принимают платежи через Oplatum</h2>
-      <div className="cases-row">
-        <div className="quote-card">
-          <div className="quote-mark">«</div>
-          <p className="quote-body">{cur.body}</p>
-          <div className="quote-author">
-            <span className="quote-name">{cur.name}</span>
-            <span className="quote-role">{cur.role}</span>
-          </div>
-        </div>
-        <div className="cases-nav">
-          <div className="cases-dots">
-            {CASES.map((_, i) => (
-              <button key={i} className={`cases-dot ${i === idx ? 'active' : ''}`} onClick={() => setIdx(i)} aria-label={`Кейс ${i+1}`}/>
-            ))}
-          </div>
-          <div className="cases-arrows">
-            <button className="cases-arrow" onClick={() => setIdx((idx - 1 + CASES.length) % CASES.length)} aria-label="Предыдущий">←</button>
-            <button className="cases-arrow" onClick={() => setIdx((idx + 1) % CASES.length)} aria-label="Следующий">→</button>
-          </div>
+      <div className="quote-card">
+        <div className="quote-mark">«</div>
+        <p className="quote-body">{cur.body}</p>
+        <div className="quote-author">
+          <span className="quote-name">{cur.name}</span>
+          <span className="quote-role">{cur.role}</span>
         </div>
       </div>
       <div className="logo-strip">
@@ -322,10 +315,10 @@ function CasesStrip() {
 // ---------- Industries ----------
 const INDUSTRIES = [
   { n: '04', tag: 'Telegram-экономика', h: 'Подписки и платежи в ботах', problem: 'Stripe и зарубежные шлюзы не работают с резидентами РФ.', solution: 'СБП-подписки с зачислением в RUB на расчётный счёт.', metric: '+38%', metricLabel: 'конверсия в оплату' },
-  { n: '05', tag: 'Gaming', h: 'Микроплатежи и внутриигровые покупки', problem: 'Платёжные провайдеры удерживают средства и блокируют тематику.', solution: 'Принимаем gaming, лутбоксы и премиум-паки в открытом договоре.', metric: '< 2 сек', metricLabel: 'до подтверждения' },
-  { n: '06', tag: 'EdTech', h: 'Курсы, подписки, рассрочка', problem: 'Длинные продукты с возвратами и рассрочкой — головная боль.', solution: 'Подписки + сплит-платежи + автоматический рефанд.', metric: '0.4%', metricLabel: 'возвратов' },
-  { n: '07', tag: 'SaaS', h: 'Recurring billing для B2B', problem: 'Карты не подходят для долгосрочных корпоративных подписок.', solution: 'СБП-подписки с актом и счётом-фактурой автоматом.', metric: '24 ч', metricLabel: 'до интеграции' },
-  { n: '08', tag: 'Иностранные юрлица', h: 'USDT для нерезидентов', problem: 'Иностранцу нельзя открыть расчётный счёт в России.', solution: 'Расчёты приходят в USDT на ваш кошелёк. Договор — лицензированный процессор.', metric: '0.8%', metricLabel: 'комиссия конвертации' },
+  { n: '05', tag: 'Gaming', h: 'Микроплатежи и внутриигровые покупки', problem: 'Платёжные провайдеры блокируют игровую тематику.', solution: 'Принимаем gaming, лутбоксы и премиум-паки в открытом договоре.', metric: '< 2 сек', metricLabel: 'до подтверждения' },
+  { n: '06', tag: 'EdTech', h: 'Курсы, подписки, рассрочка', problem: 'Длинные продукты с возвратами требуют гибкого билинга.', solution: 'Подписки и рассрочка платежей через единый API.', metric: '0.4%', metricLabel: 'возвратов' },
+  { n: '07', tag: 'SaaS', h: 'Recurring billing для B2B', problem: 'Карты не подходят для долгосрочных корпоративных подписок.', solution: 'СБП-подписки для регулярных корпоративных платежей.', metric: '24 ч', metricLabel: 'до интеграции' },
+  { n: '08', tag: 'Иностранные юрлица', h: 'USDT для нерезидентов', problem: 'Иностранцу нельзя открыть расчётный счёт в России.', solution: 'Расчёты приходят в USDT на ваш кошелёк.', metric: 'USDT', metricLabel: 'валюта расчётов' },
 ];
 
 function IndustryCard({ item }) {
@@ -345,7 +338,7 @@ function IndustryCard({ item }) {
 
 function IndustryGrid() {
   return (
-    <section className="section">
+    <section className="section" id="industries">
       <Overline>04 · Индустрии</Overline>
       <h2>Решения для пяти ниш цифровой экономики</h2>
       <p className="sub">Один процессор, разные сценарии. Условия подбираем под ваш бизнес.</p>
@@ -398,15 +391,15 @@ function Calculator() {
 
 function PricingSection() {
   return (
-    <section className="section two-col">
+    <section className="section two-col" id="pricing">
       <div>
         <Overline>05 · Тарифы</Overline>
         <h2>Прозрачная сетка по обороту</h2>
-        <p className="sub">Чем больше оборот — тем меньше комиссия. Без скрытых строк, без surprise-billing. Все ставки публичны и фиксируются в договоре.</p>
+        <p className="sub">Чем больше оборот — тем меньше комиссия. Все ставки публичны и фиксируются в договоре.</p>
         <ul className="bullets">
           <li>4 уровня ставок: от 6% до 4% по обороту</li>
           <li>Договор — НКО «МОБИ.Деньги», ЦБ РФ</li>
-          <li>Возвраты, рефанды, диспуты — автоматически</li>
+          <li>Возвраты и рефанды через API</li>
         </ul>
       </div>
       <Calculator />
@@ -446,7 +439,7 @@ function TelegramBlock() {
 // ---------- Dev featured (dark card) ----------
 function DevFeatured() {
   return (
-    <section className="section">
+    <section className="section" id="docs">
       <div className="dev-feature">
         <div className="dev-feature-copy">
           <Overline className="ovl-on-dark">07 · Для разработчиков</Overline>
@@ -491,11 +484,11 @@ function DevFeatured() {
 
 // ---------- Roadmap ----------
 const ROADMAP = [
-  { h: 'Карты', body: 'Эквайринг по картам РФ — добавим как второй рельс рядом с СБП.', status: 'В разработке' },
-  { h: 'Mass payouts', body: 'Массовые выплаты исполнителям, авторам, продавцам — через единый API.', status: 'Q2 2026' },
-  { h: 'MCP-сервер для AI-агентов', body: 'Агент сам интегрирует платежи в код через Model Context Protocol.', status: 'Бета' },
-  { h: 'Telegram Mini App native', body: 'Нативная оплата внутри Mini App без редиректов на hosted checkout.', status: 'Scoping' },
-  { h: 'Multi-currency расчёты', body: 'Зачисления в EUR и других стейблах поверх существующих RUB и USDT.', status: 'Scoping' },
+  { h: 'Карты', body: 'Эквайринг по картам РФ как второй рельс рядом с СБП.', status: '' },
+  { h: 'Mass payouts', body: 'Массовые выплаты исполнителям, авторам, продавцам через единый API.', status: 'План' },
+  { h: 'MCP-сервер для AI-агентов', body: 'Агент сам интегрирует платежи в код через Model Context Protocol.', status: 'Прототип' },
+  { h: 'Telegram Mini App native', body: 'Нативная оплата внутри Mini App без редиректов на hosted checkout.', status: 'План' },
+  { h: 'Multi-currency расчёты', body: 'Зачисления в EUR и других стейблах поверх существующих RUB и USDT.', status: 'План' },
 ];
 
 function Roadmap() {
@@ -503,11 +496,11 @@ function Roadmap() {
     <section className="section">
       <Overline>08 · Roadmap</Overline>
       <h2>Что готовим в ближайшие месяцы</h2>
-      <p className="sub">Сейчас в продакшне — СБП и СБП-подписки с зачислением за 1 день. Ниже — что в работе.</p>
+      <p className="sub">Сейчас в боевом контуре — СБП и СБП-подписки с зачислением за 1 день.</p>
       <div className="roadmap-grid">
         {ROADMAP.map((it, i) => (
           <div key={i} className="roadmap-card">
-            <div className="roadmap-card-status">{it.status}</div>
+            {it.status && <div className="roadmap-card-status">{it.status}</div>}
             <h3>{it.h}</h3>
             <p>{it.body}</p>
           </div>
@@ -520,7 +513,7 @@ function Roadmap() {
 // ---------- Lead Form ----------
 function LeadForm() {
   const [submitted, setSubmitted] = useState(false);
-  const [form, setForm] = useState({ name: '', contact: '', turnover: '', message: '' });
+  const [form, setForm] = useState({ name: '', contact: '', inn: '', biz: '', turnover: '', message: '' });
   const update = (k) => (e) => setForm({ ...form, [k]: e.target.value });
   const onSubmit = (e) => {
     e.preventDefault();
@@ -535,9 +528,8 @@ function LeadForm() {
           <h2>Оставьте заявку на подключение</h2>
           <p className="sub">Отвечаем в течение часа в рабочее время. KYB занимает до 3 дней — собираем документы для лицензированного процессора. На всём процессе с вами один менеджер.</p>
           <div className="lead-form-bullets">
-            <div className="lf-row"><span className="lf-num">1ч</span><span className="lf-lbl">Первый ответ</span></div>
-            <div className="lf-row"><span className="lf-num">3 дня</span><span className="lf-lbl">До первого платежа</span></div>
-            <div className="lf-row"><span className="lf-num">4 ч</span><span className="lf-lbl">SLA в договоре</span></div>
+            <div className="lf-row"><span className="lf-num">1ч</span><span className="lf-lbl">Первый ответ в рабочее время</span></div>
+            <div className="lf-row"><span className="lf-num">3 дня</span><span className="lf-lbl">От заявки до первого платежа</span></div>
           </div>
         </div>
         <div className="lead-form-fields">
@@ -548,13 +540,34 @@ function LeadForm() {
             </div>
           ) : (
             <form onSubmit={onSubmit}>
-              <div className="lf-field">
-                <label>Имя и компания</label>
-                <input required type="text" placeholder="Анна, AcmeBot" value={form.name} onChange={update('name')}/>
+              <div className="lf-grid-2">
+                <div className="lf-field">
+                  <label>Имя и компания</label>
+                  <input required type="text" placeholder="Анна, AcmeBot" value={form.name} onChange={update('name')}/>
+                </div>
+                <div className="lf-field">
+                  <label>Контакт</label>
+                  <input required type="text" placeholder="email или @telegram" value={form.contact} onChange={update('contact')}/>
+                </div>
               </div>
-              <div className="lf-field">
-                <label>Контакт (email или Telegram)</label>
-                <input required type="text" placeholder="anna@acmebot.ru или @anna" value={form.contact} onChange={update('contact')}/>
+              <div className="lf-grid-2">
+                <div className="lf-field">
+                  <label>ИНН юрлица</label>
+                  <input type="text" inputMode="numeric" placeholder="10 или 12 цифр" value={form.inn} onChange={update('inn')} pattern="[0-9]{10}|[0-9]{12}"/>
+                </div>
+                <div className="lf-field">
+                  <label>Тип бизнеса</label>
+                  <select value={form.biz} onChange={update('biz')}>
+                    <option value="">Выберите</option>
+                    <option>Telegram-бот / Mini App</option>
+                    <option>Gaming / внутриигровые покупки</option>
+                    <option>EdTech / онлайн-школа</option>
+                    <option>SaaS / B2B-инструмент</option>
+                    <option>Маркетплейс цифровых товаров</option>
+                    <option>Иностранное юрлицо для РФ-аудитории</option>
+                    <option>Другое</option>
+                  </select>
+                </div>
               </div>
               <div className="lf-field">
                 <label>Месячный оборот</label>
@@ -564,12 +577,12 @@ function LeadForm() {
                   <option>10–20 млн ₽/мес</option>
                   <option>20–50 млн ₽/мес</option>
                   <option>От 50 млн ₽/мес</option>
-                  <option>Запускаемся</option>
+                  <option>Запускаемся / нет оборота</option>
                 </select>
               </div>
               <div className="lf-field">
-                <label>Что хотите подключить</label>
-                <textarea rows="3" placeholder="Например: СБП-подписки для TG-бота, settlement в USDT для иностранного юрлица" value={form.message} onChange={update('message')}/>
+                <label>Комментарий</label>
+                <textarea rows="3" placeholder="Например: нужны СБП-подписки для TG-бота и расчёты в USDT" value={form.message} onChange={update('message')}/>
               </div>
               <Btn type="submit" size="lg">Отправить заявку <Arr /></Btn>
               <div className="lf-fineprint">Нажимая кнопку, соглашаетесь с обработкой персональных данных. Никаких звонков и спама.</div>
@@ -584,10 +597,10 @@ function LeadForm() {
 // ---------- FAQ ----------
 const FAQS = [
   { q: 'Кто несёт лицензионную ответственность?', a: 'НКО «МОБИ.Деньги», ЦБ РФ №3523-К. Oplatum — продуктовый и технологический слой поверх процессора. Все платежи проходят по 161-ФЗ.' },
-  { q: 'Можно ли получать в USDT, если у нас иностранное юрлицо?', a: 'Да. Договор заключается с лицензированным процессором, расчёты приходят на ваш USDT-кошелёк. Комиссия конвертации — 0.8%.' },
-  { q: 'Сколько времени занимает подключение?', a: 'От заявки до первого платежа — обычно 3 дня. KYB занимает до 3 дней (юристы собирают документы), интеграция — 1 день при готовом стеке.' },
-  { q: 'Какая ставка комиссии?', a: 'Лесенка по обороту: до 10 млн ₽/мес — 6%, 10–20 млн — 5.5%, 20–50 млн — 4.5%, от 50 млн — 4% или индивидуально. Все ставки публичны и зафиксированы в договоре.' },
-  { q: 'Что входит в SLA 4 часа?', a: 'Время реакции на технические инциденты в рабочее время. Прописано в договоре с компенсацией при просрочке. Не маркетинговое обещание.' },
+  { q: 'Можно ли получать в USDT, если у нас иностранное юрлицо?', a: 'Да. Договор заключается с лицензированным процессором, расчёты приходят на ваш USDT-кошелёк.' },
+  { q: 'Сколько времени занимает подключение?', a: 'От заявки до первого платежа — обычно 3 дня. KYB занимает до 3 дней — собираем документы для лицензированного процессора. Интеграция занимает день при готовом стеке.' },
+  { q: 'Какая ставка комиссии?', a: 'Лесенка по обороту: до 10 млн ₽/мес — 6%, 10–20 млн — 5.5%, 20–50 млн — 4.5%, от 50 млн — 4% или индивидуально. Все ставки фиксируются в договоре.' },
+  { q: 'Какую тематику принимаете?', a: 'Цифровые товары, Telegram-боты и Mini Apps, gaming (включая внутриигровые покупки и premium-паки), EdTech, SaaS. Уточняем в KYB по конкретному кейсу.' },
 ];
 
 function FAQ() {
@@ -622,15 +635,23 @@ function Footer() {
         </div>
         <div>
           <div className="col-h">Продукт</div>
-          <a>СБП-приём</a><a>СБП-подписки</a><a>USDT-расчёты</a><a>API</a>
+          <a onClick={scrollToId('product')}>Преимущества</a>
+          <a onClick={scrollToId('pricing')}>Тарифы</a>
+          <a onClick={scrollToId('docs')}>Для разработчиков</a>
+          <a onClick={scrollToApply}>Подключиться</a>
         </div>
         <div>
           <div className="col-h">Индустрии</div>
-          <a>Telegram</a><a>Gaming</a><a>EdTech</a><a>SaaS</a>
+          <a onClick={scrollToId('industries')}>Telegram</a>
+          <a onClick={scrollToId('industries')}>Gaming</a>
+          <a onClick={scrollToId('industries')}>EdTech</a>
+          <a onClick={scrollToId('industries')}>SaaS</a>
         </div>
         <div>
-          <div className="col-h">Документация</div>
-          <a>Quickstart</a><a>Reference</a><a>Webhooks</a><a>Changelog</a>
+          <div className="col-h">Контакты</div>
+          <a onClick={scrollToApply}>Заявка на подключение</a>
+          <a href="mailto:hello@oplatum.ru">hello@oplatum.ru</a>
+          <a href="https://t.me/oplatum_bot" target="_blank" rel="noopener">@oplatum_bot</a>
         </div>
       </div>
       <div className="footer-legal">

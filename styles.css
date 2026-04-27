@@ -254,7 +254,8 @@ html, body { margin: 0; background: var(--color-bg); color: var(--color-text); f
 .nav .logo { font-weight: 700; font-size: 20px; letter-spacing: -0.025em; color: var(--color-text); }
 .nav .logo .dot { color: var(--color-highlight); }
 .nav-links { display: flex; gap: 22px; margin-left: 24px; }
-.nav-links .link { font-size: 14px; color: var(--color-text-secondary); cursor: pointer; }
+.nav-links .link { font-size: 14px; color: var(--color-text-secondary); cursor: pointer; transition: color 150ms; }
+.nav-links .link:hover { color: var(--color-text); }
 .nav-links .link.active { color: var(--color-text); }
 .nav-spacer { flex: 1; }
 .ghost-link { font-size: 14px; color: var(--color-text); padding: 8px 14px; cursor: pointer; }
@@ -441,7 +442,8 @@ html, body { margin: 0; background: var(--color-bg); color: var(--color-text); f
 .footer .logo .dot { color: var(--color-highlight); }
 .footer .tag { font-size: 14px; color: var(--color-text-muted); line-height: 1.55; max-width: 240px; }
 .footer .col-h { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-terminal-muted); margin-bottom: 14px; }
-.footer a { display: block; color: var(--color-terminal-fg); font-size: 14px; line-height: 2; text-decoration: none; cursor: pointer; }
+.footer a { display: block; color: var(--color-terminal-fg); font-size: 14px; line-height: 2; text-decoration: none; cursor: pointer; transition: color 150ms; }
+.footer a:hover { color: #FFF; }
 .footer-legal { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 20px; display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 11px; color: var(--color-terminal-muted); }
 
 /* ============================================================
@@ -616,7 +618,8 @@ html, body { margin: 0; background: var(--color-bg); color: var(--color-text); f
 
 .lead-form-fields { background: #FFF; border-radius: 24px; padding: 36px; box-shadow: var(--shadow-card); border: 1px solid var(--color-border); }
 .lead-form-fields form { display: flex; flex-direction: column; gap: 18px; }
-.lf-field { display: flex; flex-direction: column; gap: 8px; }
+.lf-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.lf-field { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
 .lf-field label { font-family: var(--font-mono); font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-text-secondary); }
 .lf-field input, .lf-field select, .lf-field textarea {
   width: 100%; box-sizing: border-box;
@@ -653,7 +656,13 @@ html, body { margin: 0; background: var(--color-bg); color: var(--color-text); f
   .lead-form-copy h2 { font-size: 26px; }
   .lead-form-fields { padding: 24px; }
   .lf-num { font-size: 22px; min-width: 60px; }
+  .lf-grid-2 { grid-template-columns: 1fr; gap: 18px; }
   .roadmap-grid { grid-template-columns: 1fr; }
   .quote-body { font-size: 17px; }
   .quote-card { padding: 28px 22px; }
 }
+
+/* Process steps: equalize card heights so 5-col grid doesn't look ragged */
+.steps-grid { align-items: stretch; }
+.step-card { display: flex; flex-direction: column; }
+.step-card p { flex: 1; }
