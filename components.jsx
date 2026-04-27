@@ -1,5 +1,5 @@
-/* global React */
-const { useState } = React;
+/* global React, ReactDOM */
+const { useState, useEffect } = React;
 
 // ---------- Shared bits ----------
 const Overline = ({ children, className = '' }) => (
@@ -30,8 +30,14 @@ const I = {
 
 // ---------- Nav ----------
 function Nav() {
+  const [scrolled, setScrolled] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
   return (
-    <nav className="nav">
+    <nav className={`nav ${scrolled ? 'nav-scrolled' : ''}`}>
       <span className="logo">oplatum<span className="dot">.</span></span>
       <div className="nav-links">
         <a className="link active">Продукт</a>
@@ -46,14 +52,11 @@ function Nav() {
   );
 }
 
-// ---------- Admin Mockup (replaces QR block) ----------
-// Stylized HTML/CSS reproduction of the Oplatum admin dashboard.
-// All numbers are placeholders.
+// ---------- Admin Mockup ----------
 function AdminMockup() {
   return (
     <div className="admin-mock">
       <div className="admin-window">
-        {/* SIDEBAR */}
         <aside className="adm-side">
           <div className="adm-side-logo">oplatum</div>
 
@@ -72,7 +75,6 @@ function AdminMockup() {
           <div className="adm-nav-item">{I.code}<span>API Справочник</span></div>
         </aside>
 
-        {/* MAIN */}
         <div className="adm-main">
           <header className="adm-top">
             <div className="adm-top-l">
@@ -86,7 +88,7 @@ function AdminMockup() {
 
           <div className="adm-content">
             <h2 className="adm-h2">Дашборд</h2>
-            <div className="adm-sub">Обзор ваших платежей и последняя активность</div>
+            <div className="adm-sub">Обзор ваших платежей за период</div>
 
             <div className="adm-tabs">
               <span className="adm-tab">Сегодня</span>
@@ -97,7 +99,7 @@ function AdminMockup() {
 
             <div className="adm-grid">
               <div className="adm-cell">
-                <div className="adm-cell-h">Оборот (Gross)</div>
+                <div className="adm-cell-h">Оборот</div>
                 <div className="adm-cell-num blue">1 247 891 <span className="cur">RUB</span></div>
                 <div className="adm-cell-cap">Все входящие платежи</div>
               </div>
@@ -107,9 +109,9 @@ function AdminMockup() {
                 <div className="adm-cell-cap">Сумма возвратов</div>
               </div>
               <div className="adm-cell">
-                <div className="adm-cell-h">Чистый объём (Net)</div>
+                <div className="adm-cell-h">Чистый объём</div>
                 <div className="adm-cell-num">1 229 571 <span className="cur">RUB</span></div>
-                <div className="adm-cell-cap">Gross минус возвраты</div>
+                <div className="adm-cell-cap">Оборот минус возвраты</div>
               </div>
               <div className="adm-cell">
                 <div className="adm-cell-h">Транзакции</div>
@@ -117,21 +119,20 @@ function AdminMockup() {
                 <div className="adm-cell-cap">138 завершено</div>
               </div>
               <div className="adm-cell">
-                <div className="adm-cell-h">Ошибки / Ожидание</div>
+                <div className="adm-cell-h">В ожидании</div>
                 <div className="adm-cell-num">4 / 2</div>
                 <div className="adm-cell-cap">Требуют внимания</div>
               </div>
               <div className="adm-cell">
-                <div className="adm-cell-h">Комиссия за период</div>
+                <div className="adm-cell-h">Комиссия</div>
                 <div className="adm-cell-num">49 916 <span className="cur">RUB</span></div>
-                <div className="adm-cell-cap">Удержано из завершённых</div>
+                <div className="adm-cell-cap">За завершённые платежи</div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      {/* stylized mockup, replace with real screenshot when data is populated */}
-      <div className="admin-mock-note">// stylized mockup, replace with real screenshot</div>
+      <div className="admin-mock-note">// stylized mockup</div>
     </div>
   );
 }
@@ -141,12 +142,12 @@ function Hero() {
   return (
     <section className="hero">
       <div className="hero-copy">
-        <Overline>Платежи · Россия</Overline>
+        <Overline>Платежи · Россия и за её пределами</Overline>
         <h1>
-          Платёжная инфраструктура с <span className="accent-blue">settle 1 день</span>
+          Платёжная инфраструктура с зачислением <span className="accent-blue">за 1 день</span>
         </h1>
         <p className="lead">
-          Приём по СБП, СБП-подписки, оплата по QR и USDT-расчёты для цифровых продуктов. Лицензированный российский процессор НКО «МОБИ.Деньги», ЦБ РФ №3523-К.
+          Принимайте оплату по СБП, оформляйте подписки и получайте расчёты в&nbsp;USDT. Лицензированный российский процессор НКО «МОБИ.Деньги», ЦБ РФ&nbsp;№3523-К.
         </p>
         <div className="cta-row">
           <Btn size="lg">Подключиться <Arr /></Btn>
@@ -154,10 +155,10 @@ function Hero() {
         </div>
         <div className="hero-meta">
           <span className="hero-meta-num">от 4%</span>
-          <span className="hero-meta-lbl">базовая ставка<br/>с первого платежа</span>
+          <span className="hero-meta-lbl">комиссия<br/>при больших оборотах</span>
           <span className="divider" />
           <span className="hero-meta-num">1 день</span>
-          <span className="hero-meta-lbl">settlement<br/>в RUB или USDT</span>
+          <span className="hero-meta-lbl">зачисление<br/>в RUB или USDT</span>
         </div>
       </div>
       <AdminMockup />
@@ -170,40 +171,96 @@ function TrustStrip() {
   return (
     <section className="trust">
       <div className="metric-card">
-        <div className="ovl-m">Ставка</div>
-        <div className="num blue">от 4%</div>
-        <div className="lbl">Базовая ставка<br/>с первого платежа</div>
+        <div className="ovl-m">Комиссия</div>
+        <div className="num blue">4–6%</div>
+        <div className="lbl">в зависимости<br/>от оборота</div>
       </div>
       <div className="metric-card bar">
-        <div className="ovl-m">Settlement</div>
+        <div className="ovl-m">Зачисление</div>
         <div className="num">1 день</div>
-        <div className="lbl">До зачисления<br/>на ваш счёт</div>
+        <div className="lbl">в рублях<br/>или USDT</div>
       </div>
       <div className="metric-card">
-        <div className="ovl-m">ЦБ РФ</div>
+        <div className="ovl-m">Лицензия ЦБ РФ</div>
         <div className="num">3523-К</div>
-        <div className="lbl">Лицензия НКО<br/>«МОБИ.Деньги»</div>
+        <div className="lbl">НКО<br/>«МОБИ.Деньги»</div>
       </div>
       <div className="metric-card bar">
-        <div className="ovl-m">Валюты</div>
-        <div className="num">RUB · USDT</div>
-        <div className="lbl">Settlement в рублях<br/>и стейблах</div>
+        <div className="ovl-m">Запуск</div>
+        <div className="num">3 дня</div>
+        <div className="lbl">от заявки<br/>до первого платежа</div>
       </div>
     </section>
   );
 }
 
-// ---------- Cases (testimonial + logos) ----------
-// placeholder testimonial + logos, replace when team supplies real ones
+// ---------- Advantages ----------
+const ADVANTAGES = [
+  { h: 'Лицензированный процессор', body: 'Договор с НКО «МОБИ.Деньги», ЦБ РФ №3523-К. Платежи проходят по 161-ФЗ — это не серый шлюз.' },
+  { h: 'Зачисление за 1 день', body: 'Получайте деньги в рублях или USDT уже на следующий день после оплаты. Без удержаний.' },
+  { h: 'СБП-подписки', body: 'Рекуррентные списания через walletType:2. Работают в продакшне, не «в роадмапе».' },
+  { h: 'USDT для нерезидентов', body: 'Иностранному юрлицу не нужен расчётный счёт в РФ — расчёты приходят на USDT-кошелёк.' },
+  { h: 'SLA 4 часа в договоре', body: 'Не маркетинг — юридическое обязательство. Просрочили — компенсация по контракту.' },
+  { h: 'Персональный менеджер', body: 'От заявки до первого платежа и дальше — один человек, который знает ваш бизнес.' },
+];
+
+function Advantages() {
+  return (
+    <section className="section">
+      <Overline>01 · Что вы получаете</Overline>
+      <h2>Регулируемая инфраструктура с прозрачными правилами</h2>
+      <p className="sub">То, чего обычно не хватает у провайдеров для цифровых товаров и Telegram-экономики.</p>
+      <div className="adv-grid">
+        {ADVANTAGES.map((it, i) => (
+          <div key={i} className="adv-card">
+            <div className="adv-num">0{i+1}</div>
+            <h3>{it.h}</h3>
+            <p>{it.body}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+// ---------- Process (5 steps, 3 days) ----------
+const STEPS = [
+  { h: 'Оставить заявку', body: 'Короткая форма или Telegram-бот. Отвечаем в течение часа в рабочее время.' },
+  { h: 'KYB', body: 'Юристы собирают документы для лицензированного процессора. Занимает до 3 дней — без переписок «через бот».' },
+  { h: 'Песочница', body: 'Выдаём тестовые ключи и Postman-коллекцию. Команда разработки начинает интеграцию.' },
+  { h: 'Подключение', body: 'Помогаем с интеграцией, отвечаем на вопросы инженеров, проверяем webhooks и сценарии.' },
+  { h: 'Приём платежей', body: 'Переводим в продакшн. Зачисление по расписанию, мониторинг и поддержка остаются с вами.' },
+];
+
+function ProcessSteps() {
+  return (
+    <section className="section">
+      <Overline>02 · Как мы работаем</Overline>
+      <h2>От заявки до первого платежа — обычно 3 дня</h2>
+      <p className="sub">На всём процессе с вами один персональный менеджер. Не общая поддержка через тикеты.</p>
+      <div className="steps-grid">
+        {STEPS.map((s, i) => (
+          <div key={i} className="step-card">
+            <div className="step-num">{String(i+1).padStart(2,'0')}</div>
+            <h3>{s.h}</h3>
+            <p>{s.body}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+// ---------- Cases ----------
 function CasesStrip() {
   const logos = ['AcmeBot', 'PixelLab', 'KodHaus', 'Студия 4', 'MetaShop', 'GameForge'];
   return (
     <section className="section">
-      <Overline>01 · Кейсы</Overline>
+      <Overline>03 · Кейсы</Overline>
       <h2>Уже принимают платежи через Oplatum</h2>
       <div className="quote-card">
         <div className="quote-mark">«</div>
-        <p className="quote-body">Подключили СБП-подписки за день, settlement пришёл на следующее утро. Поддержка 4 часа в договоре — реально работает.</p>
+        <p className="quote-body">Подключили СБП-подписки за день. Зачисление пришло на следующее утро. Поддержка 4 часа в договоре — реально работает.</p>
         <div className="quote-author">
           <span className="quote-name">Анна Кн.</span>
           <span className="quote-role">CEO digital-school</span>
@@ -217,13 +274,12 @@ function CasesStrip() {
 }
 
 // ---------- Industries ----------
-// placeholder metrics, replace with real numbers from Oplatum team
 const INDUSTRIES = [
-  { n: '02', tag: 'Telegram-экономика', h: 'Подписки и приём платежей в ботах', problem: 'Нет легального способа провести подписку резидента РФ через Stripe.', solution: 'СБП-подписки с settlement в RUB на расчётный счёт.', metric: '+38%', metricLabel: 'конверсия в оплату' },
-  { n: '03', tag: 'Gaming', h: 'Микроплатежи и продажа внутриигровых паков', problem: 'Платёжные провайдеры блокируют тематику и удерживают средства.', solution: 'Tolerant-acquiring: gaming, лутбоксы, премиум-паки.', metric: '< 2 сек', metricLabel: 'до подтверждения' },
-  { n: '04', tag: 'EdTech', h: 'Курсы, подписки, рассрочка', problem: 'Сложно собрать платежи за длинные продукты с возвратами.', solution: 'Подписки + сплит-платежи + автоматический рефанд.', metric: '0.4%', metricLabel: 'rate возвратов' },
-  { n: '05', tag: 'SaaS', h: 'Recurring billing для B2B-инструментов', problem: 'Карты не подходят для долгосрочных корпоративных подписок.', solution: 'СБП-подписки с актом и счётом-фактурой автоматом.', metric: '24 ч', metricLabel: 'до интеграции' },
-  { n: '06', tag: 'Иностранные юрлица', h: 'USDT settlement для не-резидентов', problem: 'Иностранцу нельзя завести расчётный счёт в РФ.', solution: 'Settle в USDT на ваш кошелёк. Договор — лицензированный процессор.', metric: '0.8%', metricLabel: 'комиссия конвертации' },
+  { n: '04', tag: 'Telegram-экономика', h: 'Подписки и платежи в ботах', problem: 'Stripe и зарубежные шлюзы не работают с резидентами РФ.', solution: 'СБП-подписки с зачислением в RUB на расчётный счёт.', metric: '+38%', metricLabel: 'конверсия в оплату' },
+  { n: '05', tag: 'Gaming', h: 'Микроплатежи и внутриигровые покупки', problem: 'Платёжные провайдеры удерживают средства и блокируют тематику.', solution: 'Принимаем gaming, лутбоксы и премиум-паки в открытом договоре.', metric: '< 2 сек', metricLabel: 'до подтверждения' },
+  { n: '06', tag: 'EdTech', h: 'Курсы, подписки, рассрочка', problem: 'Длинные продукты с возвратами и рассрочкой — головная боль.', solution: 'Подписки + сплит-платежи + автоматический рефанд.', metric: '0.4%', metricLabel: 'возвратов' },
+  { n: '07', tag: 'SaaS', h: 'Recurring billing для B2B', problem: 'Карты не подходят для долгосрочных корпоративных подписок.', solution: 'СБП-подписки с актом и счётом-фактурой автоматом.', metric: '24 ч', metricLabel: 'до интеграции' },
+  { n: '08', tag: 'Иностранные юрлица', h: 'USDT для нерезидентов', problem: 'Иностранцу нельзя открыть расчётный счёт в России.', solution: 'Расчёты приходят в USDT на ваш кошелёк. Договор — лицензированный процессор.', metric: '0.8%', metricLabel: 'комиссия конвертации' },
 ];
 
 function IndustryCard({ item }) {
@@ -244,9 +300,9 @@ function IndustryCard({ item }) {
 function IndustryGrid() {
   return (
     <section className="section">
-      <Overline>02 · Индустрии</Overline>
+      <Overline>04 · Индустрии</Overline>
       <h2>Решения для пяти ниш цифровой экономики</h2>
-      <p className="sub">Один процессор, разные сценарии расчёта. Подбираем условия под ваш бизнес.</p>
+      <p className="sub">Один процессор, разные сценарии. Условия подбираем под ваш бизнес.</p>
       <div className="industry-grid">
         {INDUSTRIES.map((it, i) => <IndustryCard key={i} item={it} />)}
       </div>
@@ -254,23 +310,23 @@ function IndustryGrid() {
   );
 }
 
-// ---------- Calculator ----------
+// ---------- Calculator (real ladder) ----------
 function Calculator() {
-  const [val, setVal] = useState(2500000);
-  const tier = val < 5_000_000 ? 0 : val < 20_000_000 ? 1 : val < 50_000_000 ? 2 : 3;
-  const rateLabel = ['от 4%', 'от 4%', 'индивидуально', 'индивидуально'][tier];
+  const [val, setVal] = useState(8000000);
+  const tier = val < 10_000_000 ? 0 : val < 20_000_000 ? 1 : val < 50_000_000 ? 2 : 3;
+  const rate = ['6%', '5.5%', '4.5%', 'от 4%'][tier];
   const tierNote = [
-    'Базовая ставка для всех новых клиентов',
-    'Базовая ставка с первого платежа',
-    'Условия согласуем с менеджером',
-    'Персональные условия для крупного оборота',
+    'Стартовая ставка для оборотов до 10 млн ₽/мес',
+    'Средний уровень — оборот 10–20 млн ₽/мес',
+    'Высокий оборот — 20–50 млн ₽/мес',
+    'Крупный оборот — индивидуальные условия',
   ][tier];
   const fmt = (n) => '₽ ' + n.toLocaleString('ru-RU').replace(/,/g, ' ');
 
   return (
     <div className="calc">
       <h3>Рассчитайте условия</h3>
-      <div className="calc-sub">Базовая ставка — от 4%. Для крупных оборотов согласуем индивидуально.</div>
+      <div className="calc-sub">Лесенка ставок по обороту. Чем больше — тем меньше комиссия.</div>
       <div className="calc-label">Месячный оборот, ₽</div>
       <input className="calc-input" type="text" value={fmt(val)} onChange={(e) => setVal(parseInt(e.target.value.replace(/\D/g, '')) || 0)} />
       <div className="calc-scale">
@@ -279,11 +335,14 @@ function Calculator() {
         ))}
       </div>
       <div className="calc-ticks">
-        <span>до 5М</span><span>5–20М</span><span>20–50М</span><span>от 50М</span>
+        <span>до 10М<br/><b>6%</b></span>
+        <span>10–20М<br/><b>5.5%</b></span>
+        <span>20–50М<br/><b>4.5%</b></span>
+        <span>от 50М<br/><b>от 4%</b></span>
       </div>
       <div className="calc-out">
         <span className="lbl">Ваша ставка</span>
-        <span className="rate">{rateLabel}</span>
+        <span className="rate">{rate}</span>
       </div>
       <div className="calc-note">{tierNote}</div>
       <Btn size="lg">Получить условия <Arr /></Btn>
@@ -295,13 +354,13 @@ function PricingSection() {
   return (
     <section className="section two-col">
       <div>
-        <Overline>03 · Тарифы</Overline>
-        <h2>Прозрачно и без скрытых строк</h2>
-        <p className="sub">Базовая ставка — от 4% с первого платежа. Для оборотов от 20 миллионов в месяц условия согласуем индивидуально. Settlement всегда в течение одного дня.</p>
+        <Overline>05 · Тарифы</Overline>
+        <h2>Прозрачная сетка по обороту</h2>
+        <p className="sub">Чем больше оборот — тем меньше комиссия. Без скрытых строк, без surprise-billing. Все ставки публичны и фиксируются в договоре.</p>
         <ul className="bullets">
-          <li>Прозрачная ставка от 4% — публичная сетка</li>
+          <li>4 уровня ставок: от 6% до 4% по обороту</li>
           <li>Договор — НКО «МОБИ.Деньги», ЦБ РФ</li>
-          <li>Возврат, рефанд, диспуты — автоматически</li>
+          <li>Возвраты, рефанды, диспуты — автоматически</li>
         </ul>
       </div>
       <Calculator />
@@ -309,7 +368,7 @@ function PricingSection() {
   );
 }
 
-// ---------- Telegram bot block ----------
+// ---------- Telegram bot ----------
 function TelegramBlock() {
   return (
     <section className="section">
@@ -322,15 +381,15 @@ function TelegramBlock() {
               <div className="meta-x">online</div>
             </div>
           </div>
-          <div className="msg msg-bot">Подключим за 24 часа. Какой у вас оборот?</div>
+          <div className="msg msg-bot">Подключим за 3 дня. Какой у вас оборот?</div>
           <div className="msg msg-me">~ 8М ₽/мес</div>
-          <div className="msg msg-bot">Базовая ставка от 4%. Открыть условия?</div>
+          <div className="msg msg-bot">Ставка 6%. Открыть условия?</div>
           <div className="msg msg-bot pay">Открыть → @oplatum_bot</div>
         </div>
         <div>
-          <Overline>04 · Onboarding · Telegram</Overline>
+          <Overline>06 · Onboarding · Telegram</Overline>
           <h3>Подключение через бота</h3>
-          <p className="lead">Пишете в @oplatum_bot — менеджер открывает условия за один день. Без длинных форм и встреч.</p>
+          <p className="lead">Пишете в @oplatum_bot — менеджер открывает условия в течение часа. Без длинных форм и встреч.</p>
           <Btn size="lg">Открыть бота <Arr /></Btn>
         </div>
       </div>
@@ -338,38 +397,42 @@ function TelegramBlock() {
   );
 }
 
-// ---------- Code + AI ----------
-function DevAi() {
+// ---------- Dev featured (dark card) ----------
+function DevFeatured() {
   return (
-    <section className="section two-col">
-      <div className="codeblock">
-        <div className="codeblock-head">
-          <div className="dots">
-            <div className="dot" style={{background:'#FF5F57'}}/>
-            <div className="dot" style={{background:'#FEBC2E'}}/>
-            <div className="dot" style={{background:'#28C840'}}/>
+    <section className="section">
+      <div className="dev-feature">
+        <div className="dev-feature-copy">
+          <Overline className="ovl-on-dark">07 · Для разработчиков</Overline>
+          <h2>API уровня Stripe + MCP-сервер для AI-агентов</h2>
+          <p className="sub-on-dark">REST + webhooks с подписью HMAC-SHA256, идемпотентность, sandbox с тестовыми ключами. SDK для Node, Python и PHP. MCP-сервер — чтобы AI-агент сам интегрировал платежи в код.</p>
+          <div className="cta-row">
+            <Btn variant="accent">Документация <Arr /></Btn>
+            <Btn variant="ghost-light">MCP-эндпоинт →</Btn>
           </div>
-          <span className="filename">create_payment.ts</span>
-          <button className="copy">copy</button>
         </div>
-        <pre className="codeblock-body">
-<span className="com">{`// Создаём платёж через СБП`}</span>{'\n'}
+        <div className="dev-feature-code">
+          <div className="codeblock">
+            <div className="codeblock-head">
+              <div className="dots">
+                <div className="dot" style={{background:'#FF5F57'}}/>
+                <div className="dot" style={{background:'#FEBC2E'}}/>
+                <div className="dot" style={{background:'#28C840'}}/>
+              </div>
+              <span className="filename">create_payment.ts</span>
+              <button className="copy">copy</button>
+            </div>
+            <pre className="codeblock-body">
+<span className="com">{`// Платёж по СБП с подпиской`}</span>{'\n'}
 <span className="fn">const</span>{` payment = `}<span className="fn">await</span>{` oplatum.payments.`}<span className="fn">create</span>{`({\n`}
-{`  `}<span className="key">amount</span>{`: `}<span className="num">12500</span>{`,\n`}
+{`  `}<span className="key">amount</span>{`: `}<span className="num-tok">12500</span>{`,\n`}
 {`  `}<span className="key">currency</span>{`: `}<span className="str">"RUB"</span>{`,\n`}
 {`  `}<span className="key">method</span>{`: `}<span className="str">"sbp"</span>{`,\n`}
-{`  `}<span className="key">description</span>{`: `}<span className="str">"Подписка Pro"</span>{`,\n`}
-{`  `}<span className="key">return_url</span>{`: `}<span className="str">"https://app.example.ru/ok"</span>{`\n`}
+{`  `}<span className="key">recurring</span>{`: `}<span className="num-tok">true</span>{`,\n`}
+{`  `}<span className="key">description</span>{`: `}<span className="str">"Подписка Pro"</span>{`\n`}
 {`});`}
-        </pre>
-      </div>
-      <div>
-        <Overline>05 · Dev / AI</Overline>
-        <h2>API и MCP-сервер для агентов</h2>
-        <p className="sub">REST + webhooks для команды разработки. MCP-сервер для Claude и других агентов — пусть они интегрируют сами.</p>
-        <div className="cta-row">
-          <Btn>Документация <Arr /></Btn>
-          <Btn variant="ghost">MCP-эндпоинт →</Btn>
+            </pre>
+          </div>
         </div>
       </div>
     </section>
@@ -378,12 +441,12 @@ function DevAi() {
 
 // ---------- Roadmap ----------
 function Roadmap() {
-  const items = ['Карты', 'Mass payouts', 'MCP-сервер для AI-агентов', 'Telegram Mini App native', 'Multi-currency settlement'];
+  const items = ['Карты', 'Mass payouts', 'MCP-сервер для AI-агентов', 'Telegram Mini App', 'Multi-currency расчёты'];
   return (
     <section className="section">
-      <Overline>06 · Roadmap</Overline>
+      <Overline>08 · Roadmap</Overline>
       <h2>Что готовим в ближайшие месяцы</h2>
-      <p className="sub">Сейчас — СБП и СБП-подписки с settle 1 день.</p>
+      <p className="sub">Сейчас в продакшне — СБП и СБП-подписки с зачислением за 1 день.</p>
       <div className="roadmap-chips">
         {items.map((it, i) => <span key={i} className="roadmap-chip">{it}</span>)}
       </div>
@@ -394,16 +457,17 @@ function Roadmap() {
 // ---------- FAQ ----------
 const FAQS = [
   { q: 'Кто несёт лицензионную ответственность?', a: 'НКО «МОБИ.Деньги», ЦБ РФ №3523-К. Oplatum — продуктовый и технологический слой поверх процессора. Все платежи проходят по 161-ФЗ.' },
-  { q: 'Можно ли settle в USDT для иностранного юрлица?', a: 'Да. Договор заключается с лицензированным процессором, settlement приходит на ваш USDT-кошелёк. Комиссия конвертации — 0.8%.' },
-  { q: 'Сколько времени занимает интеграция?', a: 'От одного дня. SDK для Node, Python, PHP. Готовые модули для Tilda, Bitrix, custom-стэков.' },
-  { q: 'Какая ставка комиссии?', a: 'Базовая публичная ставка — от 4% с первого платежа. Для оборотов от 20 миллионов рублей в месяц условия согласуем индивидуально.' },
+  { q: 'Можно ли получать в USDT, если у нас иностранное юрлицо?', a: 'Да. Договор заключается с лицензированным процессором, расчёты приходят на ваш USDT-кошелёк. Комиссия конвертации — 0.8%.' },
+  { q: 'Сколько времени занимает подключение?', a: 'От заявки до первого платежа — обычно 3 дня. KYB занимает до 3 дней (юристы собирают документы), интеграция — 1 день при готовом стеке.' },
+  { q: 'Какая ставка комиссии?', a: 'Лесенка по обороту: до 10 млн ₽/мес — 6%, 10–20 млн — 5.5%, 20–50 млн — 4.5%, от 50 млн — 4% или индивидуально. Все ставки публичны и зафиксированы в договоре.' },
+  { q: 'Что входит в SLA 4 часа?', a: 'Время реакции на технические инциденты в рабочее время. Прописано в договоре с компенсацией при просрочке. Не маркетинговое обещание.' },
 ];
 
 function FAQ() {
   const [open, setOpen] = useState(0);
   return (
     <section className="section">
-      <Overline>07 · Вопросы</Overline>
+      <Overline>09 · Вопросы</Overline>
       <h2>Часто спрашивают</h2>
       <div className="faq-list">
         {FAQS.map((f, i) => (
@@ -431,7 +495,7 @@ function Footer() {
         </div>
         <div>
           <div className="col-h">Продукт</div>
-          <a>СБП-приём</a><a>СБП-подписки</a><a>USDT settlement</a><a>API</a>
+          <a>СБП-приём</a><a>СБП-подписки</a><a>USDT-расчёты</a><a>API</a>
         </div>
         <div>
           <div className="col-h">Индустрии</div>
@@ -457,11 +521,13 @@ function App() {
       <Nav />
       <Hero />
       <TrustStrip />
+      <Advantages />
+      <ProcessSteps />
       <CasesStrip />
       <IndustryGrid />
       <PricingSection />
       <TelegramBlock />
-      <DevAi />
+      <DevFeatured />
       <Roadmap />
       <FAQ />
       <Footer />
