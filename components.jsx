@@ -2,6 +2,12 @@
 const { useState, useEffect } = React;
 
 // ---------- Shared bits ----------
+const scrollToApply = (e) => {
+  if (e) e.preventDefault();
+  const el = document.getElementById('apply');
+  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+};
+
 const Overline = ({ children, className = '' }) => (
   <div className={`ovl ${className}`}>{children}</div>
 );
@@ -10,8 +16,12 @@ const Arr = () => (
     <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
   </svg>
 );
-const Btn = ({ variant = 'primary', size = 'md', children, ...p }) => (
-  <button className={`btn btn-${variant} btn-${size}`} {...p}>{children}</button>
+const Btn = ({ variant = 'primary', size = 'md', children, onClick, ...p }) => (
+  <button className={`btn btn-${variant} btn-${size}`} onClick={onClick} {...p}>{children}</button>
+);
+// Convenience CTA — always scrolls to apply form
+const CtaApply = ({ size = 'md', variant = 'primary', children = 'Подключиться' }) => (
+  <Btn size={size} variant={variant} onClick={scrollToApply}>{children} <Arr /></Btn>
 );
 
 // Lucide-style inline icons (stroke 1.5px). Only utility shapes.
@@ -46,8 +56,8 @@ function Nav() {
         <a className="link">Документация</a>
       </div>
       <div className="nav-spacer" />
-      <span className="ghost-link">Войти</span>
-      <Btn>Подключиться <Arr /></Btn>
+      <span className="ghost-link" onClick={scrollToApply}>Войти</span>
+      <CtaApply />
     </nav>
   );
 }
@@ -150,8 +160,8 @@ function Hero() {
           Принимайте оплату по СБП, оформляйте подписки и получайте расчёты в&nbsp;USDT. Лицензированный российский процессор НКО «МОБИ.Деньги», ЦБ РФ&nbsp;№3523-К.
         </p>
         <div className="cta-row">
-          <Btn size="lg">Подключиться <Arr /></Btn>
-          <Btn variant="secondary" size="lg">Документация</Btn>
+          <CtaApply size="lg">Подключиться</CtaApply>
+          <Btn variant="secondary" size="lg" onClick={scrollToApply}>Документация</Btn>
         </div>
         <div className="hero-meta">
           <span className="hero-meta-num">от 4%</span>
@@ -252,22 +262,58 @@ function ProcessSteps() {
 }
 
 // ---------- Cases ----------
+const CASES = [
+  {
+    brand: 'Купикод',
+    domain: 'kupikod.com',
+    body: 'Подключили СБП-подписки за день. Зачисление пришло на следующее утро. walletType:2 работает в продакшне без оговорок.',
+    name: 'Команда Купикод',
+    role: 'kupikod.com',
+  },
+  {
+    brand: 'Press F',
+    domain: 'pressf.com',
+    body: 'Открытый договор по gaming-тематике, ставка прозрачная и фиксируется в контракте. Поддержка 4 часа в договоре — реально работает.',
+    name: 'Команда Press F',
+    role: 'pressf.com',
+  },
+];
+
 function CasesStrip() {
-  const logos = ['AcmeBot', 'PixelLab', 'KodHaus', 'Студия 4', 'MetaShop', 'GameForge'];
+  const [idx, setIdx] = useState(0);
+  const cur = CASES[idx];
   return (
     <section className="section">
       <Overline>03 · Кейсы</Overline>
       <h2>Уже принимают платежи через Oplatum</h2>
-      <div className="quote-card">
-        <div className="quote-mark">«</div>
-        <p className="quote-body">Подключили СБП-подписки за день. Зачисление пришло на следующее утро. Поддержка 4 часа в договоре — реально работает.</p>
-        <div className="quote-author">
-          <span className="quote-name">Анна Кн.</span>
-          <span className="quote-role">CEO digital-school</span>
+      <div className="cases-row">
+        <div className="quote-card">
+          <div className="quote-mark">«</div>
+          <p className="quote-body">{cur.body}</p>
+          <div className="quote-author">
+            <span className="quote-name">{cur.name}</span>
+            <span className="quote-role">{cur.role}</span>
+          </div>
+        </div>
+        <div className="cases-nav">
+          <div className="cases-dots">
+            {CASES.map((_, i) => (
+              <button key={i} className={`cases-dot ${i === idx ? 'active' : ''}`} onClick={() => setIdx(i)} aria-label={`Кейс ${i+1}`}/>
+            ))}
+          </div>
+          <div className="cases-arrows">
+            <button className="cases-arrow" onClick={() => setIdx((idx - 1 + CASES.length) % CASES.length)} aria-label="Предыдущий">←</button>
+            <button className="cases-arrow" onClick={() => setIdx((idx + 1) % CASES.length)} aria-label="Следующий">→</button>
+          </div>
         </div>
       </div>
       <div className="logo-strip">
-        {logos.map((l, i) => <span key={i} className="logo-mark">{l}</span>)}
+        {CASES.map((c, i) => (
+          <button
+            key={i}
+            className={`logo-mark logo-mark-btn ${i === idx ? 'active' : ''}`}
+            onClick={() => setIdx(i)}>{c.brand}</button>
+        ))}
       </div>
     </section>
   );
@@ -345,7 +391,7 @@ function Calculator() {
         <span className="rate">{rate}</span>
       </div>
       <div className="calc-note">{tierNote}</div>
-      <Btn size="lg">Получить условия <Arr /></Btn>
+      <CtaApply size="lg">Получить условия</CtaApply>
     </div>
   );
 }
@@ -390,7 +436,7 @@ function TelegramBlock() {
           <Overline>06 · Onboarding · Telegram</Overline>
           <h3>Подключение через бота</h3>
           <p className="lead">Пишете в @oplatum_bot — менеджер открывает условия в течение часа. Без длинных форм и встреч.</p>
-          <Btn size="lg">Открыть бота <Arr /></Btn>
+          <CtaApply size="lg">Открыть бота</CtaApply>
         </div>
       </div>
     </section>
@@ -406,9 +452,13 @@ function DevFeatured() {
           <Overline className="ovl-on-dark">07 · Для разработчиков</Overline>
           <h2>API уровня Stripe + MCP-сервер для AI-агентов</h2>
           <p className="sub-on-dark">REST + webhooks с подписью HMAC-SHA256, идемпотентность, sandbox с тестовыми ключами. SDK для Node, Python и PHP. MCP-сервер — чтобы AI-агент сам интегрировал платежи в код.</p>
+          <div className="dev-compare">
+            <span className="dev-compare-label">Уже работаете с другим провайдером?</span>
+            <span className="dev-compare-text">Напишите ставку и условия — сравним и покажем, что выгоднее на ваших объёмах.</span>
+          </div>
           <div className="cta-row">
-            <Btn variant="accent">Документация <Arr /></Btn>
-            <Btn variant="ghost-light">MCP-эндпоинт →</Btn>
+            <Btn variant="accent" onClick={scrollToApply}>Документация <Arr /></Btn>
+            <Btn variant="ghost-light" onClick={scrollToApply}>Сравнить условия →</Btn>
           </div>
         </div>
         <div className="dev-feature-code">
@@ -440,15 +490,92 @@ function DevFeatured() {
 }
 
 // ---------- Roadmap ----------
+const ROADMAP = [
+  { h: 'Карты', body: 'Эквайринг по картам РФ — добавим как второй рельс рядом с СБП.', status: 'В разработке' },
+  { h: 'Mass payouts', body: 'Массовые выплаты исполнителям, авторам, продавцам — через единый API.', status: 'Q2 2026' },
+  { h: 'MCP-сервер для AI-агентов', body: 'Агент сам интегрирует платежи в код через Model Context Protocol.', status: 'Бета' },
+  { h: 'Telegram Mini App native', body: 'Нативная оплата внутри Mini App без редиректов на hosted checkout.', status: 'Scoping' },
+  { h: 'Multi-currency расчёты', body: 'Зачисления в EUR и других стейблах поверх существующих RUB и USDT.', status: 'Scoping' },
+];
+
 function Roadmap() {
-  const items = ['Карты', 'Mass payouts', 'MCP-сервер для AI-агентов', 'Telegram Mini App', 'Multi-currency расчёты'];
   return (
     <section className="section">
       <Overline>08 · Roadmap</Overline>
       <h2>Что готовим в ближайшие месяцы</h2>
-      <p className="sub">Сейчас в продакшне — СБП и СБП-подписки с зачислением за 1 день.</p>
-      <div className="roadmap-chips">
-        {items.map((it, i) => <span key={i} className="roadmap-chip">{it}</span>)}
+      <p className="sub">Сейчас в продакшне — СБП и СБП-подписки с зачислением за 1 день. Ниже — что в работе.</p>
+      <div className="roadmap-grid">
+        {ROADMAP.map((it, i) => (
+          <div key={i} className="roadmap-card">
+            <div className="roadmap-card-status">{it.status}</div>
+            <h3>{it.h}</h3>
+            <p>{it.body}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+// ---------- Lead Form ----------
+function LeadForm() {
+  const [submitted, setSubmitted] = useState(false);
+  const [form, setForm] = useState({ name: '', contact: '', turnover: '', message: '' });
+  const update = (k) => (e) => setForm({ ...form, [k]: e.target.value });
+  const onSubmit = (e) => {
+    e.preventDefault();
+    // TODO: connect to backend (CRM / email / @oplatum_bot) — placeholder for now
+    setSubmitted(true);
+  };
+  return (
+    <section className="section" id="apply">
+      <div className="lead-form-card">
+        <div className="lead-form-copy">
+          <Overline>09 · Заявка</Overline>
+          <h2>Оставьте заявку на подключение</h2>
+          <p className="sub">Отвечаем в течение часа в рабочее время. KYB занимает до 3 дней — собираем документы для лицензированного процессора. На всём процессе с вами один менеджер.</p>
+          <div className="lead-form-bullets">
+            <div className="lf-row"><span className="lf-num">1ч</span><span className="lf-lbl">Первый ответ</span></div>
+            <div className="lf-row"><span className="lf-num">3 дня</span><span className="lf-lbl">До первого платежа</span></div>
+            <div className="lf-row"><span className="lf-num">4 ч</span><span className="lf-lbl">SLA в договоре</span></div>
+          </div>
+        </div>
+        <div className="lead-form-fields">
+          {submitted ? (
+            <div className="lead-form-success">
+              <h3>Заявка отправлена</h3>
+              <p>Свяжемся с вами в течение часа в рабочее время. Если срочно — пишите в @oplatum_bot.</p>
+            </div>
+          ) : (
+            <form onSubmit={onSubmit}>
+              <div className="lf-field">
+                <label>Имя и компания</label>
+                <input required type="text" placeholder="Анна, AcmeBot" value={form.name} onChange={update('name')}/>
+              </div>
+              <div className="lf-field">
+                <label>Контакт (email или Telegram)</label>
+                <input required type="text" placeholder="anna@acmebot.ru или @anna" value={form.contact} onChange={update('contact')}/>
+              </div>
+              <div className="lf-field">
+                <label>Месячный оборот</label>
+                <select value={form.turnover} onChange={update('turnover')}>
+                  <option value="">Выберите диапазон</option>
+                  <option>До 10 млн ₽/мес</option>
+                  <option>10–20 млн ₽/мес</option>
+                  <option>20–50 млн ₽/мес</option>
+                  <option>От 50 млн ₽/мес</option>
+                  <option>Запускаемся</option>
+                </select>
+              </div>
+              <div className="lf-field">
+                <label>Что хотите подключить</label>
+                <textarea rows="3" placeholder="Например: СБП-подписки для TG-бота, settlement в USDT для иностранного юрлица" value={form.message} onChange={update('message')}/>
+              </div>
+              <Btn type="submit" size="lg">Отправить заявку <Arr /></Btn>
+              <div className="lf-fineprint">Нажимая кнопку, соглашаетесь с обработкой персональных данных. Никаких звонков и спама.</div>
+            </form>
+          )}
+        </div>
       </div>
     </section>
   );
@@ -467,7 +594,7 @@ function FAQ() {
   const [open, setOpen] = useState(0);
   return (
     <section className="section">
-      <Overline>09 · Вопросы</Overline>
+      <Overline>10 · Вопросы</Overline>
       <h2>Часто спрашивают</h2>
       <div className="faq-list">
         {FAQS.map((f, i) => (
@@ -529,6 +656,7 @@ function App() {
       <TelegramBlock />
       <DevFeatured />
       <Roadmap />
+      <LeadForm />
       <FAQ />
       <Footer />
     </div>
