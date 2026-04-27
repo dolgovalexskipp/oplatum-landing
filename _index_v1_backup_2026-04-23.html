@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oplatum — Эквайринг для цифровых бизнесов</title>
+<meta name="description" content="Принимайте оплату российскими картами, через СБП и в USDT. Выплаты на следующий день. Подключение за 24 часа.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%231F3A8A'/><text x='50%25' y='54%25' text-anchor='middle' dy='.1em' fill='white' font-size='18' font-weight='700' font-family='Inter'>O</text></svg>">
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="/" class="logo">
+      <span class="logo-mark">O</span>
+      <span>Oplatum</span>
+    </a>
+    <div class="nav-links">
+      <a href="pricing.html">Тарифы</a>
+      <a href="telegram.html">Для Telegram</a>
+      <a href="agents.html">Для агентов</a>
+      <a href="demo.html">Демо</a>
+      <a href="about.html">О нас</a>
+      <a href="#connect" class="btn btn-primary btn-sm">Подключиться</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <h1>Эквайринг для&nbsp;цифровых&nbsp;бизнесов</h1>
+      <p class="subtitle" style="margin-top: 28px; max-width: 620px;">
+        Принимайте оплату российскими картами, через СБП и в USDT.
+        Выплаты на следующий день — на расчётный счёт или в&nbsp;криптовалюте.
+        Подключение за день.
+      </p>
+      <div class="hero-cta">
+        <a href="#connect" class="btn btn-primary">
+          Подключиться
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <a href="#pricing" class="btn btn-ghost">Узнать тарифы</a>
+      </div>
+      <div class="hero-badges">
+        <span class="badge"><span class="badge-dot"></span>Карты российских банков</span>
+        <span class="badge">СБП</span>
+        <span class="badge">USDT</span>
+        <span class="badge">Выплаты T+1</span>
+        <span class="badge">Подключение 24ч</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<section style="padding-top: 0; padding-bottom: 72px;">
+  <div class="container">
+    <div class="trustbar fade-in">
+      <div class="trust-item">
+        <div class="trust-value">до&nbsp;24&nbsp;ч</div>
+        <div class="trust-label">от заявки до&nbsp;первой транзакции</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-value">5+&nbsp;методов</div>
+        <div class="trust-label">СБП, карты, USDT, рекурренты, возвраты</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-value">T+1</div>
+        <div class="trust-label">выплаты в&nbsp;рублях или&nbsp;в&nbsp;USDT</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-value">24/7</div>
+        <div class="trust-label">приём платежей, мониторинг,&nbsp;API</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="section-soft">
+  <div class="container">
+    <div class="fade-in" style="max-width: 720px; margin-bottom: 56px;">
+      <div class="eyebrow" style="margin-bottom: 16px;">Проблема</div>
+      <h2>Цифровые бизнесы теряют деньги там, где классический эквайринг не&nbsp;работает</h2>
+    </div>
+    <div class="grid-3 fade-in">
+      <div>
+        <h3 class="card-title">Карты блокируются</h3>
+        <p class="card-body">До 30% оплат отваливается из-за ограничений банков. Классические провайдеры не решают эту проблему — только ускоряют возвраты и оставляют клиента без товара.</p>
+      </div>
+      <div>
+        <h3 class="card-title">Онбординг — неделями</h3>
+        <p class="card-body">Верификация, согласование тарифов, ручная настройка. Digital-бизнесу это непозволительно: клиенты уходят к конкурентам, пока вы ждёте звонка менеджера.</p>
+      </div>
+      <div>
+        <h3 class="card-title">Нерезиденты не&nbsp;могут платить</h3>
+        <p class="card-body">USDT в обычном эквайринге не поддерживается, прямые крипто-шлюзы не дают нормальных выплат и отчётности, а международные провайдеры не&nbsp;работают с&nbsp;РФ.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUTION -->
+<section>
+  <div class="container">
+    <div class="fade-in" style="max-width: 680px; margin-bottom: 56px;">
+      <div class="eyebrow" style="margin-bottom: 16px;">Решение</div>
+      <h2>Платёжная платформа для&nbsp;digital-экономики</h2>
+      <p class="subtitle" style="margin-top: 20px;">Один API, который закрывает задачу целиком: приём, обработка, выплата, отчётность.</p>
+    </div>
+    <div class="solution-list fade-in">
+      <div class="solution-item">
+        <div class="solution-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+        </div>
+        <h3 class="card-title">Широкий набор методов</h3>
+        <p class="card-body">СБП, банковские карты, USDT. Клиент платит удобным способом — вы получаете деньги на счёт в РФ или в криптовалюте.</p>
+      </div>
+      <div class="solution-item">
+        <div class="solution-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <h3 class="card-title">Быстрое подключение</h3>
+        <p class="card-body">Тестовая среда — в день регистрации, проверка документов и первые боевые платежи — в течение 24 часов. Без долгих согласований и звонков.</p>
+      </div>
+      <div class="solution-item">
+        <div class="solution-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        </div>
+        <h3 class="card-title">Прозрачная отчётность</h3>
+        <p class="card-body">Единая панель управления: транзакции, выплаты, возвраты, клиенты. REST API и вебхуки для интеграции с вашей системой.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section-soft">
+  <div class="container">
+    <div class="fade-in" style="max-width: 680px; margin-bottom: 56px;">
+      <div class="eyebrow" style="margin-bottom: 16px;">Как это работает</div>
+      <h2>Один поток, четыре шага</h2>
+    </div>
+    <div class="fade-in" style="display: flex; justify-content: center;">
+      <div class="flow">
+        <div class="flow-box">Клиент выбирает способ&nbsp;оплаты</div>
+        <div class="flow-arrow"><div class="line"></div><div class="tri"></div></div>
+        <div class="flow-methods">
+          <div class="flow-method">СБП</div>
+          <div class="flow-dot"></div>
+          <div class="flow-method">Банковская карта</div>
+          <div class="flow-dot"></div>
+          <div class="flow-method">USDT</div>
+        </div>
+        <div class="flow-arrow"><div class="line"></div><div class="tri"></div></div>
+        <div class="flow-box flow-box-accent">Oplatum API</div>
+        <div class="flow-arrow"><div class="line"></div><div class="tri"></div></div>
+        <div class="flow-box">Выплата: счёт в&nbsp;РФ или&nbsp;USDT</div>
+        <div class="flow-arrow"><div class="line"></div><div class="tri"></div></div>
+        <div class="flow-box">Вебхук и&nbsp;отчёт в&nbsp;вашу&nbsp;систему</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DASHBOARD PREVIEW -->
+<section>
+  <div class="container">
+    <div class="fade-in" style="max-width: 680px; margin-bottom: 48px;">
+      <div class="eyebrow" style="margin-bottom: 16px;">Панель мерчанта</div>
+      <h2>Всё управление — в&nbsp;одном месте</h2>
+      <p class="subtitle" style="margin-top: 20px;">Мониторинг транзакций, управление выплатами, возвраты и спорные операции, отчёты для бухгалтерии.</p>
+    </div>
+    <div class="dashboard-mock fade-in">
+      <div class="dashboard-bar">
+        <div class="dashboard-dot" style="background: #ff5f56;"></div>
+        <div class="dashboard-dot" style="background: #ffbd2e;"></div>
+        <div class="dashboard-dot" style="background: #27c93f;"></div>
+        <div class="dashboard-url">dashboard.oplatum.com/overview</div>
+      </div>
+      <div class="dashboard-body">
+        <aside class="dashboard-sidebar">
+          <div class="s-logo">Oplatum</div>
+          <nav class="s-nav">
+            <a class="active">Обзор</a>
+            <a>Транзакции</a>
+            <a>Выплаты</a>
+            <a>Возвраты</a>
+            <a>Клиенты</a>
+            <a>API ключи</a>
+            <a>Вебхуки</a>
+            <a>Документы</a>
+            <a style="margin-top: 16px; color: rgba(255,255,255,.4);">Настройки</a>
+          </nav>
+        </aside>
+        <main class="dashboard-main">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+            <h4 style="margin: 0;">Обзор · Апрель</h4>
+            <div style="display: flex; gap: 8px;">
+              <span class="badge" style="font-size: 12px;">RUB</span>
+              <span class="badge" style="font-size: 12px;">USDT</span>
+            </div>
+          </div>
+          <div class="stat-row">
+            <div class="stat-card">
+              <div class="s-label">Оборот</div>
+              <div class="s-value">4.2 М&nbsp;₽</div>
+              <div class="s-delta">+18.4%</div>
+            </div>
+            <div class="stat-card">
+              <div class="s-label">Транзакции</div>
+              <div class="s-value">2 184</div>
+              <div class="s-delta">+9.1%</div>
+            </div>
+            <div class="stat-card">
+              <div class="s-label">Успешность</div>
+              <div class="s-value">96.7%</div>
+              <div class="s-delta">+1.3 п.п.</div>
+            </div>
+            <div class="stat-card">
+              <div class="s-label">К выплате</div>
+              <div class="s-value">812 K&nbsp;₽</div>
+              <div class="s-delta" style="color: var(--c-ink-40);">следующий день</div>
+            </div>
+          </div>
+          <div style="font-size: 13px; font-weight: 600; color: var(--c-ink-40); margin-bottom: 8px;">Последние транзакции</div>
+          <table class="txn-table">
+            <thead>
+              <tr><th>ID</th><th>Метод</th><th>Сумма</th><th>Клиент</th><th>Статус</th></tr>
+            </thead>
+            <tbody>
+              <tr><td style="font-family: var(--mono); color: var(--c-ink-40);">tx_9f2b1c</td><td>СБП</td><td>1 490 ₽</td><td>user_8329</td><td><span class="pill pill-ok">Успех</span></td></tr>
+              <tr><td style="font-family: var(--mono); color: var(--c-ink-40);">tx_9f2aee</td><td>Карта</td><td>3 200 ₽</td><td>user_8294</td><td><span class="pill pill-ok">Успех</span></td></tr>
+              <tr><td style="font-family: var(--mono); color: var(--c-ink-40);">tx_9f2a12</td><td>USDT</td><td>49.20 USDT</td><td>user_8101</td><td><span class="pill pill-pending">Обработка</span></td></tr>
+              <tr><td style="font-family: var(--mono); color: var(--c-ink-40);">tx_9f29b5</td><td>СБП</td><td>790 ₽</td><td>user_8077</td><td><span class="pill pill-ok">Успех</span></td></tr>
+              <tr><td style="font-family: var(--mono); color: var(--c-ink-40);">tx_9f2935</td><td>Карта</td><td>5 000 ₽</td><td>user_8042</td><td><span class="pill pill-ok">Успех</span></td></tr>
+            </tbody>
+          </table>
+        </main>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEMO TEASER -->
+<section>
+  <div class="container">
+    <div class="fade-in demo-teaser" style="display: grid; grid-template-columns: 1.1fr 1fr; gap: 40px; align-items: center; padding: 48px; border: 1px solid var(--c-line); border-radius: var(--r-lg); background: linear-gradient(180deg, #f9fafb 0%, #fff 100%);">
+      <div>
+        <div class="eyebrow" style="margin-bottom: 16px;">Интерактивный симулятор</div>
+        <h2 style="margin-bottom: 20px;">Попробуйте, как это&nbsp;работает</h2>
+        <p class="subtitle" style="margin-bottom: 28px;">Создайте платёжную ссылку как мерчант, пройдите чекаут как клиент, получите вебхук — всё в браузере, без регистрации. Наглядно показываем, что получит ваша команда интеграции.</p>
+        <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+          <a href="demo.html" class="btn btn-primary">Открыть демо →</a>
+          <a href="telegram.html" class="btn btn-ghost">Интеграция в Telegram</a>
+        </div>
+      </div>
+      <div style="background: #0a0a0a; border-radius: var(--r); padding: 20px; color: #e5e7eb; font-family: var(--mono); font-size: 13px; line-height: 1.7;">
+        <div style="color: #6b7280; margin-bottom: 10px; font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em;">POST /v1/invoices</div>
+<pre style="margin: 0; color: #e5e7eb; font-family: var(--mono); font-size: 13px; white-space: pre-wrap;">{
+  "amount": 2500,
+  "currency": "RUB",
+  "description": "Boost Pack",
+  "external_id": "order_8421"
+}</pre>
+        <div style="color: #6b7280; margin: 16px 0 10px; font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em;">→ 201 Created</div>
+<pre style="margin: 0; color: #86efac; font-family: var(--mono); font-size: 13px; white-space: pre-wrap;">{
+  "id": "inv_9f2aee",
+  "url": "pay.oplatum.com/inv_9f2aee",
+  "status": "pending"
+}</pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING SNIPPET -->
+<section id="pricing" class="section-soft">
+  <div class="container">
+    <div class="fade-in" style="max-width: 680px; margin-bottom: 40px;">
+      <div class="eyebrow" style="margin-bottom: 16px;">Тарифы</div>
+      <h2>Простая структура. Без&nbsp;скрытых&nbsp;сборов</h2>
+      <p class="subtitle" style="margin-top: 20px;">Без абонентских платежей, без платы за подключение. Платите только за совершённые транзакции.</p>
+    </div>
+    <div class="fade-in" style="max-width: 680px;">
+      <table class="price-table">
+        <thead>
+          <tr><th>Метод</th><th>Комиссия</th><th style="text-align: right;">Выплата</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>СБП</strong></td><td class="price-rate">от&nbsp;2.5%</td><td style="text-align: right; color: var(--c-ink-40);">T+1</td></tr>
+          <tr><td><strong>Банковские карты</strong></td><td class="price-rate">от&nbsp;4.5%</td><td style="text-align: right; color: var(--c-ink-40);">T+1</td></tr>
+          <tr><td><strong>USDT</strong></td><td class="price-rate">от&nbsp;2%</td><td style="text-align: right; color: var(--c-ink-40);">мгновенно</td></tr>
+          <tr style="background: #fff;"><td colspan="3" style="padding-top: 22px; text-align: center;"><a href="pricing.html" style="color: var(--c-brand); font-weight: 500;">Корпоративные условия для оборотов от&nbsp;5&nbsp;млн&nbsp;₽/мес →</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- SEGMENTS -->
+<section>
+  <div class="container">
+    <div class="fade-in" style="max-width: 680px; margin-bottom: 48px;">
+      <div class="eyebrow" style="margin-bottom: 16px;">Кто с нами работает</div>
+      <h2>Профили бизнеса, которые мы обслуживаем</h2>
+    </div>
+    <div class="segments fade-in">
+      <div class="segment-card">
+        <span class="segment-status status-live">Активно</span>
+        <h3 class="card-title">Gaming и in-game покупки</h3>
+        <p class="card-body">Игровые платформы, маркетплейсы игровых предметов, сервисы пополнения аккаунтов.</p>
+        <a href="#connect">Подключиться →</a>
+      </div>
+      <div class="segment-card">
+        <span class="segment-status status-live">Активно</span>
+        <h3 class="card-title">Цифровые товары</h3>
+        <p class="card-body">Ключи, подписки, лицензии, аккаунты, контент. Высокомаржинальные digital-продукты.</p>
+        <a href="#connect">Подключиться →</a>
+      </div>
+      <div class="segment-card">
+        <span class="segment-status status-live">Активно</span>
+        <h3 class="card-title">Арбитраж и&nbsp;трафик</h3>
+        <p class="card-body">Трафик-команды, партнёрские сети, off-ramp для веб-проектов.</p>
+        <a href="#connect">Подключиться →</a>
+      </div>
+      <div class="segment-card">
+        <span class="segment-status status-live">Активно</span>
+        <h3 class="card-title">Онлайн-образование</h3>
+        <p class="card-body">Курсы, клубы, мастермайнды, подписочные образовательные продукты.</p>
+        <a href="#connect">Подключиться →</a>
+      </div>
+      <div class="segment-card">
+        <span class="segment-status status-soon">В&nbsp;бета-доступе</span>
+        <h3 class="card-title">Telegram-боты и&nbsp;Mini&nbsp;Apps</h3>
+        <p class="card-body">SDK, платёжные ссылки, рекурренты и оплата внутри Mini&nbsp;App — одним API.</p>
+        <a href="telegram.html">Подробнее →</a>
+      </div>
+      <div class="segment-card">
+        <span class="segment-status status-soon">R&amp;D</span>
+        <h3 class="card-title">Платежи для&nbsp;AI-агентов</h3>
+        <p class="card-body">API для агентских сценариев, токены с ограничениями на сумму и категорию, MCP-сервер. Открыт ранний доступ.</p>
+        <a href="agents.html">Оставить заявку →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT MINI -->
+<section class="section-soft">
+  <div class="container">
+    <div class="about-grid fade-in">
+      <div>
+        <div class="eyebrow" style="margin-bottom: 16px;">О компании</div>
+        <h2>Международная команда, обеспечивающая платежи сотням тысяч клиентов</h2>
+        <p class="subtitle" style="margin-top: 20px;">Oplatum — продуктовая команда с офисами в Москве, Казахстане и Гонконге. За плечами — опыт международного платёжного бизнеса и обработка платежей в юрисдикциях с разными регуляторными ландшафтами.</p>
+        <div class="offices">
+          <div class="office"><div class="eyebrow">Офис</div><div class="office-name">Москва</div></div>
+          <div class="office"><div class="eyebrow">Офис</div><div class="office-name">Алматы</div></div>
+          <div class="office"><div class="eyebrow">Офис</div><div class="office-name">Гонконг</div></div>
+        </div>
+        <div style="margin-top: 32px;"><a href="about.html" class="btn btn-ghost btn-sm">Подробнее о&nbsp;команде →</a></div>
+      </div>
+      <div>
+        <div style="border: 1px solid var(--c-line); border-radius: var(--r-lg); padding: 32px; background: #fff;">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+            <div><div class="trust-value" style="font-size: 28px;">2024</div><div class="trust-label">Запуск платформы</div></div>
+            <div><div class="trust-value" style="font-size: 28px;">3</div><div class="trust-label">Юрисдикции</div></div>
+            <div><div class="trust-value" style="font-size: 28px;">100k+</div><div class="trust-label">Платежей в&nbsp;месяц</div></div>
+            <div><div class="trust-value" style="font-size: 28px;">24/7</div><div class="trust-label">Мониторинг и&nbsp;поддержка</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section>
+  <div class="container" style="max-width: 860px;">
+    <div class="fade-in" style="margin-bottom: 40px;">
+      <div class="eyebrow" style="margin-bottom: 16px;">Частые вопросы</div>
+      <h2>Что чаще всего спрашивают</h2>
+    </div>
+    <div class="faq fade-in">
+      <div class="faq-item open">
+        <button class="faq-q">Работаете ли вы с резидентами РФ?
+          <span class="faq-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">Да. Принимаем платежи от клиентов в РФ и СНГ, выплачиваем на расчётный счёт ИП или ООО в рублях или в USDT. Работаем и с нерезидентами.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Как быстро можно начать принимать платежи?
+          <span class="faq-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">Тестовая среда — в день подачи заявки. Боевая верификация — до 24 часов. Без недель ожидания и звонков «менеджеры свяжутся в течение 3 рабочих дней».</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Какие методы оплаты поддерживаются?
+          <span class="faq-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">СБП, российские банковские карты, USDT (TRC20/ERC20). Рекуррентные платежи и мгновенные возвраты — из коробки.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">В какой валюте происходят выплаты?
+          <span class="faq-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">Рубли — на расчётный счёт ИП или ООО в РФ. USDT — на ваш кошелёк (TRC20 или ERC20). Выплаты на следующий рабочий день.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Какая комиссия?
+          <span class="faq-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">От 2.5% для СБП, от 4.5% для карт, от 2% для USDT. Корпоративные условия для оборотов от 5 млн ₽/мес — индивидуально. Без абонентских платежей, без платы за подключение.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Какие виды бизнеса вы обслуживаете?
+          <span class="faq-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">Цифровые товары, gaming, онлайн-образование, digital-подписки, арбитраж, Telegram-боты и Mini Apps. Не работаем с беттингом и некоторыми категориями high-risk.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Как подключиться технически?
+          <span class="faq-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">REST API и вебхуки. Документация открыта после регистрации. SDK для популярных языков и Telegram-фреймворков — в закрытой бете, можно запросить ранний доступ.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Есть ли поддержка?
+          <span class="faq-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">Персональный менеджер на весь период работы. Ответ в рабочий день. Технические вопросы — через почту или Telegram. 24/7 мониторинг платёжных систем.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA + FORM -->
+<section id="connect" class="section-soft">
+  <div class="container">
+    <div class="form-grid">
+      <div class="fade-in">
+        <div class="eyebrow" style="margin-bottom: 16px;">Подключение</div>
+        <h2 style="max-width: 500px;">Начните принимать оплату через&nbsp;24&nbsp;часа</h2>
+        <p class="subtitle" style="margin-top: 20px; max-width: 480px;">Свяжемся в течение рабочего дня — сразу учётные данные и доступ к тестовой среде.</p>
+        <form data-demo style="margin-top: 32px;">
+          <div class="form-field">
+            <label>Email <span class="req">*</span></label>
+            <input type="email" required placeholder="you@example.com">
+          </div>
+          <div class="form-field">
+            <label>Название проекта / компании <span class="req">*</span></label>
+            <input type="text" required placeholder="Acme">
+          </div>
+          <div class="form-field">
+            <label>Telegram <span class="req">*</span></label>
+            <input type="text" required placeholder="@username">
+          </div>
+          <div class="form-field">
+            <label>Тип бизнеса</label>
+            <select>
+              <option>Gaming / in-game</option>
+              <option>Цифровые товары</option>
+              <option>Арбитраж / трафик</option>
+              <option>Онлайн-образование</option>
+              <option>Telegram-бот / Mini App</option>
+              <option>Другое</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label>Ожидаемый оборот</label>
+            <select>
+              <option>До 500 000 ₽/мес</option>
+              <option>500 000 — 3 млн ₽/мес</option>
+              <option>3 — 10 млн ₽/мес</option>
+              <option>Более 10 млн ₽/мес</option>
+              <option>Пока не знаю</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary form-submit">Отправить заявку</button>
+        </form>
+      </div>
+      <div class="fade-in">
+        <div class="eyebrow" style="margin-bottom: 24px;">Что вы получаете</div>
+        <ul class="perks-list">
+          <li><span class="check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><h4>Доступ к тестовой среде сразу</h4><p>Начните разработку в день подачи заявки, до прохождения проверки документов.</p></div></li>
+          <li><span class="check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><h4>Выплаты на следующий день</h4><p>Деньги поступают на счёт ИП/ООО в РФ или в&nbsp;USDT — без задержек.</p></div></li>
+          <li><span class="check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><h4>API и документация</h4><p>REST API, вебхуки, тестовая среда. Интеграция — один&nbsp;вечер.</p></div></li>
+          <li><span class="check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><h4>Персональный менеджер</h4><p>Отвечает в рабочий день. Помогает с настройкой и&nbsp;интеграцией.</p></div></li>
+          <li><span class="check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><h4>Тарифы без сюрпризов</h4><p>Фиксированные ставки, никаких скрытых сборов и&nbsp;абонентских&nbsp;платежей.</p></div></li>
+        </ul>
+        <div style="border-top: 1px solid var(--c-line); margin-top: 36px; padding-top: 24px;">
+          <p style="font-size: 15px; color: var(--c-ink-60); line-height: 1.7;">Уже работаете с другим провайдером и хотите сравнить условия? <a href="https://t.me/oplatum_support" style="color: var(--c-brand); font-weight: 500;">Напишите — разберём вместе</a>.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="logo" style="margin-bottom: 10px;"><span class="logo-mark">O</span><span>Oplatum</span></div>
+        <p style="font-size: 15px; color: var(--c-ink-40); max-width: 280px;">Платёжная инфраструктура для цифровых бизнесов.</p>
+        <p style="font-size: 14px; color: var(--c-ink-20); margin-top: 12px;">Москва · Алматы · Гонконг</p>
+      </div>
+      <div class="footer-col">
+        <h5>Продукт</h5>
+        <a href="pricing.html">Тарифы</a>
+        <a href="telegram.html">Для Telegram</a>
+        <a href="agents.html">Для AI-агентов</a>
+        <a href="#">Документация</a>
+      </div>
+      <div class="footer-col">
+        <h5>Компания</h5>
+        <a href="about.html">О нас</a>
+        <a href="#connect">Связаться</a>
+        <a href="#">Карьера</a>
+      </div>
+      <div class="footer-col">
+        <h5>Связь</h5>
+        <a href="mailto:hello@oplatum.com">hello@oplatum.com</a>
+        <a href="https://t.me/oplatum_support">@oplatum_support</a>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2026 Oplatum. Все права защищены.</div>
+  </div>
+</footer>
+
+<!-- FLOATING TG -->
+<a class="fab" href="https://t.me/oplatum_support" aria-label="Поддержка в Telegram">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+</a>
+
+<script src="assets/app.js"></script>
+</body>
+</html>
