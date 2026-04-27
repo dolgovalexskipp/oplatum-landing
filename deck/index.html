@@ -1,0 +1,549 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Oplatum — Презентация для клиентов</title>
+<meta name="description" content="Платёжная инфраструктура с интеграцией за 1 день. СБП, СБП-подписки, USDT-расчёты. 60 000+ транзакций в день, uptime 99.9%.">
+<style>
+/* ============================================================
+   Oplatum Deck — vertical A4 (210×297mm), 10 slides
+   ============================================================ */
+
+@font-face { font-family: 'ALS Hauss'; src: url('../fonts/ALSHauss-Light.ttf') format('truetype');   font-weight: 300; font-display: swap; }
+@font-face { font-family: 'ALS Hauss'; src: url('../fonts/ALSHauss-Regular.ttf') format('truetype'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'ALS Hauss'; src: url('../fonts/ALSHauss-Medium.ttf') format('truetype');  font-weight: 500; font-display: swap; }
+@font-face { font-family: 'ALS Hauss'; src: url('../fonts/ALSHauss-Bold.ttf') format('truetype');    font-weight: 700; font-display: swap; }
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  --bg: #FFFFFF;
+  --surface: #F8F9FB;
+  --surface-2: #F1F3F6;
+  --text: #0A0E14;
+  --text-secondary: #5C6470;
+  --text-muted: #8B92A0;
+  --border: #E8EAEE;
+  --border-strong: #D5D9E0;
+  --accent: #1F6FEB;
+  --highlight: #1F6FEB;
+  --highlight-soft: #E8F0FE;
+  --terminal-bg: #0F1419;
+  --terminal-fg: #E6E1CF;
+  --terminal-green: #7CE3A1;
+  --terminal-amber: #FFB454;
+  --terminal-muted: #5C6773;
+  --font-display: 'ALS Hauss', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-body: 'ALS Hauss', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: #EEF0F4; color: var(--text); font-family: var(--font-body); -webkit-font-smoothing: antialiased; }
+
+/* Toolbar (hidden when printing) */
+.deck-toolbar {
+  position: fixed; top: 16px; right: 16px; z-index: 100;
+  display: flex; gap: 10px; align-items: center;
+  background: rgba(255,255,255,0.96);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 10px 14px;
+  box-shadow: 0 4px 14px rgba(10,14,20,0.08);
+}
+.deck-toolbar .hint { font-size: 13px; color: var(--text-secondary); margin-right: 4px; }
+.btn-print {
+  font-family: var(--font-body); font-weight: 500; font-size: 14px;
+  background: var(--text); color: #FFF;
+  border: 1px solid transparent; border-radius: 8px;
+  padding: 10px 16px; cursor: pointer;
+  display: inline-flex; align-items: center; gap: 8px;
+  transition: all 200ms ease;
+}
+.btn-print:hover { background: #1F262E; }
+
+/* Slide container — A4 portrait */
+.deck { display: flex; flex-direction: column; align-items: center; gap: 16px; padding: 80px 16px 60px; }
+.slide {
+  width: 210mm; height: 297mm;
+  background: var(--bg);
+  position: relative; overflow: hidden;
+  padding: 18mm 16mm;
+  display: flex; flex-direction: column;
+  box-shadow: 0 4px 30px rgba(10,14,20,0.10);
+  break-inside: avoid;
+}
+.slide.dark { background: var(--terminal-bg); color: #FFF; }
+
+/* Slide chrome */
+.slide-head { display: flex; flex-direction: column; gap: 10px; margin-bottom: 14mm; }
+.slide-foot {
+  position: absolute; left: 16mm; right: 16mm; bottom: 12mm;
+  display: flex; justify-content: space-between; align-items: center;
+  font-family: var(--font-mono); font-size: 10px; color: var(--text-muted);
+  text-transform: uppercase; letter-spacing: 0.08em;
+}
+.slide.dark .slide-foot { color: #6E7682; }
+.slide-foot .wm { font-family: var(--font-display); font-weight: 700; font-size: 14px; color: var(--text); text-transform: none; letter-spacing: -0.01em; }
+.slide.dark .slide-foot .wm { color: #FFF; }
+.slide-foot .wm .dot { color: var(--highlight); }
+
+/* Type */
+.ovl { font-family: var(--font-mono); font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-secondary); }
+.slide.dark .ovl { color: #A5ADB8; }
+h1, h2, h3 { font-family: var(--font-display); margin: 0; font-weight: 700; letter-spacing: -0.02em; line-height: 1.05; }
+h1 { font-size: 56px; }
+h2 { font-size: 40px; line-height: 1.1; letter-spacing: -0.015em; }
+h3 { font-size: 22px; line-height: 1.2; letter-spacing: -0.005em; }
+p { margin: 0; line-height: 1.55; }
+.lead { font-size: 18px; color: var(--text-secondary); line-height: 1.55; max-width: 600px; }
+.slide.dark .lead { color: #C2C8D2; }
+.accent { color: var(--highlight); }
+
+/* ===== Slide 1 — cover ===== */
+.s-cover { justify-content: space-between; }
+.s-cover .top { display: flex; justify-content: space-between; align-items: center; }
+.s-cover .wm-big { font-weight: 700; font-size: 26px; letter-spacing: -0.025em; }
+.s-cover .wm-big .dot { color: var(--highlight); }
+.s-cover .stamp { font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; }
+.s-cover .mid h1 { font-size: 64px; line-height: 1.05; max-width: 170mm; }
+.s-cover .mid h1 .accent { color: var(--highlight); }
+.s-cover .mid .lead { margin-top: 18px; max-width: 150mm; }
+.s-cover .meta-row { display: flex; gap: 56px; padding-top: 24px; border-top: 1px solid var(--border); }
+.s-cover .meta-num { font-size: 36px; font-weight: 700; color: var(--highlight); letter-spacing: -0.015em; }
+.s-cover .meta-lbl { font-size: 12px; color: var(--text-secondary); margin-top: 4px; line-height: 1.4; }
+
+/* ===== Slide 2 — TL;DR ===== */
+.tldr-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 8px; }
+.tldr-card { background: var(--surface); border-radius: 18px; padding: 22px; }
+.tldr-card .num { font-family: var(--font-mono); font-size: 11px; color: var(--highlight); margin-bottom: 12px; font-weight: 500; letter-spacing: 0.08em; }
+.tldr-card h3 { font-size: 17px; margin-bottom: 8px; }
+.tldr-card p { font-size: 13.5px; color: var(--text-secondary); }
+
+/* ===== Slide 3 — proof of concept ===== */
+.proof-box { background: var(--text); color: #FFF; border-radius: 24px; padding: 36px; flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 28px; }
+.proof-headline { font-family: var(--font-display); font-size: 110px; font-weight: 700; line-height: 1; letter-spacing: -0.04em; }
+.proof-headline .plus { color: var(--highlight); font-size: 56px; vertical-align: top; }
+.proof-cap { font-size: 16px; color: #C2C8D2; }
+.proof-stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; margin-top: 8px; }
+.proof-stat { padding-left: 14px; border-left: 2px solid var(--highlight); }
+.proof-stat .v { font-size: 26px; font-weight: 700; color: #FFF; }
+.proof-stat .l { font-size: 12px; color: #8B92A0; margin-top: 4px; line-height: 1.4; }
+
+/* ===== Slide 4 — features grid ===== */
+.feat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.feat { background: #FFF; border: 1px solid var(--border); border-radius: 14px; padding: 16px 14px; }
+.feat .tag { display: inline-block; font-family: var(--font-mono); font-size: 9px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--highlight); background: var(--highlight-soft); padding: 3px 6px; border-radius: 4px; margin-bottom: 10px; }
+.feat h3 { font-size: 14px; margin: 0 0 6px; line-height: 1.25; }
+.feat p { font-size: 11.5px; color: var(--text-secondary); line-height: 1.5; }
+
+/* ===== Slide 5 — process steps ===== */
+.steps { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+.step { background: var(--surface); border-radius: 20px; padding: 26px 22px; }
+.step .n { font-family: var(--font-mono); font-weight: 700; font-size: 14px; color: var(--highlight); margin-bottom: 18px; }
+.step h3 { font-size: 19px; margin: 0 0 10px; }
+.step p { font-size: 14px; color: var(--text-secondary); }
+.steps-note { margin-top: 24px; padding: 18px 22px; background: var(--highlight-soft); border-radius: 12px; }
+.steps-note b { color: var(--highlight); }
+.steps-note { font-size: 14px; color: var(--text); }
+
+/* ===== Slide 6 — pricing ladder ===== */
+.tariffs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 8px; }
+.tariff { background: var(--surface); border-radius: 18px; padding: 24px 20px; text-align: left; }
+.tariff.featured { background: var(--text); color: #FFF; }
+.tariff .vol { font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 14px; }
+.tariff.featured .vol { color: #8B92A0; }
+.tariff .rate { font-size: 36px; font-weight: 700; line-height: 1; letter-spacing: -0.02em; color: var(--highlight); margin-bottom: 12px; }
+.tariff.featured .rate { color: var(--highlight); }
+.tariff .desc { font-size: 13px; color: var(--text-secondary); line-height: 1.45; }
+.tariff.featured .desc { color: #C2C8D2; }
+
+/* ===== Slide 7 — industries ===== */
+.ind-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.ind { background: #FFF; border: 1px solid var(--border); border-radius: 18px; padding: 22px; }
+.ind .ovl-mini { font-family: var(--font-mono); font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
+.ind h3 { font-size: 17px; margin: 0 0 10px; }
+.ind p { font-size: 12.5px; color: var(--text-secondary); margin-bottom: 6px; }
+.ind .metric { font-size: 22px; font-weight: 700; color: var(--highlight); margin-top: 8px; }
+.ind .metric span { font-family: var(--font-body); font-size: 12px; color: var(--text-secondary); margin-left: 6px; font-weight: 400; }
+
+/* ===== Slide 8 — dev ===== */
+.dev-block { display: grid; grid-template-columns: 1fr 1.05fr; gap: 28px; align-items: stretch; flex: 1; }
+.dev-block ul { list-style: none; padding: 0; margin: 18px 0 0; display: flex; flex-direction: column; gap: 10px; }
+.dev-block li { font-size: 13.5px; color: #C2C8D2; padding-left: 22px; position: relative; }
+.dev-block li::before { content: '→'; position: absolute; left: 0; color: var(--highlight); font-family: var(--font-mono); }
+.codeblock { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 14px; font-family: var(--font-mono); font-size: 11px; line-height: 1.6; color: var(--terminal-fg); white-space: pre-wrap; align-self: stretch; }
+.codeblock .com { color: var(--terminal-muted); }
+.codeblock .key { color: var(--terminal-amber); }
+.codeblock .str { color: var(--terminal-green); }
+.codeblock .fn  { color: #59C2FF; }
+.codeblock .num { color: var(--terminal-amber); }
+
+/* ===== Slide 9 — roadmap ===== */
+.rm-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.rm-card { background: var(--surface); border-radius: 18px; padding: 22px; }
+.rm-card .stt { display: inline-block; font-family: var(--font-mono); font-size: 10px; color: var(--highlight); background: var(--highlight-soft); padding: 4px 8px; border-radius: 5px; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.08em; }
+.rm-card h3 { font-size: 17px; margin: 0 0 8px; }
+.rm-card p { font-size: 13px; color: var(--text-secondary); line-height: 1.5; }
+
+/* ===== Slide 10 — contacts ===== */
+.contacts { display: flex; flex-direction: column; gap: 36px; }
+.contacts-row { display: flex; gap: 24px; }
+.contact-block { flex: 1; background: var(--surface); border-radius: 22px; padding: 36px; }
+.contact-block .ovl-mini { font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 14px; }
+.contact-block h3 { font-size: 28px; margin: 0 0 12px; }
+.contact-block p { font-size: 15px; color: var(--text-secondary); }
+.contact-block a { display: block; font-family: var(--font-mono); font-size: 16px; color: var(--highlight); margin-top: 14px; text-decoration: none; }
+.cta-final { background: var(--text); color: #FFF; border-radius: 24px; padding: 48px 40px; text-align: center; }
+.cta-final h2 { font-size: 36px; line-height: 1.1; margin-bottom: 16px; color: #FFF; }
+.cta-final p { font-size: 16px; color: #C2C8D2; margin-bottom: 28px; max-width: 480px; margin-left: auto; margin-right: auto; }
+.cta-final a { display: inline-block; background: var(--highlight); color: #FFF; font-weight: 500; padding: 14px 28px; border-radius: 10px; text-decoration: none; font-size: 15px; }
+
+/* ============================================================
+   PRINT — convert to A4 portrait, hide chrome
+   ============================================================ */
+@page { size: A4 portrait; margin: 0; }
+
+@media print {
+  html, body { background: #FFF; }
+  .deck-toolbar { display: none !important; }
+  .deck { padding: 0; gap: 0; }
+  .slide {
+    box-shadow: none;
+    page-break-after: always;
+    break-after: page;
+    margin: 0;
+  }
+  .slide:last-child { page-break-after: auto; break-after: auto; }
+}
+
+/* Screen-only narrow: scale slides on small viewports */
+@media (max-width: 800px) {
+  .deck { padding: 60px 8px 40px; }
+  .slide { transform: scale(0.7); transform-origin: top center; margin-bottom: -90mm; }
+}
+</style>
+</head>
+<body>
+
+<div class="deck-toolbar">
+  <span class="hint">10 слайдов · A4 portrait</span>
+  <button class="btn-print" onclick="window.print()">Скачать PDF →</button>
+</div>
+
+<div class="deck">
+
+<!-- ===== Slide 1 — cover ===== -->
+<section class="slide s-cover">
+  <div class="top">
+    <span class="wm-big">oplatum<span class="dot">.</span></span>
+    <span class="stamp">Apr 2026 · for clients</span>
+  </div>
+  <div class="mid">
+    <span class="ovl">Платежи · Россия и за её пределами</span>
+    <h1 style="margin-top: 14px;">Платёжная инфраструктура с интеграцией <span class="accent">за 1 день</span></h1>
+    <p class="lead">СБП, СБП-подписки и USDT-расчёты для цифровых продуктов. Подключение без бумаг и долгого ожидания.</p>
+  </div>
+  <div class="meta-row">
+    <div>
+      <div class="meta-num">60k+</div>
+      <div class="meta-lbl">транзакций<br>в день</div>
+    </div>
+    <div>
+      <div class="meta-num">99.9%</div>
+      <div class="meta-lbl">uptime<br>платёжного шлюза</div>
+    </div>
+    <div>
+      <div class="meta-num">1 день</div>
+      <div class="meta-lbl">от заявки<br>до приёма платежей</div>
+    </div>
+  </div>
+  <footer class="slide-foot"><span class="wm">oplatum<span class="dot">.</span></span><span>01 · 10</span></footer>
+</section>
+
+<!-- ===== Slide 2 — TL;DR ===== -->
+<section class="slide">
+  <div class="slide-head">
+    <span class="ovl">01 · TL;DR</span>
+    <h2>Что мы делаем</h2>
+    <p class="lead">Полноценный платёжный стек для бизнесов, которые не помещаются в стандартный белый эквайринг — цифровые товары, Telegram-экономика, gaming, EdTech, SaaS, иностранные юрлица с российской аудиторией.</p>
+  </div>
+  <div class="tldr-grid">
+    <div class="tldr-card">
+      <div class="num">01</div>
+      <h3>Принимаем СБП и подписки</h3>
+      <p>Одиночные платежи через QR и рекуррентные списания через walletType:2. Полный цикл — от создания платежа до webhook о статусе.</p>
+    </div>
+    <div class="tldr-card">
+      <div class="num">02</div>
+      <h3>Расчёты в RUB и USDT</h3>
+      <p>Получайте деньги на расчётный счёт в рублях или на USDT-кошелёк. Иностранному юрлицу не нужен счёт в РФ.</p>
+    </div>
+    <div class="tldr-card">
+      <div class="num">03</div>
+      <h3>API уровня Stripe</h3>
+      <p>HMAC-SHA256, идемпотентность, sandbox с тестовыми ключами, webhooks с подписью, SDK для Node, Python и PHP.</p>
+    </div>
+    <div class="tldr-card">
+      <div class="num">04</div>
+      <h3>Подключение за 1 день</h3>
+      <p>Без бумажной волокиты. Заявка утром — приём платежей вечером. На всём процессе с вами один менеджер.</p>
+    </div>
+  </div>
+  <footer class="slide-foot"><span class="wm">oplatum<span class="dot">.</span></span><span>02 · 10</span></footer>
+</section>
+
+<!-- ===== Slide 3 — Proof of concept ===== -->
+<section class="slide">
+  <div class="slide-head">
+    <span class="ovl">02 · В цифрах</span>
+    <h2>Платёжный шлюз в боевом контуре</h2>
+    <p class="lead">Платформа уже работает с реальным трафиком. Логотипы клиентов раскрываем под NDA в KYB.</p>
+  </div>
+  <div class="proof-box">
+    <div>
+      <div class="proof-headline">60 000<span class="plus">+</span></div>
+      <div class="proof-cap">транзакций обрабатываем в день</div>
+    </div>
+    <div class="proof-stats">
+      <div class="proof-stat">
+        <div class="v">99.9%</div>
+        <div class="l">Uptime платёжного шлюза</div>
+      </div>
+      <div class="proof-stat">
+        <div class="v">&lt; 2 сек</div>
+        <div class="l">До подтверждения платежа</div>
+      </div>
+      <div class="proof-stat">
+        <div class="v">24/7</div>
+        <div class="l">Мониторинг и поддержка</div>
+      </div>
+      <div class="proof-stat">
+        <div class="v">8</div>
+        <div class="l">Релизов API за квартал</div>
+      </div>
+    </div>
+  </div>
+  <footer class="slide-foot"><span class="wm">oplatum<span class="dot">.</span></span><span>03 · 10</span></footer>
+</section>
+
+<!-- ===== Slide 4 — Features ===== -->
+<section class="slide">
+  <div class="slide-head">
+    <span class="ovl">03 · Возможности</span>
+    <h2>Что внутри платформы</h2>
+    <p class="lead">Полноценный платёжный стек поверх лицензированного эквайера — от приёма СБП до webhooks с подписью и личного кабинета.</p>
+  </div>
+  <div class="feat-grid">
+    <div class="feat"><div class="tag">СБП</div><h3>Приём по СБП QR</h3><p>Динамический QR на сумму, статус через webhook или polling.</p></div>
+    <div class="feat"><div class="tag">СБП</div><h3>СБП-подписки</h3><p>Рекурренты walletType:2, выбор банка, множественные привязки.</p></div>
+    <div class="feat"><div class="tag">Checkout</div><h3>Hosted-страница</h3><p>Готовая страница оплаты на нашем домене через Checkout Sessions.</p></div>
+    <div class="feat"><div class="tag">Checkout</div><h3>Платёжные ссылки</h3><p>Одиночные ссылки для outreach, Telegram-ботов и email-кампаний.</p></div>
+    <div class="feat"><div class="tag">API</div><h3>Customers API</h3><p>Управление клиентами и платёжными привязками.</p></div>
+    <div class="feat"><div class="tag">API</div><h3>Events API</h3><p>Журнал событий с пагинацией и реплеем webhooks.</p></div>
+    <div class="feat"><div class="tag">API</div><h3>Webhooks с подписью</h3><p>HMAC-SHA256 в заголовках, retry с экспоненциальным backoff.</p></div>
+    <div class="feat"><div class="tag">API</div><h3>Идемпотентность</h3><p>Idempotency-Key на POST. Повтор не создаёт дубликат.</p></div>
+    <div class="feat"><div class="tag">Dev</div><h3>Sandbox</h3><p>Тестовые ключи и управление результатом для прогонки сценариев.</p></div>
+    <div class="feat"><div class="tag">Dev</div><h3>Возвраты через API</h3><p>Полный или частичный refund одним endpoint.</p></div>
+    <div class="feat"><div class="tag">Dev</div><h3>SDK</h3><p>Готовые библиотеки Node, Python, PHP + Postman-коллекция.</p></div>
+    <div class="feat"><div class="tag">Admin</div><h3>Личный кабинет</h3><p>Дашборд, транзакции, клиенты, выплаты, отчёты, API-логи.</p></div>
+  </div>
+  <footer class="slide-foot"><span class="wm">oplatum<span class="dot">.</span></span><span>04 · 10</span></footer>
+</section>
+
+<!-- ===== Slide 5 — Process ===== -->
+<section class="slide">
+  <div class="slide-head">
+    <span class="ovl">04 · Как мы работаем</span>
+    <h2>От заявки до первого платежа — один день</h2>
+    <p class="lead">Без бумаг и долгих согласований. На всём пути с вами один менеджер.</p>
+  </div>
+  <div class="steps">
+    <div class="step"><div class="n">01</div><h3>Оставить заявку</h3><p>Короткая форма или Telegram-бот. Отвечаем в течение часа в рабочее время.</p></div>
+    <div class="step"><div class="n">02</div><h3>Получить ключи</h3><p>Выдаём тестовые ключи песочницы. Команда разработки начинает интеграцию.</p></div>
+    <div class="step"><div class="n">03</div><h3>Принимать платежи</h3><p>После короткой проверки переводим в боевой контур. Зачисление — на следующий день.</p></div>
+  </div>
+  <div class="steps-note"><b>Не нужно</b> готовить пачку документов и ждать недели согласования — упрощённый KYB и единая точка контакта.</div>
+  <footer class="slide-foot"><span class="wm">oplatum<span class="dot">.</span></span><span>05 · 10</span></footer>
+</section>
+
+<!-- ===== Slide 6 — Pricing ===== -->
+<section class="slide">
+  <div class="slide-head">
+    <span class="ovl">05 · Тарифы</span>
+    <h2>Прозрачная сетка по обороту</h2>
+    <p class="lead">Чем больше оборот — тем меньше комиссия. Все ставки публичны и фиксируются в договоре.</p>
+  </div>
+  <div class="tariffs">
+    <div class="tariff">
+      <div class="vol">До 10 млн ₽/мес</div>
+      <div class="rate">6%</div>
+      <div class="desc">Стартовая ставка для малого оборота</div>
+    </div>
+    <div class="tariff">
+      <div class="vol">10–20 млн ₽/мес</div>
+      <div class="rate">5.5%</div>
+      <div class="desc">Средний уровень оборота</div>
+    </div>
+    <div class="tariff">
+      <div class="vol">20–50 млн ₽/мес</div>
+      <div class="rate">4.5%</div>
+      <div class="desc">Высокий оборот</div>
+    </div>
+    <div class="tariff featured">
+      <div class="vol">От 50 млн ₽/мес</div>
+      <div class="rate">от 4%</div>
+      <div class="desc">Индивидуальные условия для крупного оборота</div>
+    </div>
+  </div>
+  <div style="margin-top: 18mm; display: flex; gap: 56px;">
+    <div>
+      <div class="ovl">Что входит</div>
+      <p style="font-size: 14px; color: var(--text-secondary); margin-top: 12px; max-width: 70mm; line-height: 1.6;">Приём СБП и подписок, расчёты в RUB и USDT, API уровня Stripe, sandbox, личный кабинет, поддержка 24/7, персональный менеджер.</p>
+    </div>
+    <div>
+      <div class="ovl">Без скрытых строк</div>
+      <p style="font-size: 14px; color: var(--text-secondary); margin-top: 12px; max-width: 70mm; line-height: 1.6;">Setup-fee — 0 ₽. Изменения тарифа только по обновлённому договору. Возвраты и рефанды не считаются как двойная комиссия.</p>
+    </div>
+  </div>
+  <footer class="slide-foot"><span class="wm">oplatum<span class="dot">.</span></span><span>06 · 10</span></footer>
+</section>
+
+<!-- ===== Slide 7 — Industries ===== -->
+<section class="slide">
+  <div class="slide-head">
+    <span class="ovl">06 · Индустрии</span>
+    <h2>Решения для пяти ниш цифровой экономики</h2>
+    <p class="lead">Один процессор, разные сценарии. Условия подбираем под ваш бизнес.</p>
+  </div>
+  <div class="ind-grid">
+    <div class="ind">
+      <div class="ovl-mini">01 · Telegram-экономика</div>
+      <h3>Подписки и платежи в ботах</h3>
+      <p>Stripe и зарубежные шлюзы не работают с резидентами РФ.</p>
+      <p>СБП-подписки с зачислением в RUB на расчётный счёт.</p>
+      <div class="metric">+38%<span>конверсия в оплату</span></div>
+    </div>
+    <div class="ind">
+      <div class="ovl-mini">02 · Gaming</div>
+      <h3>Микроплатежи и внутриигровые покупки</h3>
+      <p>Многие провайдеры блокируют игровую тематику.</p>
+      <p>Принимаем gaming, лутбоксы и premium-паки в открытом договоре.</p>
+      <div class="metric">&lt; 2 сек<span>до подтверждения</span></div>
+    </div>
+    <div class="ind">
+      <div class="ovl-mini">03 · EdTech</div>
+      <h3>Курсы, подписки, рассрочка</h3>
+      <p>Длинные продукты с возвратами требуют гибкого билинга.</p>
+      <p>Подписки и рассрочка платежей через единый API.</p>
+      <div class="metric">0.4%<span>возвратов</span></div>
+    </div>
+    <div class="ind">
+      <div class="ovl-mini">04 · SaaS</div>
+      <h3>Recurring billing для B2B</h3>
+      <p>Карты не подходят для долгосрочных корпоративных подписок.</p>
+      <p>СБП-подписки для регулярных корпоративных платежей.</p>
+      <div class="metric">24 ч<span>до интеграции</span></div>
+    </div>
+    <div class="ind" style="grid-column: 1 / -1;">
+      <div class="ovl-mini">05 · Иностранные юрлица</div>
+      <h3>USDT для нерезидентов</h3>
+      <p>Иностранцу нельзя открыть расчётный счёт в России.</p>
+      <p>Расчёты приходят в USDT на ваш кошелёк. Договор с российским лицензированным эквайером.</p>
+      <div class="metric">USDT<span>валюта расчётов</span></div>
+    </div>
+  </div>
+  <footer class="slide-foot"><span class="wm">oplatum<span class="dot">.</span></span><span>07 · 10</span></footer>
+</section>
+
+<!-- ===== Slide 8 — Dev ===== -->
+<section class="slide dark">
+  <div class="slide-head">
+    <span class="ovl">07 · Для разработчиков</span>
+    <h2 style="color: #FFF;">API уровня Stripe + MCP-сервер для AI-агентов</h2>
+    <p class="lead">REST + webhooks с подписью HMAC-SHA256, идемпотентность, sandbox с тестовыми ключами. SDK для Node, Python, PHP. MCP-сервер — чтобы AI-агент сам интегрировал платежи в код.</p>
+  </div>
+  <div class="dev-block">
+    <div>
+      <span class="ovl">Что есть в API</span>
+      <ul>
+        <li>HMAC-SHA256 подпись запросов</li>
+        <li>Idempotency-Key на POST</li>
+        <li>Webhooks с retry policy</li>
+        <li>Sandbox: ak_test_ / sk_test_</li>
+        <li>Customers API + Events API</li>
+        <li>Checkout Sessions (hosted)</li>
+        <li>Возвраты через POST /refund</li>
+        <li>SDK Node / Python / PHP</li>
+        <li>Postman-коллекция + консоль</li>
+      </ul>
+    </div>
+    <pre class="codeblock"><span class="com">// Платёж по СБП с подпиской</span>
+<span class="fn">const</span> payment = <span class="fn">await</span> oplatum.payments.<span class="fn">create</span>({
+  <span class="key">amount</span>: <span class="num">12500</span>,
+  <span class="key">currency</span>: <span class="str">"RUB"</span>,
+  <span class="key">method</span>: <span class="str">"sbp"</span>,
+  <span class="key">recurring</span>: <span class="num">true</span>,
+  <span class="key">description</span>: <span class="str">"Подписка Pro"</span>
+});
+
+<span class="com">// Webhook с подписью</span>
+<span class="key">X-Signature</span>: hmac-sha256
+<span class="key">X-Timestamp</span>: <span class="num">1714247280</span>
+<span class="key">X-Nonce</span>: 9f3a1b...</pre>
+  </div>
+  <footer class="slide-foot"><span class="wm">oplatum<span class="dot">.</span></span><span>08 · 10</span></footer>
+</section>
+
+<!-- ===== Slide 9 — Roadmap ===== -->
+<section class="slide">
+  <div class="slide-head">
+    <span class="ovl">08 · Roadmap</span>
+    <h2>Что готовим в ближайшие месяцы</h2>
+    <p class="lead">Сейчас в боевом контуре — СБП и СБП-подписки с зачислением за 1 день.</p>
+  </div>
+  <div class="rm-grid">
+    <div class="rm-card"><h3>Карты</h3><p>Эквайринг по картам РФ как второй рельс рядом с СБП.</p></div>
+    <div class="rm-card"><div class="stt">План</div><h3>Mass payouts</h3><p>Массовые выплаты исполнителям, авторам и продавцам через единый API.</p></div>
+    <div class="rm-card"><div class="stt">Прототип</div><h3>MCP-сервер для AI-агентов</h3><p>Агент сам интегрирует платежи в код через Model Context Protocol.</p></div>
+    <div class="rm-card"><div class="stt">План</div><h3>Telegram Mini App native</h3><p>Нативная оплата внутри Mini App без редиректов на hosted checkout.</p></div>
+    <div class="rm-card" style="grid-column: 1 / -1;"><div class="stt">План</div><h3>Multi-currency расчёты</h3><p>Зачисления в EUR и других стейблах поверх существующих RUB и USDT.</p></div>
+  </div>
+  <footer class="slide-foot"><span class="wm">oplatum<span class="dot">.</span></span><span>09 · 10</span></footer>
+</section>
+
+<!-- ===== Slide 10 — Contacts / CTA ===== -->
+<section class="slide">
+  <div class="slide-head">
+    <span class="ovl">09 · Контакты</span>
+    <h2>Подключение за 1 день</h2>
+  </div>
+  <div class="contacts">
+    <div class="contacts-row">
+      <div class="contact-block">
+        <div class="ovl-mini">Прямой контакт</div>
+        <h3>Telegram-бот</h3>
+        <p>Пишете @oplatum_bot — менеджер открывает условия в течение часа.</p>
+        <a href="https://t.me/oplatum_bot">@oplatum_bot</a>
+      </div>
+      <div class="contact-block">
+        <div class="ovl-mini">Email</div>
+        <h3>Заявка на подключение</h3>
+        <p>Расскажите о вашем продукте — пришлём расчёт условий и тестовые ключи.</p>
+        <a href="mailto:hello@oplatum.ru">hello@oplatum.ru</a>
+      </div>
+    </div>
+    <div class="cta-final">
+      <h2>Платёжная инфраструктура с интеграцией <span class="accent">за 1 день</span></h2>
+      <p>СБП, СБП-подписки и USDT-расчёты для цифровых продуктов. Заявка утром — приём платежей вечером.</p>
+      <a href="https://dolgovalexskipp.github.io/oplatum-landing/#apply">Оставить заявку →</a>
+    </div>
+  </div>
+  <footer class="slide-foot"><span class="wm">oplatum<span class="dot">.</span></span><span>10 · 10</span></footer>
+</section>
+
+</div>
+
+</body>
+</html>
