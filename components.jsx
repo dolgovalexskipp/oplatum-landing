@@ -239,6 +239,41 @@ function Advantages() {
   );
 }
 
+// ---------- Product Features (full inventory from API spec) ----------
+const FEATURES = [
+  { tag: 'СБП', h: 'Приём по СБП QR', body: 'Динамический QR-код на сумму платежа. Создание через POST /payments/create-code, статус через webhook или polling.' },
+  { tag: 'СБП', h: 'СБП-подписки', body: 'Рекуррентные списания через walletType:2. Привязка с выбором банка из списка СБП, множественные привязки на одного клиента.' },
+  { tag: 'Checkout', h: 'Hosted-страница оплаты', body: 'Готовая страница чекаута на нашем домене — Checkout Sessions API. Без своего фронта на стороне мерчанта.' },
+  { tag: 'Checkout', h: 'Платёжные ссылки', body: 'Одиночные ссылки для outreach, Telegram-ботов и email-кампаний.' },
+  { tag: 'API', h: 'Customers API', body: 'Управление клиентами и их платёжными привязками: GET / POST / PATCH / DELETE.' },
+  { tag: 'API', h: 'Events API', body: 'Журнал всех событий с пагинацией и фильтрами. Реплей webhooks из истории.' },
+  { tag: 'API', h: 'Webhooks с подписью', body: 'HMAC-SHA256 в заголовках, retry-policy с экспоненциальным backoff.' },
+  { tag: 'API', h: 'Идемпотентность', body: 'Idempotency-Key на POST-запросах. Повторная отправка не создаёт дубликат.' },
+  { tag: 'Dev', h: 'Sandbox', body: 'Тестовый режим с парой ключей ak_test_/sk_test_. Управление результатом платежа для прогонки сценариев.' },
+  { tag: 'Dev', h: 'Возвраты через API', body: 'Полный или частичный refund через POST /payments/:id/refund.' },
+  { tag: 'Admin', h: 'Личный кабинет', body: 'Дашборд GMV/refunds/net/fees, транзакции, клиенты, выплаты, отчёты, API-логи, вебхуки.' },
+  { tag: 'Dev', h: 'SDK и инструменты', body: 'Готовые библиотеки на Node.js, Python и PHP. Postman-коллекция и интерактивная консоль в документации.' },
+];
+
+function ProductFeatures() {
+  return (
+    <section className="section">
+      <Overline>02 · Возможности</Overline>
+      <h2>Что внутри платформы</h2>
+      <p className="sub">Полноценный платёжный стек поверх лицензированного процессора — от приёма СБП до webhooks с подписью и личного кабинета.</p>
+      <div className="features-grid">
+        {FEATURES.map((f, i) => (
+          <div key={i} className="feature-card">
+            <div className="feature-tag">{f.tag}</div>
+            <h3>{f.h}</h3>
+            <p>{f.body}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 // ---------- Process (5 steps, 3 days) ----------
 const STEPS = [
   { h: 'Оставить заявку', body: 'Короткая форма или Telegram-бот.' },
@@ -251,7 +286,7 @@ const STEPS = [
 function ProcessSteps() {
   return (
     <section className="section">
-      <Overline>02 · Как мы работаем</Overline>
+      <Overline>03 · Как мы работаем</Overline>
       <h2>От заявки до первого платежа — обычно 3 дня</h2>
       <p className="sub">На всём процессе с вами один менеджер на стороне Oplatum.</p>
       <div className="steps-grid">
@@ -290,7 +325,7 @@ function CasesStrip() {
   const cur = CASES[idx];
   return (
     <section className="section">
-      <Overline>03 · Кейсы</Overline>
+      <Overline>04 · Кейсы</Overline>
       <h2>Уже принимают платежи через Oplatum</h2>
       <div className="quote-card">
         <div className="quote-mark">«</div>
@@ -339,7 +374,7 @@ function IndustryCard({ item }) {
 function IndustryGrid() {
   return (
     <section className="section" id="industries">
-      <Overline>04 · Индустрии</Overline>
+      <Overline>05 · Индустрии</Overline>
       <h2>Решения для пяти ниш цифровой экономики</h2>
       <p className="sub">Один процессор, разные сценарии. Условия подбираем под ваш бизнес.</p>
       <div className="industry-grid">
@@ -393,7 +428,7 @@ function PricingSection() {
   return (
     <section className="section two-col" id="pricing">
       <div>
-        <Overline>05 · Тарифы</Overline>
+        <Overline>06 · Тарифы</Overline>
         <h2>Прозрачная сетка по обороту</h2>
         <p className="sub">Чем больше оборот — тем меньше комиссия. Все ставки публичны и фиксируются в договоре.</p>
         <ul className="bullets">
@@ -426,7 +461,7 @@ function TelegramBlock() {
           <div className="msg msg-bot pay">Открыть → @oplatum_bot</div>
         </div>
         <div>
-          <Overline>06 · Onboarding · Telegram</Overline>
+          <Overline>07 · Onboarding · Telegram</Overline>
           <h3>Подключение через бота</h3>
           <p className="lead">Пишете в @oplatum_bot — менеджер открывает условия в течение часа. Без длинных форм и встреч.</p>
           <CtaApply size="lg">Открыть бота</CtaApply>
@@ -442,7 +477,7 @@ function DevFeatured() {
     <section className="section" id="docs">
       <div className="dev-feature">
         <div className="dev-feature-copy">
-          <Overline className="ovl-on-dark">07 · Для разработчиков</Overline>
+          <Overline className="ovl-on-dark">08 · Для разработчиков</Overline>
           <h2>API уровня Stripe + MCP-сервер для AI-агентов</h2>
           <p className="sub-on-dark">REST + webhooks с подписью HMAC-SHA256, идемпотентность, sandbox с тестовыми ключами. SDK для Node, Python и PHP. MCP-сервер — чтобы AI-агент сам интегрировал платежи в код.</p>
           <div className="dev-compare">
@@ -494,7 +529,7 @@ const ROADMAP = [
 function Roadmap() {
   return (
     <section className="section">
-      <Overline>08 · Roadmap</Overline>
+      <Overline>09 · Roadmap</Overline>
       <h2>Что готовим в ближайшие месяцы</h2>
       <p className="sub">Сейчас в боевом контуре — СБП и СБП-подписки с зачислением за 1 день.</p>
       <div className="roadmap-grid">
@@ -524,7 +559,7 @@ function LeadForm() {
     <section className="section" id="apply">
       <div className="lead-form-card">
         <div className="lead-form-copy">
-          <Overline>09 · Заявка</Overline>
+          <Overline>10 · Заявка</Overline>
           <h2>Оставьте заявку на подключение</h2>
           <p className="sub">Отвечаем в течение часа в рабочее время. KYB занимает до 3 дней — собираем документы для лицензированного процессора. На всём процессе с вами один менеджер.</p>
           <div className="lead-form-bullets">
@@ -607,7 +642,7 @@ function FAQ() {
   const [open, setOpen] = useState(0);
   return (
     <section className="section">
-      <Overline>10 · Вопросы</Overline>
+      <Overline>11 · Вопросы</Overline>
       <h2>Часто спрашивают</h2>
       <div className="faq-list">
         {FAQS.map((f, i) => (
@@ -670,6 +705,7 @@ function App() {
       <Hero />
       <TrustStrip />
       <Advantages />
+      <ProductFeatures />
       <ProcessSteps />
       <CasesStrip />
       <IndustryGrid />
