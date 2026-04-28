@@ -145,30 +145,17 @@ p { margin: 0; line-height: 1.55; }
 .feat h3 { font-size: 14px; margin: 0 0 6px; line-height: 1.25; }
 .feat p { font-size: 11.5px; color: var(--text-secondary); line-height: 1.5; }
 
-/* ===== Slide 5 — process steps (3 cols, big) ===== */
-.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-.step { background: var(--surface); border-radius: 22px; padding: 32px 28px; }
-.step .n { font-family: var(--font-mono); font-weight: 700; font-size: 16px; color: var(--highlight); margin-bottom: 22px; }
-.step h3 { font-size: 24px; margin: 0 0 12px; }
-.step p { font-size: 15px; color: var(--text-secondary); }
-.steps-note { margin-top: 20px; padding: 22px 28px; background: var(--highlight-soft); border-radius: 14px; }
-.steps-note b { color: var(--highlight); }
-.steps-note { font-size: 15px; color: var(--text); }
+/* ===== Slide 5 — process steps (4 cols) ===== */
+.steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.step { background: var(--surface); border-radius: 20px; padding: 26px 22px; position: relative; }
+.step .n { font-family: var(--font-mono); font-weight: 700; font-size: 14px; color: var(--highlight); margin-bottom: 16px; }
+.step h3 { font-size: 19px; margin: 0 0 10px; line-height: 1.2; }
+.step p { font-size: 13px; color: var(--text-secondary); line-height: 1.5; }
+.steps-meta { margin-top: 16px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.steps-meta-block { padding: 18px 22px; background: var(--highlight-soft); border-radius: 14px; font-size: 13.5px; color: var(--text); line-height: 1.5; }
+.steps-meta-block b { color: var(--highlight); }
 
-/* ===== Slide 6 — pricing ladder (4 cols horizontal) ===== */
-.tariffs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
-.tariff { background: var(--surface); border-radius: 20px; padding: 28px 22px; text-align: left; }
-.tariff.featured { background: var(--text); color: #FFF; }
-.tariff .vol { font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 18px; }
-.tariff.featured .vol { color: #8B92A0; }
-.tariff .rate { font-size: 44px; font-weight: 700; line-height: 1; letter-spacing: -0.02em; color: var(--highlight); margin-bottom: 14px; }
-.tariff .desc { font-size: 13px; color: var(--text-secondary); line-height: 1.5; }
-.tariff.featured .desc { color: #C2C8D2; }
-.pricing-meta { margin-top: 18px; display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
-.pricing-meta-block .ovl { margin-bottom: 8px; display: block; }
-.pricing-meta-block p { font-size: 14px; color: var(--text-secondary); line-height: 1.55; max-width: 110mm; }
-
-/* ===== Slide 7 — industries (5 cards in 3+2 layout) ===== */
+/* ===== Slide 6 — industries (5 cards in 3+2 layout) ===== */
 .ind-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; flex: 1; align-content: start; }
 .ind { background: #FFF; border: 1px solid var(--border); border-radius: 18px; padding: 22px 20px; display: flex; flex-direction: column; }
 .ind .ovl-mini { font-family: var(--font-mono); font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 10px; }
@@ -241,7 +228,7 @@ p { margin: 0; line-height: 1.55; }
 <body>
 
 <div class="deck-toolbar">
-  <span class="hint">10 слайдов · A4 landscape</span>
+  <span class="hint">9 слайдов · A4 landscape</span>
   <a class="btn-download" href="./oplatum-deck.pdf" download="Oplatum-Deck.pdf">Скачать PDF →</a>
 </div>
 
@@ -274,7 +261,7 @@ p { margin: 0; line-height: 1.55; }
       </div>
     </div>
   </div>
-  <footer class="slide-foot"><span class="wm">oplatum<span class="dot">.</span></span><span>01 · 10</span></footer>
+  <footer class="slide-foot"><span class="wm">oplatum<span class="dot">.</span></span><span>01 · 09</span></footer>
 </section>
 
 <!-- ===== Slide 2 — TL;DR ===== -->
@@ -306,7 +293,7 @@ p { margin: 0; line-height: 1.55; }
       <p>Без бумажной волокиты. Заявка утром — приём платежей вечером. На всём процессе с вами один менеджер.</p>
     </div>
   </div>
-  <footer class="slide-foot"><span class="wm">oplatum<span class="dot">.</span></span><span>02 · 10</span></footer>
+  <footer class="slide-foot"><span class="wm">oplatum<span class="dot">.</span></span><span>02 · 09</span></footer>
 </section>
 
 <!-- ===== Slide 3 — Proof of concept ===== -->
@@ -340,7 +327,7 @@ p { margin: 0; line-height: 1.55; }
       </div>
     </div>
   </div>
-  <footer class="slide-foot"><span class="wm">oplatum<span class="dot">.</span></span><span>03 · 10</span></footer>
+  <footer class="slide-foot"><span class="wm">oplatum<span class="dot">.</span></span><span>03 · 09</span></footer>
 </section>
 
 <!-- ===== Slide 4 — Features ===== -->
@@ -364,71 +351,33 @@ p { margin: 0; line-height: 1.55; }
     <div class="feat"><div class="tag">Dev</div><h3>SDK</h3><p>Готовые библиотеки Node, Python, PHP + Postman-коллекция.</p></div>
     <div class="feat"><div class="tag">Admin</div><h3>Личный кабинет</h3><p>Дашборд, транзакции, клиенты, выплаты, отчёты, API-логи.</p></div>
   </div>
-  <footer class="slide-foot"><span class="wm">oplatum<span class="dot">.</span></span><span>04 · 10</span></footer>
+  <footer class="slide-foot"><span class="wm">oplatum<span class="dot">.</span></span><span>04 · 09</span></footer>
 </section>
 
 <!-- ===== Slide 5 — Process ===== -->
 <section class="slide">
   <div class="slide-head">
     <span class="ovl">04 · Как мы работаем</span>
-    <h2>От заявки до первого платежа — один день</h2>
-    <p class="lead">Без бумаг и долгих согласований. На всём пути с вами один менеджер.</p>
+    <h2>Прозрачный путь от заявки до масштабирования</h2>
+    <p class="lead">Четыре шага без бумажной волокиты. На всём пути с вами один менеджер.</p>
   </div>
   <div class="steps">
-    <div class="step"><div class="n">01</div><h3>Оставить заявку</h3><p>Короткая форма или Telegram-бот. Отвечаем в течение часа в рабочее время.</p></div>
-    <div class="step"><div class="n">02</div><h3>Получить ключи</h3><p>Выдаём тестовые ключи песочницы. Команда разработки начинает интеграцию.</p></div>
-    <div class="step"><div class="n">03</div><h3>Принимать платежи</h3><p>После короткой проверки переводим в боевой контур. Зачисление — на следующий день.</p></div>
+    <div class="step"><div class="n">01</div><h3>Заявка</h3><p>Короткая форма или Telegram-бот. Отвечаем в течение часа в рабочее время.</p></div>
+    <div class="step"><div class="n">02</div><h3>KYB и подключение</h3><p>Упрощённая проверка бизнеса, договор, доступ в личный кабинет и тестовые ключи.</p></div>
+    <div class="step"><div class="n">03</div><h3>Тестовые платежи</h3><p>Прогон сценариев в sandbox, проверка webhooks и подписей. Боевой контур после успешного теста.</p></div>
+    <div class="step"><div class="n">04</div><h3>Масштабирование</h3><p>Растим объёмы и подключаем новые методы. Условия пересматриваем по мере роста оборота.</p></div>
   </div>
-  <div class="steps-note"><b>Не нужно</b> готовить пачку документов и ждать недели согласования — упрощённый KYB и единая точка контакта.</div>
-  <footer class="slide-foot"><span class="wm">oplatum<span class="dot">.</span></span><span>05 · 10</span></footer>
+  <div class="steps-meta">
+    <div class="steps-meta-block"><b>Без бумаг.</b> Упрощённый KYB и единая точка контакта вместо стандартного банковского эквайринга.</div>
+    <div class="steps-meta-block"><b>Комиссия в среднем ≈5%</b> за поступление и вывод средств. Конкретная ставка зависит от объёма платежей и фиксируется в договоре.</div>
+  </div>
+  <footer class="slide-foot"><span class="wm">oplatum<span class="dot">.</span></span><span>05 · 09</span></footer>
 </section>
 
-<!-- ===== Slide 6 — Pricing ===== -->
+<!-- ===== Slide 6 — Industries ===== -->
 <section class="slide">
   <div class="slide-head">
-    <span class="ovl">05 · Тарифы</span>
-    <h2>Прозрачная сетка по обороту</h2>
-    <p class="lead">Чем больше оборот — тем меньше комиссия. Все ставки публичны и фиксируются в договоре.</p>
-  </div>
-  <div class="tariffs">
-    <div class="tariff">
-      <div class="vol">До 10 млн ₽/мес</div>
-      <div class="rate">6%</div>
-      <div class="desc">Стартовая ставка для малого оборота</div>
-    </div>
-    <div class="tariff">
-      <div class="vol">10–20 млн ₽/мес</div>
-      <div class="rate">5.5%</div>
-      <div class="desc">Средний уровень оборота</div>
-    </div>
-    <div class="tariff">
-      <div class="vol">20–50 млн ₽/мес</div>
-      <div class="rate">4.5%</div>
-      <div class="desc">Высокий оборот</div>
-    </div>
-    <div class="tariff featured">
-      <div class="vol">От 50 млн ₽/мес</div>
-      <div class="rate">от 4%</div>
-      <div class="desc">Индивидуальные условия для крупного оборота</div>
-    </div>
-  </div>
-  <div class="pricing-meta">
-    <div class="pricing-meta-block">
-      <span class="ovl">Что входит в ставку</span>
-      <p>Приём СБП и подписок, расчёты в RUB и USDT, API уровня Stripe, sandbox, личный кабинет, поддержка 24/7, персональный менеджер.</p>
-    </div>
-    <div class="pricing-meta-block">
-      <span class="ovl">Без скрытых строк</span>
-      <p>Setup-fee — 0 ₽. Изменения тарифа только по обновлённому договору. Возвраты и рефанды не считаются как двойная комиссия.</p>
-    </div>
-  </div>
-  <footer class="slide-foot"><span class="wm">oplatum<span class="dot">.</span></span><span>06 · 10</span></footer>
-</section>
-
-<!-- ===== Slide 7 — Industries ===== -->
-<section class="slide">
-  <div class="slide-head">
-    <span class="ovl">06 · Индустрии</span>
+    <span class="ovl">05 · Индустрии</span>
     <h2>Решения для пяти ниш цифровой экономики</h2>
     <p class="lead">Один процессор, разные сценарии. Условия подбираем под ваш бизнес.</p>
   </div>
@@ -469,13 +418,13 @@ p { margin: 0; line-height: 1.55; }
       <div class="metric">USDT<span>валюта расчётов</span></div>
     </div>
   </div>
-  <footer class="slide-foot"><span class="wm">oplatum<span class="dot">.</span></span><span>07 · 10</span></footer>
+  <footer class="slide-foot"><span class="wm">oplatum<span class="dot">.</span></span><span>06 · 09</span></footer>
 </section>
 
 <!-- ===== Slide 8 — Dev (dark) ===== -->
 <section class="slide dark">
   <div class="slide-head">
-    <span class="ovl">07 · Для разработчиков</span>
+    <span class="ovl">06 · Для разработчиков</span>
     <h2 style="color: #FFF;">API уровня Stripe + MCP-сервер для AI-агентов</h2>
     <p class="lead">REST + webhooks с подписью HMAC-SHA256, идемпотентность, sandbox с тестовыми ключами. SDK для Node, Python, PHP. MCP-сервер — чтобы AI-агент сам интегрировал платежи в код.</p>
   </div>
@@ -508,13 +457,13 @@ p { margin: 0; line-height: 1.55; }
 <span class="key">X-Timestamp</span>: <span class="num">1714247280</span>
 <span class="key">X-Nonce</span>: 9f3a1b...</pre>
   </div>
-  <footer class="slide-foot"><span class="wm">oplatum<span class="dot">.</span></span><span>08 · 10</span></footer>
+  <footer class="slide-foot"><span class="wm">oplatum<span class="dot">.</span></span><span>07 · 09</span></footer>
 </section>
 
 <!-- ===== Slide 9 — Roadmap ===== -->
 <section class="slide">
   <div class="slide-head">
-    <span class="ovl">08 · Roadmap</span>
+    <span class="ovl">07 · Roadmap</span>
     <h2>Что готовим в ближайшие месяцы</h2>
     <p class="lead">Сейчас в боевом контуре — СБП и СБП-подписки с зачислением за 1 день.</p>
   </div>
@@ -525,24 +474,25 @@ p { margin: 0; line-height: 1.55; }
     <div class="rm-card"><div class="stt">План</div><h3>Telegram Mini App native</h3><p>Нативная оплата внутри Mini App без редиректов на hosted checkout.</p></div>
     <div class="rm-card" style="grid-column: span 2;"><div class="stt">План</div><h3>Multi-currency расчёты</h3><p>Зачисления в EUR и других стейблах поверх существующих RUB и USDT для бизнесов с международной аудиторией.</p></div>
   </div>
-  <footer class="slide-foot"><span class="wm">oplatum<span class="dot">.</span></span><span>09 · 10</span></footer>
+  <footer class="slide-foot"><span class="wm">oplatum<span class="dot">.</span></span><span>08 · 09</span></footer>
 </section>
 
 <!-- ===== Slide 10 — Contacts / CTA ===== -->
 <section class="slide">
   <div class="slide-head">
-    <span class="ovl">09 · Контакты</span>
+    <span class="ovl">08 · Контакты</span>
     <h2>Подключение за 1 день</h2>
     <p class="lead">Заявка утром — приём платежей вечером. Расскажите о вашем продукте — пришлём расчёт условий и тестовые ключи.</p>
   </div>
   <div class="contacts">
     <div class="contact-block">
-      <div class="ovl-mini">Прямой контакт</div>
-      <h3>Telegram-бот и почта</h3>
-      <p>Менеджер открывает условия в течение часа в рабочее время.</p>
+      <div class="ovl-mini">Менеджер по росту</div>
+      <h3>Aleks (Sasha) Dolgov</h3>
+      <p>Личный контакт по подключению, условиям и интеграции. Отвечаю в течение часа в рабочее время.</p>
       <div class="contact-list">
-        <a href="https://t.me/oplatum_bot">@oplatum_bot</a>
-        <a href="mailto:hello@oplatum.ru">hello@oplatum.ru</a>
+        <a href="https://t.me/dolgovalex2">@dolgovalex2 · telegram</a>
+        <a href="https://t.me/oplatum_bot">@oplatum_bot · общий бот</a>
+        <a href="mailto:hello@oplatum.com">hello@oplatum.com</a>
       </div>
     </div>
     <div class="contact-block cta-final">
@@ -550,11 +500,11 @@ p { margin: 0; line-height: 1.55; }
       <h3>Оставьте заявку — отвечаем в течение часа</h3>
       <p>Короткая форма с ИНН и типом бизнеса. Без длинных опросов и звонков.</p>
       <div class="contact-list">
-        <a href="https://dolgovalexskipp.github.io/oplatum-landing/#apply">Перейти к форме →</a>
+        <a href="https://oplatum.com/register">Перейти к форме →</a>
       </div>
     </div>
   </div>
-  <footer class="slide-foot"><span class="wm">oplatum<span class="dot">.</span></span><span>10 · 10</span></footer>
+  <footer class="slide-foot"><span class="wm">oplatum<span class="dot">.</span></span><span>09 · 09</span></footer>
 </section>
 
 </div>
